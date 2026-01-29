@@ -14,6 +14,7 @@ import { scaffoldMission } from './hcmService/ops/missionScaffold';
 import { listMissions } from './hcmService/ops/listMissions';
 import { appendJournal } from './hcmService/ops/appendJournal';
 import { calculateHash } from './hcmService/utils/hashing';
+import { createEnterpriseRouter } from './api/routes/enterprise';
 
 const app: Express = express();
 const port = Number(process.env.PORT || 9096);
@@ -79,6 +80,9 @@ const fsAdapter = new FsAdapter(hcmRoot);
 const contractEngine = new ContractEngine(fsAdapter);
 const packEngine = new PackEngine(fsAdapter);
 const artifactEngine = new ArtifactEngine(fsAdapter);
+
+// Enterprise-first routes (spaces/workspaces/docs)
+app.use('/v1', createEnterpriseRouter({ fsAdapter, hcmService }));
 
 // Routes
 app.post('/v1/hcm/missions', async (req: Request, res: Response) => {
