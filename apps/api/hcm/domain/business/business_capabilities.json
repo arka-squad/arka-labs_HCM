@@ -1,0 +1,433 @@
+{
+  "$schema": "https://arka.labs/schemas/business_capabilities.v1.json",
+  "model_id": "arka-business-capabilities",
+  "version": "2.0.0",
+  "last_updated": "2024-02-24T10:30:00Z",
+  "organization": "Arka Labs",
+  "description": "Modèle de capacités métier d'Arka Labs organisé en domaines stratégiques. Les capacités représentent CE QUE l'organisation fait (indépendamment du COMMENT).",
+  "capability_domains": [
+    {
+      "domain_id": "BD-001",
+      "domain_name": "Business Development",
+      "description": "Capacités liées à l'acquisition et au développement clients",
+      "capabilities": [
+        {
+          "capability_id": "CAP-BD-001",
+          "capability_name": "Lead Generation",
+          "description": "Générer des opportunités commerciales qualifiées (inbound + outbound)",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Content marketing", "Outreach campaigns", "Referral program"],
+          "key_systems": ["CRM", "Marketing automation"],
+          "metrics": ["MQLs per month", "Conversion rate MQL→SQL"],
+          "investments_planned": "Marketing automation platform Q2 2024"
+        },
+        {
+          "capability_id": "CAP-BD-002",
+          "capability_name": "Opportunity Management",
+          "description": "Gérer le pipeline commercial de l'opportunité à la signature",
+          "maturity_level": 4,
+          "maturity_target": 4,
+          "supporting_processes": ["Sales qualification", "Proposal development", "Contract negotiation"],
+          "key_systems": ["CRM (Salesforce)", "Proposal tool"],
+          "metrics": ["Win rate", "Average deal size", "Sales cycle length"],
+          "investments_planned": null
+        },
+        {
+          "capability_id": "CAP-BD-003",
+          "capability_name": "Client Relationship Management",
+          "description": "Maintenir et développer relations avec clients existants",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Account planning", "Quarterly business reviews", "Upsell/cross-sell"],
+          "key_systems": ["CRM", "Customer success platform"],
+          "metrics": ["NPS", "Customer retention rate", "Upsell rate"],
+          "investments_planned": "Customer success platform Q3 2024"
+        },
+        {
+          "capability_id": "CAP-BD-004",
+          "capability_name": "Partnership Development",
+          "description": "Développer et gérer partenariats stratégiques (technologiques, commerciaux, académiques)",
+          "maturity_level": 2,
+          "maturity_target": 3,
+          "supporting_processes": ["Partner sourcing", "Partnership agreements", "Co-selling"],
+          "key_systems": ["Partner portal (planned)"],
+          "metrics": ["Number of active partners", "Revenue via partners"],
+          "investments_planned": "Partner program formalization 2024"
+        }
+      ]
+    },
+    {
+      "domain_id": "SD-002",
+      "domain_name": "Service Delivery",
+      "description": "Capacités liées à la livraison de services aux clients",
+      "capabilities": [
+        {
+          "capability_id": "CAP-SD-001",
+          "capability_name": "Mission Planning & Scoping",
+          "description": "Planifier et cadrer missions (discovery, audit, delivery)",
+          "maturity_level": 4,
+          "maturity_target": 5,
+          "supporting_processes": ["Scoping workshops", "Mission charter", "Resource allocation"],
+          "key_systems": ["Arka OS", "Project management tool"],
+          "metrics": ["Scope accuracy", "Planning cycle time"],
+          "investments_planned": "Arka HCM integration for better mission context"
+        },
+        {
+          "capability_id": "CAP-SD-002",
+          "capability_name": "Execution & Delivery",
+          "description": "Exécuter missions et livrer outputs (code, rapports, recommendations)",
+          "maturity_level": 4,
+          "maturity_target": 5,
+          "supporting_processes": ["Agile delivery", "Quality reviews", "Client collaboration"],
+          "key_systems": ["GitHub", "Arka OS", "Collaboration tools"],
+          "metrics": ["On-time delivery %", "Quality score", "Client satisfaction"],
+          "investments_planned": "AI-assisted code generation tooling"
+        },
+        {
+          "capability_id": "CAP-SD-003",
+          "capability_name": "Knowledge Capture & Reuse",
+          "description": "Capturer connaissances de missions et les réutiliser (patterns, templates, learnings)",
+          "maturity_level": 3,
+          "maturity_target": 5,
+          "supporting_processes": ["Post-mission retrospectives", "Pattern documentation", "Knowledge sharing"],
+          "key_systems": ["Arka HCM (in dev)", "Documentation platform"],
+          "metrics": ["Pattern reuse rate", "Time saved via reuse"],
+          "investments_planned": "Arka HCM deployment Q2-Q3 2024 (strategic priority)"
+        },
+        {
+          "capability_id": "CAP-SD-004",
+          "capability_name": "Quality Assurance",
+          "description": "Assurer qualité des livrables (code, documents, recommendations)",
+          "maturity_level": 4,
+          "maturity_target": 4,
+          "supporting_processes": ["Peer reviews", "Testing", "QA checklists"],
+          "key_systems": ["GitHub", "Testing frameworks", "Linters"],
+          "metrics": ["Defect rate", "Review coverage", "Client-reported issues"],
+          "investments_planned": null
+        },
+        {
+          "capability_id": "CAP-SD-005",
+          "capability_name": "Client Support & Success",
+          "description": "Supporter clients post-delivery et assurer leur succès",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Support ticketing", "Proactive monitoring", "Success metrics tracking"],
+          "key_systems": ["Support platform", "Monitoring tools"],
+          "metrics": ["CSAT", "Support response time", "Issue resolution time"],
+          "investments_planned": "Dedicated customer success role Q2 2024"
+        }
+      ]
+    },
+    {
+      "domain_id": "PD-003",
+      "domain_name": "Product Development",
+      "description": "Capacités liées au développement des produits Arka (Arka OS, Arka HCM)",
+      "capabilities": [
+        {
+          "capability_id": "CAP-PD-001",
+          "capability_name": "Product Strategy & Roadmapping",
+          "description": "Définir vision, stratégie et roadmap produit",
+          "maturity_level": 4,
+          "maturity_target": 4,
+          "supporting_processes": ["User research", "Market analysis", "Roadmap planning"],
+          "key_systems": ["Product management tool", "Analytics"],
+          "metrics": ["Roadmap delivery %", "Feature adoption rate"],
+          "investments_planned": null
+        },
+        {
+          "capability_id": "CAP-PD-002",
+          "capability_name": "Feature Development",
+          "description": "Développer features produit de l'idée au déploiement",
+          "maturity_level": 4,
+          "maturity_target": 5,
+          "supporting_processes": ["Agile development", "CI/CD", "Feature flags"],
+          "key_systems": ["GitHub", "CI/CD pipeline", "Feature flag system"],
+          "metrics": ["Development cycle time", "Deployment frequency"],
+          "investments_planned": "Advanced CI/CD improvements Q2 2024"
+        },
+        {
+          "capability_id": "CAP-PD-003",
+          "capability_name": "User Research & Testing",
+          "description": "Comprendre utilisateurs et tester solutions",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["User interviews", "Usability testing", "Beta programs"],
+          "key_systems": ["User testing platform", "Analytics"],
+          "metrics": ["Research velocity", "Test participants", "Insights actioned"],
+          "investments_planned": "User research platform Q3 2024"
+        },
+        {
+          "capability_id": "CAP-PD-004",
+          "capability_name": "Platform Operations",
+          "description": "Opérer et maintenir plateformes produit en production",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Monitoring & alerting", "Incident response", "Performance optimization"],
+          "key_systems": ["AWS", "Monitoring stack", "Log aggregation"],
+          "metrics": ["Uptime %", "MTTR", "Platform performance"],
+          "investments_planned": "Enhanced observability stack Q2 2024"
+        }
+      ]
+    },
+    {
+      "domain_id": "TE-004",
+      "domain_name": "Technology & Engineering",
+      "description": "Capacités technologiques transverses (infrastructure, sécurité, data)",
+      "capabilities": [
+        {
+          "capability_id": "CAP-TE-001",
+          "capability_name": "Infrastructure Management",
+          "description": "Gérer infrastructure cloud et on-premise",
+          "maturity_level": 4,
+          "maturity_target": 4,
+          "supporting_processes": ["Infrastructure as Code", "Capacity planning", "Cost optimization"],
+          "key_systems": ["AWS", "Terraform", "Monitoring"],
+          "metrics": ["Infrastructure uptime", "Cost per workload"],
+          "investments_planned": null
+        },
+        {
+          "capability_id": "CAP-TE-002",
+          "capability_name": "Security & Compliance",
+          "description": "Assurer sécurité systèmes et conformité réglementaire",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Security audits", "Vulnerability management", "Compliance monitoring"],
+          "key_systems": ["SIEM", "Vulnerability scanners", "Access management"],
+          "metrics": ["Security incidents", "Compliance score", "Time to patch"],
+          "investments_planned": "ISO 27001 remediation ongoing (Q1-Q2 2024)"
+        },
+        {
+          "capability_id": "CAP-TE-003",
+          "capability_name": "Data Management",
+          "description": "Gérer données (collection, storage, governance, analytics)",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Data governance", "Data quality", "Analytics"],
+          "key_systems": ["PostgreSQL", "Data warehouse", "BI tools"],
+          "metrics": ["Data quality score", "Analytics adoption"],
+          "investments_planned": "Data governance framework Q3 2024"
+        },
+        {
+          "capability_id": "CAP-TE-004",
+          "capability_name": "AI/ML Engineering",
+          "description": "Développer et opérer solutions IA/ML",
+          "maturity_level": 4,
+          "maturity_target": 5,
+          "supporting_processes": ["Model development", "Prompt engineering", "AI governance"],
+          "key_systems": ["OpenAI API", "Claude API", "Vector databases", "LangChain"],
+          "metrics": ["Model performance", "AI cost efficiency", "AI quality scores"],
+          "investments_planned": "AI observability and evaluation platform Q2 2024"
+        }
+      ]
+    },
+    {
+      "domain_id": "PO-005",
+      "domain_name": "People & Organization",
+      "description": "Capacités liées à la gestion des personnes et de l'organisation",
+      "capabilities": [
+        {
+          "capability_id": "CAP-PO-001",
+          "capability_name": "Talent Acquisition",
+          "description": "Recruter talents (employés et contractors)",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Sourcing", "Interviewing", "Onboarding"],
+          "key_systems": ["ATS", "HR system"],
+          "metrics": ["Time to hire", "Offer acceptance rate", "New hire quality"],
+          "investments_planned": "Structured interview process Q2 2024"
+        },
+        {
+          "capability_id": "CAP-PO-002",
+          "capability_name": "Learning & Development",
+          "description": "Développer compétences de l'équipe",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Skills assessment", "Training programs", "Career development"],
+          "key_systems": ["Learning platform", "Skills matrix"],
+          "metrics": ["Training hours per person", "Skills coverage", "Internal promotion rate"],
+          "investments_planned": "Formalized L&D program Q3 2024"
+        },
+        {
+          "capability_id": "CAP-PO-003",
+          "capability_name": "Performance Management",
+          "description": "Gérer performance individuelle et collective",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Goal setting (OKRs)", "Performance reviews", "Feedback culture"],
+          "key_systems": ["OKR tool", "Performance management platform"],
+          "metrics": ["Goal achievement rate", "Feedback frequency"],
+          "investments_planned": "OKR platform adoption Q2 2024"
+        },
+        {
+          "capability_id": "CAP-PO-004",
+          "capability_name": "Culture & Engagement",
+          "description": "Cultiver culture d'entreprise et engagement équipe",
+          "maturity_level": 4,
+          "maturity_target": 4,
+          "supporting_processes": ["Team rituals", "Recognition programs", "Engagement surveys"],
+          "key_systems": ["Slack", "Survey tools"],
+          "metrics": ["eNPS", "Retention rate", "Engagement survey scores"],
+          "investments_planned": null
+        }
+      ]
+    },
+    {
+      "domain_id": "FO-006",
+      "domain_name": "Finance & Operations",
+      "description": "Capacités liées à la gestion financière et opérationnelle",
+      "capabilities": [
+        {
+          "capability_id": "CAP-FO-001",
+          "capability_name": "Financial Planning & Analysis",
+          "description": "Planifier, budgéter et analyser performance financière",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Budgeting", "Forecasting", "Financial reporting"],
+          "key_systems": ["Accounting software", "FP&A tools"],
+          "metrics": ["Forecast accuracy", "Budget variance"],
+          "investments_planned": "FP&A platform Q3 2024"
+        },
+        {
+          "capability_id": "CAP-FO-002",
+          "capability_name": "Billing & Revenue Recognition",
+          "description": "Facturer clients et reconnaître revenus",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Invoicing", "Payment collection", "Revenue recognition"],
+          "key_systems": ["Billing system", "Accounting software"],
+          "metrics": ["DSO (Days Sales Outstanding)", "Billing accuracy"],
+          "investments_planned": "Billing automation improvements (from discovery findings)"
+        },
+        {
+          "capability_id": "CAP-FO-003",
+          "capability_name": "Procurement & Vendor Management",
+          "description": "Acheter services/outils et gérer fournisseurs",
+          "maturity_level": 3,
+          "maturity_target": 3,
+          "supporting_processes": ["Vendor selection", "Contract management", "Spend optimization"],
+          "key_systems": ["Procurement system", "Contract repository"],
+          "metrics": ["Cost savings", "Vendor performance"],
+          "investments_planned": null
+        },
+        {
+          "capability_id": "CAP-FO-004",
+          "capability_name": "Legal & Compliance",
+          "description": "Gérer aspects légaux et conformité réglementaire",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Contract review", "Compliance monitoring", "Risk management"],
+          "key_systems": ["Contract management", "Compliance tracking"],
+          "metrics": ["Contract review time", "Compliance incidents"],
+          "investments_planned": "Legal tech platform evaluation Q3 2024"
+        }
+      ]
+    },
+    {
+      "domain_id": "IN-007",
+      "domain_name": "Innovation & R&D",
+      "description": "Capacités liées à l'innovation et la recherche",
+      "capabilities": [
+        {
+          "capability_id": "CAP-IN-001",
+          "capability_name": "Technology Scouting",
+          "description": "Veiller sur technologies émergentes et opportunités",
+          "maturity_level": 4,
+          "maturity_target": 4,
+          "supporting_processes": ["Tech watch", "POCs", "Evaluation frameworks"],
+          "key_systems": ["Knowledge base", "Experimentation platform"],
+          "metrics": ["Technologies evaluated", "POCs completed", "Tech adoption rate"],
+          "investments_planned": null
+        },
+        {
+          "capability_id": "CAP-IN-002",
+          "capability_name": "Experimentation & Prototyping",
+          "description": "Expérimenter rapidement nouvelles idées et concepts",
+          "maturity_level": 4,
+          "maturity_target": 5,
+          "supporting_processes": ["Rapid prototyping", "A/B testing", "Learning loops"],
+          "key_systems": ["Development environments", "Analytics", "Feature flags"],
+          "metrics": ["Experiments velocity", "Validated learnings", "Innovation ROI"],
+          "investments_planned": "Dedicated innovation time allocation (20% time)"
+        },
+        {
+          "capability_id": "CAP-IN-003",
+          "capability_name": "Thought Leadership",
+          "description": "Produire et partager contenu thought leadership",
+          "maturity_level": 3,
+          "maturity_target": 4,
+          "supporting_processes": ["Content creation", "Speaking engagements", "Open source contributions"],
+          "key_systems": ["Blog platform", "Social media"],
+          "metrics": ["Content published", "Reach", "Engagement"],
+          "investments_planned": "Content strategy and calendar Q2 2024"
+        }
+      ]
+    }
+  ],
+  "capability_maturity_model": {
+    "level_1_initial": "Processus ad-hoc, dépendant des individus, résultats imprévisibles",
+    "level_2_managed": "Processus documentés, reproductibles au niveau projet",
+    "level_3_defined": "Processus standardisés à l'échelle organisation, cohérents",
+    "level_4_quantitatively_managed": "Processus mesurés et contrôlés quantitativement",
+    "level_5_optimizing": "Amélioration continue, innovation processus"
+  },
+  "strategic_priorities_2024": [
+    {
+      "priority": "Knowledge Capture & Reuse (CAP-SD-003)",
+      "rationale": "Arka HCM est au cœur de notre différenciation. Maturity 3→5 est critical.",
+      "target_date": "Q3 2024",
+      "investment": "High (Arka HCM development)"
+    },
+    {
+      "priority": "AI/ML Engineering (CAP-TE-004)",
+      "rationale": "Compétence core pour nos services et produits. Maintenir leadership.",
+      "target_date": "Ongoing",
+      "investment": "Medium (tooling, training)"
+    },
+    {
+      "priority": "Client Relationship Management (CAP-BD-003)",
+      "rationale": "Maximize LTV clients existants, réduire churn, augmenter upsell.",
+      "target_date": "Q3 2024",
+      "investment": "Medium (customer success platform + role)"
+    },
+    {
+      "priority": "Security & Compliance (CAP-TE-002)",
+      "rationale": "Addressing ISO 27001 audit findings, table stakes pour clients enterprise.",
+      "target_date": "Q2 2024",
+      "investment": "Medium (remediation actions)"
+    }
+  ],
+  "capability_gaps": [
+    {
+      "gap": "Partnership Development maturity faible (2)",
+      "impact": "Opportunités de croissance via partenaires non exploitées",
+      "recommendation": "Formaliser partner program en 2024"
+    },
+    {
+      "gap": "User Research & Testing maturity moyenne (3)",
+      "impact": "Risque de build features non alignées besoins users",
+      "recommendation": "Investir dans user research platform et processus Q3 2024"
+    },
+    {
+      "gap": "FP&A maturity moyenne (3)",
+      "impact": "Prévisions financières moins précises, décisions budgétaires sous-optimales",
+      "recommendation": "Adopter FP&A platform Q3 2024"
+    }
+  ],
+  "heat_map": {
+    "high_maturity_high_value": ["Execution & Delivery", "Feature Development", "Technology Scouting", "AI/ML Engineering"],
+    "high_maturity_medium_value": ["Opportunity Management", "Quality Assurance", "Infrastructure Management"],
+    "medium_maturity_high_value": ["Knowledge Capture & Reuse", "Client Relationship Management", "Security & Compliance"],
+    "low_maturity_high_value": ["Partnership Development"],
+    "investment_focus": "Medium maturity / High value capabilities = highest ROI"
+  },
+  "metadata": {
+    "model_owner": "Strategy & Operations",
+    "contributors": ["CEO", "CTO", "Product", "Operations"],
+    "review_frequency": "semi-annual",
+    "last_review_date": "2024-02-01",
+    "next_review_date": "2024-08-01",
+    "methodology": "Based on business capability modeling best practices (TOGAF, Gartner)",
+    "tags": ["business_capabilities", "strategy", "maturity", "investment_planning"]
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "$schema": "https://arka.labs/schemas/procedure.v1.json",
+  "procedure_id": "change_management",
+  "version": "1.0.0",
+  "category": "operations",
+  "title": "Change Management Procedure",
+  "description": "Standard process for requesting, reviewing, approving, and implementing changes to production systems.",
+  "owner": "change_advisory_board",
+  "last_updated": "2025-12-10T00:00:00Z",
+  "steps": [
+    {
+      "step_number": 1,
+      "name": "Change Request Creation",
+      "description": "Submit formal change request with all required information",
+      "actions": [
+        "Complete change request form",
+        "Specify change type (standard, normal, emergency)",
+        "Describe change scope and impact",
+        "Identify affected systems and dependencies",
+        "Provide rollback plan"
+      ],
+      "roles_involved": ["change_requester"],
+      "estimated_duration_minutes": 30
+    },
+    {
+      "step_number": 2,
+      "name": "Risk Assessment",
+      "description": "Evaluate potential risks and impact of the change",
+      "actions": [
+        "Assess technical risk (low, medium, high)",
+        "Evaluate business impact",
+        "Check for conflicting changes",
+        "Review change window and timing",
+        "Identify required approvers"
+      ],
+      "roles_involved": ["change_manager", "technical_lead"],
+      "estimated_duration_minutes": 20
+    },
+    {
+      "step_number": 3,
+      "name": "Approval Workflow",
+      "description": "Route change request for necessary approvals",
+      "actions": [
+        "Send to technical approvers",
+        "If high risk: require CAB approval",
+        "If business impact: require business approval",
+        "Track approval status",
+        "Escalate if delayed"
+      ],
+      "roles_involved": ["change_manager", "approvers"],
+      "estimated_duration_minutes": 120
+    },
+    {
+      "step_number": 4,
+      "name": "Pre-Implementation Validation",
+      "description": "Final checks before executing change",
+      "actions": [
+        "Verify all approvals received",
+        "Confirm implementation team ready",
+        "Check no conflicting maintenance windows",
+        "Validate rollback plan tested",
+        "Brief stakeholders on change window"
+      ],
+      "roles_involved": ["change_manager", "implementation_team"],
+      "estimated_duration_minutes": 15
+    },
+    {
+      "step_number": 5,
+      "name": "Implementation",
+      "description": "Execute the approved change",
+      "actions": [
+        "Execute change according to plan",
+        "Document each step taken",
+        "Monitor system health during change",
+        "If issues: pause and assess",
+        "Complete implementation checklist"
+      ],
+      "roles_involved": ["implementation_team", "change_manager"],
+      "estimated_duration_minutes": 60
+    },
+    {
+      "step_number": 6,
+      "name": "Post-Implementation Verification",
+      "description": "Validate change was successful",
+      "actions": [
+        "Run smoke tests",
+        "Verify monitoring shows healthy state",
+        "Check no new errors or alerts",
+        "Confirm with affected teams",
+        "Monitor for 30 minutes minimum"
+      ],
+      "roles_involved": ["implementation_team", "qa"],
+      "estimated_duration_minutes": 45
+    },
+    {
+      "step_number": 7,
+      "name": "Documentation & Closure",
+      "description": "Document outcomes and close change request",
+      "actions": [
+        "Update change record with actual outcomes",
+        "Document any deviations from plan",
+        "Archive implementation logs",
+        "Close change ticket",
+        "Schedule PIR if required"
+      ],
+      "roles_involved": ["change_manager"],
+      "estimated_duration_minutes": 15
+    },
+    {
+      "step_number": 8,
+      "name": "Post-Implementation Review (if needed)",
+      "description": "Review for high-risk or problematic changes",
+      "actions": [
+        "Gather lessons learned",
+        "Identify process improvements",
+        "Update procedures if needed",
+        "Share knowledge with team"
+      ],
+      "roles_involved": ["change_manager", "implementation_team"],
+      "estimated_duration_minutes": 60
+    }
+  ],
+  "change_types": {
+    "standard": {
+      "description": "Pre-approved, low-risk, routine changes",
+      "approval_required": false,
+      "cab_review": false,
+      "examples": ["SSL certificate renewal", "routine patches"]
+    },
+    "normal": {
+      "description": "Changes requiring standard approval process",
+      "approval_required": true,
+      "cab_review": "if_high_risk",
+      "examples": ["feature deployments", "configuration changes"]
+    },
+    "emergency": {
+      "description": "Urgent changes to resolve critical incidents",
+      "approval_required": true,
+      "cab_review": "post_implementation",
+      "examples": ["hotfixes", "security patches"]
+    }
+  },
+  "approval_matrix": {
+    "low_risk": ["technical_lead"],
+    "medium_risk": ["technical_lead", "change_manager"],
+    "high_risk": ["technical_lead", "change_manager", "cab", "business_owner"]
+  },
+  "success_criteria": [
+    "Change implemented as planned",
+    "No unintended service impact",
+    "All validations passed",
+    "Documentation complete"
+  ]
+}

@@ -1,0 +1,12 @@
+:80 {
+  route {
+    handle_path /api/* {
+      reverse_proxy api:9096
+    }
+
+    root * /srv
+    encode gzip
+    try_files {path} /index.html
+    file_server
+  }
+}

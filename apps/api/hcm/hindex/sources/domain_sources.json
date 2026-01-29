@@ -1,0 +1,26 @@
+{
+  "$schema": "https://arka.labs/schemas/hindex_sources.v1.json",
+  "version": "1.0.0",
+  "category": "domain",
+  "description": "Indexed sources from domain knowledge (org, business, systems, constraints)",
+  "sources": [
+    {
+      "source_id": "src_domain_001",
+      "path": "domain/org/org_profile.json",
+      "type": "json",
+      "indexed_at": "2025-12-10T00:00:00Z",
+      "tags": ["org", "profile", "company"],
+      "sensitivity": "internal",
+      "searchable_fields": ["org_name", "description", "values", "key_contacts"]
+    },
+    {
+      "source_id": "src_domain_002",
+      "path": "domain/business/products.json",
+      "type": "json",
+      "indexed_at": "2025-12-10T00:00:00Z",
+      "tags": ["products", "business", "offerings"],
+      "sensitivity": "internal",
+      "searchable_fields": ["products[].product_name", "products[].description", "products[].components"]
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "$schema": "https://arka.labs/schemas/evidence_pack_pattern.v1.json",
+  "pattern_id": "audit.evidence_pack",
+  "version": "1.0.0",
+  "pattern_type": "evidence_pack",
+  "context": "audit",
+  "title": "Audit Evidence Pack Pattern",
+  "description": "Specialized pattern for organizing and presenting audit evidence supporting findings and recommendations.",
+  "structure": {
+    "metadata": {
+      "required_fields": [
+        "evidence_pack_id",
+        "audit_id",
+        "finding_id",
+        "title",
+        "severity",
+        "created_at",
+        "auditor",
+        "audit_standard"
+      ],
+      "optional_fields": [
+        "related_controls",
+        "affected_systems",
+        "regulatory_references"
+      ]
+    },
+    "finding_statement": {
+      "description": "Clear statement of the audit finding",
+      "format": "What is (observed) vs What should be (requirement/standard)",
+      "max_length_words": 100,
+      "required_elements": [
+        "observed_condition",
+        "required_condition",
+        "deviation_description"
+      ]
+    },
+    "criteria": {
+      "description": "Standards or requirements being audited against",
+      "includes": [
+        "standard_reference (e.g., ISO 27001:2013 A.9.2)",
+        "requirement_text",
+        "interpretation_if_needed"
+      ]
+    },
+    "evidence_items": {
+      "description": "Audit evidence following audit standards",
+      "item_structure": {
+        "evidence_id": "unique_identifier",
+        "evidence_type": "from_audit_evidence_types",
+        "collection_method": "interview|observation|inspection|reperformance|analytical",
+        "source": {
+          "system_or_person": "where_collected",
+          "date": "when_collected",
+          "auditor": "who_collected"
+        },
+        "content": "the_actual_evidence",
+        "sufficiency": "enough_to_support_finding",
+        "appropriateness": "relevant_and_reliable"
+      },
+      "minimum_items": 3
+    },
+    "root_cause_analysis": {
+      "description": "Why the deviation exists",
+      "methods": ["5_whys", "fishbone_diagram", "fault_tree_analysis"],
+      "sections": [
+        {
+          "section": "immediate_cause",
+          "description": "Direct cause of the finding"
+        },
+        {
+          "section": "contributing_factors",
+          "description": "Factors that enabled or worsened the issue"
+        },
+        {
+          "section": "root_cause",
+          "description": "Fundamental reason the issue occurred"
+        }
+      ]
+    },
+    "impact_assessment": {
+      "description": "Consequences of the finding",
+      "dimensions": {
+        "operational": "Impact on operations and processes",
+        "compliance": "Regulatory or standard non-compliance risk",
+        "financial": "Potential financial impact",
+        "reputational": "Brand or reputation risk",
+        "security": "Security or privacy risk if applicable"
+      },
+      "severity_justification": "Why this severity was assigned"
+    },
+    "recommendations": {
+      "description": "Auditor's recommendations to address finding",
+      "recommendation_structure": {
+        "recommendation_id": "unique_id",
+        "description": "what_should_be_done",
+        "priority": "critical|high|medium|low",
+        "estimated_effort": "rough_effort_estimate",
+        "responsible_party": "who_should_implement",
+        "due_date": "recommended_completion_date"
+      },
+      "minimum_recommendations": 1
+    },
+    "management_response": {
+      "description": "Auditee's response and action plan",
+      "includes": [
+        "accept|partial_accept|reject",
+        "action_plan_description",
+        "responsible_person",
+        "target_completion_date",
+        "resource_requirements"
+      ]
+    },
+    "follow_up": {
+      "description": "Plan for verifying remediation",
+      "includes": [
+        "verification_method",
+        "planned_verification_date",
+        "acceptance_criteria"
+      ]
+    }
+  },
+  "audit_evidence_types": {
+    "documentary": "Written policies, procedures, logs, reports",
+    "testimonial": "Statements from personnel obtained through interviews",
+    "physical": "Direct observation or inspection of tangible assets",
+    "analytical": "Comparisons, computations, reconciliations",
+    "reperformance": "Auditor independently executing a control or process"
+  },
+  "collection_methods": {
+    "interview": {
+      "description": "Obtaining information through questioning",
+      "reliability": "medium",
+      "best_for": "understanding processes, identifying issues"
+    },
+    "observation": {
+      "description": "Direct witnessing of process or control",
+      "reliability": "high",
+      "best_for": "verifying actual practice vs stated procedure"
+    },
+    "inspection": {
+      "description": "Examining records or documents",
+      "reliability": "high",
+      "best_for": "verifying documentation and approvals"
+    },
+    "reperformance": {
+      "description": "Auditor independently executing process",
+      "reliability": "very_high",
+      "best_for": "validating calculations and controls"
+    }
+  },
+  "quality_criteria": {
+    "sufficient": "Enough evidence in quantity to support finding",
+    "appropriate": "Evidence is relevant and reliable",
+    "documented": "Evidence is properly recorded and traceable",
+    "objective": "Evidence is factual and unbiased",
+    "verifiable": "Evidence can be independently verified"
+  },
+  "severity_mapping": {
+    "critical": {
+      "description": "Major control deficiency with immediate impact",
+      "management_level": "executive",
+      "response_timeframe": "immediate"
+    },
+    "high": {
+      "description": "Significant deficiency requiring prompt remediation",
+      "management_level": "senior_management",
+      "response_timeframe": "30_days"
+    },
+    "medium": {
+      "description": "Moderate deficiency to be addressed",
+      "management_level": "middle_management",
+      "response_timeframe": "90_days"
+    },
+    "low": {
+      "description": "Minor deficiency or improvement opportunity",
+      "management_level": "operational_management",
+      "response_timeframe": "180_days"
+    }
+  },
+  "audit_standards_references": [
+    "ISO 19011 (Auditing Management Systems)",
+    "ISA 500 (Audit Evidence)",
+    "ISACA Standards",
+    "IIA Standards"
+  ]
+}

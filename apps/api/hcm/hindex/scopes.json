@@ -1,0 +1,106 @@
+{
+  "$schema": "https://arka.labs/schemas/hindex_scopes.v1.json",
+  "version": "1.0.0",
+  "description": "Scopes define which HCM zones are accessible for each classification class",
+  "scopes": {
+    "mission_history": {
+      "description": "Access to mission state and journal only",
+      "include": [
+        "state/missions/*/meta.json",
+        "state/missions/*/status.json",
+        "state/missions/*/journal.jsonl",
+        "state/missions/*/snapshots/*.json"
+      ],
+      "exclude": [
+        "stable/**",
+        "domain/**",
+        "hindex/**"
+      ],
+      "max_depth": 3,
+      "max_results": 50
+    },
+    "decisions": {
+      "description": "Access to decisions across missions",
+      "include": [
+        "state/missions/*/decisions.json",
+        "state/missions/*/meta.json"
+      ],
+      "exclude": [
+        "stable/**",
+        "domain/**"
+      ],
+      "max_depth": 2,
+      "max_results": 100
+    },
+    "evidence": {
+      "description": "Access to evidence packs and artifacts",
+      "include": [
+        "state/missions/*/evidence/*.json",
+        "state/missions/*/meta.json"
+      ],
+      "exclude": [
+        "stable/**",
+        "domain/**"
+      ],
+      "max_depth": 3,
+      "max_results": 50
+    },
+    "domain_knowledge": {
+      "description": "Access to domain, business, and organizational knowledge",
+      "include": [
+        "domain/**"
+      ],
+      "exclude": [
+        "state/**",
+        "hindex/**"
+      ],
+      "max_depth": 5,
+      "max_results": 100
+    },
+    "core_reference": {
+      "description": "Access to glossaries and referentials only",
+      "include": [
+        "stable/glossary/**",
+        "stable/referentials/**"
+      ],
+      "exclude": [
+        "state/**",
+        "domain/**"
+      ],
+      "max_depth": 2,
+      "max_results": 200
+    },
+    "patterns": {
+      "description": "Access to patterns and examples",
+      "include": [
+        "stable/patterns/**",
+        "stable/examples/**",
+        "stable/procedures/**"
+      ],
+      "exclude": [
+        "state/**",
+        "domain/**"
+      ],
+      "max_depth": 3,
+      "max_results": 50
+    },
+    "team": {
+      "description": "Access to team information",
+      "include": [
+        "state/team/**"
+      ],
+      "exclude": [
+        "state/missions/**",
+        "domain/**"
+      ],
+      "max_depth": 1,
+      "max_results": 100
+    }
+  },
+  "global_exclusions": [
+    "**/.git/**",
+    "**/node_modules/**",
+    "**/*.log",
+    "**/idempotency/**"
+  ]
+}

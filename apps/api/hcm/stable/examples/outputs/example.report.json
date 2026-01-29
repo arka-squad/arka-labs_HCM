@@ -1,0 +1,478 @@
+{
+  "$schema": "https://arka.labs/schemas/report.v1.json",
+  "report_id": "REP-2024-AUD-002",
+  "report_type": "audit_final_report",
+  "mission_id": "MISS-2024-AUD-002",
+  "title": "Rapport d'Audit Final - Conformité ISO 27001 Contrôles d'Accès",
+  "subtitle": "Audit de conformité Annexe A.9 - Février 2024",
+  "version": "1.0",
+  "status": "final",
+  "created_at": "2024-02-23T16:30:00Z",
+  "approved_at": "2024-02-23T18:00:00Z",
+  "created_by": {
+    "name": "Claire Fontaine",
+    "role": "auditor",
+    "certification": "ISO 27001 Lead Auditor",
+    "organization": "Arka Labs - Internal Audit"
+  },
+  "approved_by": {
+    "name": "Laurent Dumont",
+    "role": "CISO",
+    "date": "2024-02-23T18:00:00Z"
+  },
+  "distribution": {
+    "primary_recipients": ["CISO", "IT Director", "Executive Management"],
+    "copy_recipients": ["IAM Manager", "IT Operations Manager", "Compliance Officer"],
+    "restricted_to": "internal_staff",
+    "external_sharing": "not_permitted"
+  },
+  "classification": "restricted",
+  "executive_summary": {
+    "purpose": "Évaluer la conformité des contrôles d'accès aux systèmes d'information par rapport aux exigences ISO 27001:2013 Annexe A.9 dans le cadre de l'audit annuel de maintien de certification.",
+    "scope": "Contrôles ISO 27001 A.9.1 à A.9.4 (Access Control) appliqués aux systèmes critiques (Active Directory, AWS IAM, GitHub, serveurs de production) pour 142 utilisateurs.",
+    "period": "Audit réalisé du 5 au 23 février 2024, analysant l'activité des 12 derniers mois (février 2023 - janvier 2024).",
+    "methodology": "Audit basé sur ISO 19011 et ISA 500, utilisant inspection documentaire, interviews, observation directe, testing de contrôles et reperformance. 47 éléments de preuve collectés.",
+    "overall_conclusion": "CONFORMITÉ PARTIELLE - L'organisation présente des lacunes significatives dans l'application des contrôles d'accès ISO 27001. Sur 24 contrôles testés, 15 sont conformes (62.5%) et 9 présentent des non-conformités. Les non-conformités incluent 1 finding critique et 3 findings majeurs nécessitant une remédiation urgente dans les 90 jours pour maintenir la certification.",
+    "critical_findings": "Présence de 7 comptes utilisateurs orphelins actifs (ex-employés) avec accès VPN et email, MFA non activée pour 23% des comptes privilégiés, utilisation de 12 comptes admin partagés sans traçabilité.",
+    "recommendations_summary": "25 actions correctives recommandées, dont 4 critiques devant être implémentées immédiatement (désactivation comptes, activation MFA). Plan d'action accepté par le management avec cible de remédiation complète au 30 juin 2024.",
+    "follow_up": "Audit de suivi planifié le 15 juillet 2024 pour vérifier la mise en œuvre des actions correctives. Audit externe de recertification ISO 27001 prévu le 1er septembre 2024."
+  },
+  "table_of_contents": [
+    {"section": "1", "title": "Executive Summary", "page": 1},
+    {"section": "2", "title": "Introduction et Contexte", "page": 3},
+    {"section": "2.1", "title": "Objectifs de l'audit", "page": 3},
+    {"section": "2.2", "title": "Périmètre et limitations", "page": 4},
+    {"section": "2.3", "title": "Standards et critères d'audit", "page": 4},
+    {"section": "3", "title": "Méthodologie", "page": 5},
+    {"section": "3.1", "title": "Approche d'audit", "page": 5},
+    {"section": "3.2", "title": "Collecte de preuves", "page": 6},
+    {"section": "3.3", "title": "Échantillonnage", "page": 6},
+    {"section": "4", "title": "Résultats d'Audit", "page": 7},
+    {"section": "4.1", "title": "Vue d'ensemble de la conformité", "page": 7},
+    {"section": "4.2", "title": "A.9.1 - Business requirements for access control", "page": 8},
+    {"section": "4.3", "title": "A.9.2 - User access management", "page": 10},
+    {"section": "4.4", "title": "A.9.3 - User responsibilities", "page": 15},
+    {"section": "4.5", "title": "A.9.4 - System and application access control", "page": 17},
+    {"section": "5", "title": "Findings et Non-Conformités", "page": 20},
+    {"section": "5.1", "title": "Finding Critique F-001: Comptes orphelins", "page": 20},
+    {"section": "5.2", "title": "Finding Majeur F-002: Absence de revue d'accès", "page": 22},
+    {"section": "5.3", "title": "Finding Majeur F-003: MFA non activée", "page": 24},
+    {"section": "5.4", "title": "Finding Majeur F-004: Comptes admin partagés", "page": 26},
+    {"section": "5.5", "title": "Finding Moyen F-005: Politique mots de passe", "page": 28},
+    {"section": "5.6", "title": "Finding Moyen F-006: Délai provisioning", "page": 29},
+    {"section": "5.7", "title": "Finding Moyen F-007: Password manager", "page": 30},
+    {"section": "5.8", "title": "Finding Moyen F-008: Documentation réseau", "page": 31},
+    {"section": "5.9", "title": "Finding Mineur F-009: Procédure reset password", "page": 32},
+    {"section": "6", "title": "Recommandations", "page": 33},
+    {"section": "6.1", "title": "Actions critiques (0-30 jours)", "page": 33},
+    {"section": "6.2", "title": "Actions majeures (30-90 jours)", "page": 34},
+    {"section": "6.3", "title": "Améliorations continues (90+ jours)", "page": 36},
+    {"section": "7", "title": "Plan d'Action et Réponses du Management", "page": 37},
+    {"section": "8", "title": "Conclusion", "page": 40},
+    {"section": "Annexe A", "title": "Checklist complète des 24 contrôles", "page": 42},
+    {"section": "Annexe B", "title": "Liste des preuves collectées", "page": 45},
+    {"section": "Annexe C", "title": "Personnes interviewées", "page": 48},
+    {"section": "Annexe D", "title": "Références et standards", "page": 49}
+  ],
+  "body": {
+    "introduction": {
+      "context": "Arka Labs détient la certification ISO 27001:2013 depuis 2021. Dans le cadre du maintien de cette certification, un audit interne annuel est requis pour évaluer l'efficacité du Système de Management de la Sécurité de l'Information (SMSI).",
+      "trigger": "Audit annuel obligatoire planifié dans le programme d'audit 2024 approuvé par le CISO en décembre 2023.",
+      "objectives": [
+        "Évaluer la conformité des contrôles d'accès (Annexe A.9) aux exigences ISO 27001:2013",
+        "Identifier les écarts, lacunes et risques de non-conformité",
+        "Fournir des recommandations d'amélioration basées sur les bonnes pratiques",
+        "Préparer l'audit externe de recertification (septembre 2024)"
+      ],
+      "scope_details": {
+        "in_scope": [
+          "Contrôles ISO 27001:2013 Annexe A.9.1 (Business requirements for access control)",
+          "Contrôles ISO 27001:2013 Annexe A.9.2 (User access management)",
+          "Contrôles ISO 27001:2013 Annexe A.9.3 (User responsibilities)",
+          "Contrôles ISO 27001:2013 Annexe A.9.4 (System and application access control)",
+          "Systèmes: Active Directory (domain controller), AWS IAM, GitHub Enterprise, Production servers (10 serveurs critiques)",
+          "Utilisateurs: Tous les employés et contractors (142 comptes au total)",
+          "Période d'analyse: Activité des 12 derniers mois (février 2023 - janvier 2024)"
+        ],
+        "out_of_scope": [
+          "Autres annexes ISO 27001 (A.10 Cryptography, A.11 Physical security, etc.)",
+          "Systèmes legacy en cours de décommissioning (ancien CRM, serveur mail historique)",
+          "Environnements de développement individuels (laptops développeurs)",
+          "Comptes de service automatisés (traités dans audit A.12 Operations)"
+        ]
+      },
+      "limitations": "L'audit a été réalisé à distance avec accès limité à certains systèmes pour raisons de sécurité. Les tests de pénétration et audits techniques approfondis ne font pas partie de cet audit de conformité."
+    },
+    "methodology": {
+      "audit_approach": "Audit basé sur les standards ISO 19011:2018 (Guidelines for auditing management systems) et ISA 500 (Audit Evidence). Approche risk-based avec focus sur les contrôles à haut risque.",
+      "audit_phases": [
+        {
+          "phase": "Planning (3 jours)",
+          "activities": [
+            "Revue documentation SMSI et politique d'accès",
+            "Identification des processus et systèmes clés",
+            "Développement checklist d'audit (24 contrôles)",
+            "Planification interviews et tests",
+            "Définition méthodologie d'échantillonnage"
+          ]
+        },
+        {
+          "phase": "Fieldwork (9 jours)",
+          "activities": [
+            "8 interviews avec parties prenantes (CISO, IT Director, IAM Manager, SysAdmins, DevOps, HR, Security, Compliance)",
+            "Inspection de 47 documents et artefacts techniques",
+            "Observation directe de 3 processus (user provisioning, access review, incident response)",
+            "Testing de 24 contrôles sur échantillon représentatif",
+            "Reperformance de 3 contrôles automatisés"
+          ]
+        },
+        {
+          "phase": "Analysis (3 jours)",
+          "activities": [
+            "Évaluation des preuves collectées",
+            "Analyse des écarts vs critères ISO 27001",
+            "Détermination sévérité des findings (selon matrice impact)",
+            "Analyse de causes racines (méthode 5 Why)",
+            "Développement recommandations"
+          ]
+        },
+        {
+          "phase": "Reporting (4 jours)",
+          "activities": [
+            "Rédaction rapport d'audit",
+            "Revue qualité interne",
+            "Présentation findings au management",
+            "Collecte réponses et plan d'action",
+            "Finalisation rapport avec action plan"
+          ]
+        }
+      ],
+      "evidence_collection": {
+        "methods_used": [
+          {
+            "method": "Inspection",
+            "description": "Examen de documents, logs, configurations systèmes",
+            "items_collected": 18,
+            "reliability": "high"
+          },
+          {
+            "method": "Interview",
+            "description": "Entretiens structurés avec 8 parties prenantes",
+            "items_collected": 8,
+            "reliability": "medium"
+          },
+          {
+            "method": "Observation",
+            "description": "Observation directe de processus opérationnels",
+            "items_collected": 6,
+            "reliability": "high"
+          },
+          {
+            "method": "Analytical procedures",
+            "description": "Analyse de données (logs, metrics, reports)",
+            "items_collected": 12,
+            "reliability": "medium-high"
+          },
+          {
+            "method": "Reperformance",
+            "description": "Exécution indépendante de contrôles par auditeur",
+            "items_collected": 3,
+            "reliability": "very_high"
+          }
+        ],
+        "total_evidence": 47,
+        "evidence_quality": "Les preuves collectées respectent les critères de suffisance, pertinence, fiabilité et objectivité définis dans ISA 500. Toutes les preuves sont documentées et traçables."
+      },
+      "sampling": {
+        "approach": "Échantillonnage statistique stratifié pour représentativité",
+        "user_accounts_sample": "30 comptes testés sur 142 total (21% échantillon), stratifié par: 10 comptes privilégiés, 15 comptes utilisateurs standard, 5 comptes contractors",
+        "systems_sample": "4 systèmes critiques testés exhaustivement (AD, AWS IAM, GitHub, Prod servers), 2 systèmes secondaires en échantillon",
+        "time_period": "12 mois d'historique analysés, avec focus approfondi sur les 3 derniers mois",
+        "justification": "Taille d'échantillon permet intervalle de confiance à 95% avec marge d'erreur <10% selon formules statistiques standards"
+      }
+    },
+    "results_overview": {
+      "compliance_summary": {
+        "total_controls_tested": 24,
+        "compliant": 15,
+        "non_compliant": 9,
+        "compliance_rate": "62.5%",
+        "previous_audit_rate": "78% (février 2023)",
+        "trend": "negative",
+        "comment": "Dégradation de la conformité de -15.5% vs année précédente, principalement due à turnover équipe IAM et projets de sécurité déprioritisés en 2023."
+      },
+      "findings_by_severity": {
+        "critical": {
+          "count": 1,
+          "description": "Non-conformité majeure avec risque sécurité immédiat",
+          "findings": ["F-001"]
+        },
+        "high": {
+          "count": 3,
+          "description": "Non-conformité significative nécessitant remédiation prioritaire",
+          "findings": ["F-002", "F-003", "F-004"]
+        },
+        "medium": {
+          "count": 4,
+          "description": "Non-conformité modérée à adresser",
+          "findings": ["F-005", "F-006", "F-007", "F-008"]
+        },
+        "low": {
+          "count": 1,
+          "description": "Non-conformité mineure ou opportunité d'amélioration",
+          "findings": ["F-009"]
+        }
+      },
+      "controls_by_section": [
+        {
+          "section": "A.9.1 - Business requirements for access control",
+          "controls_tested": 2,
+          "compliant": 1,
+          "non_compliant": 1,
+          "key_issues": "Documentation réseau et matrice d'accès non à jour (F-008)"
+        },
+        {
+          "section": "A.9.2 - User access management",
+          "controls_tested": 6,
+          "compliant": 2,
+          "non_compliant": 4,
+          "key_issues": "Processus de dé-provisioning défaillant (F-001), absence de revue d'accès (F-002), gestion accès privilégiés insuffisante (F-004), délai provisioning (F-006)"
+        },
+        {
+          "section": "A.9.3 - User responsibilities",
+          "controls_tested": 3,
+          "compliant": 2,
+          "non_compliant": 1,
+          "key_issues": "Absence password manager entreprise (F-007)"
+        },
+        {
+          "section": "A.9.4 - System and application access control",
+          "controls_tested": 13,
+          "compliant": 10,
+          "non_compliant": 3,
+          "key_issues": "MFA non activée pour certains admins (F-003), politique mots de passe datée (F-005), procédure d'urgence non documentée (F-009)"
+        }
+      ],
+      "positive_findings": [
+        "Politique d'accès formelle bien définie et communiquée",
+        "Processus de revue des droits d'accès pour les départs fonctionnel (pour les cas traités)",
+        "Logs d'accès correctement configurés et conservés (12 mois)",
+        "Séparation des environnements dev/prod strictement appliquée",
+        "Principe du moindre privilège généralement respecté pour comptes utilisateurs standards",
+        "Accès VPN correctement restreint et monitoré",
+        "Désactivation automatique des comptes après 90 jours d'inactivité opérationnelle"
+      ]
+    },
+    "detailed_findings": "Voir section 5 du rapport pour le détail complet de chaque finding incluant: finding statement, critères ISO 27001, preuves collectées, analyse d'impact, analyse de cause racine, et recommandations spécifiques. Chaque finding est accompagné d'un evidence pack dédié référençant toutes les preuves à l'appui.",
+    "recommendations_summary": {
+      "total_actions": 25,
+      "by_priority": {
+        "critical": {
+          "count": 4,
+          "timeline": "0-30 jours",
+          "actions": [
+            "Désactivation immédiate des 7 comptes orphelins identifiés",
+            "Activation MFA pour les 7 comptes admin sans MFA",
+            "Lancement projet automatisation dé-provisioning HR→AD",
+            "Enforcement technique MFA pour tous rôles privilégiés"
+          ]
+        },
+        "high": {
+          "count": 9,
+          "timeline": "30-90 jours",
+          "examples": [
+            "Définir et publier politique de revue d'accès périodique",
+            "Effectuer revue d'accès complète (tous systèmes, tous utilisateurs)",
+            "Éliminer tous les comptes admin partagés (migration PAM)",
+            "Définir politique formelle interdisant comptes partagés"
+          ]
+        },
+        "medium": {
+          "count": 9,
+          "timeline": "90-180 jours",
+          "examples": [
+            "Mettre à jour politique mots de passe (12 caractères min)",
+            "Automatiser provisioning nouveaux employés",
+            "Déployer password manager entreprise",
+            "Mettre à jour documentation réseau et matrices d'accès"
+          ]
+        },
+        "low": {
+          "count": 3,
+          "timeline": "180+ jours",
+          "examples": [
+            "Évaluer solution IGA (Identity Governance & Administration)",
+            "Implémenter processus de revue régulière des politiques techniques",
+            "Amélioration continue documentation procédures opérationnelles"
+          ]
+        }
+      },
+      "estimated_total_effort": "~6 mois-personne + budget ~200k€ (dont 80k€ pour solution PAM)",
+      "expected_benefits": [
+        "Conformité complète ISO 27001 Annexe A.9",
+        "Réduction significative risque sécurité (accès non autorisés)",
+        "Automatisation processus manuels error-prone",
+        "Amélioration traçabilité et accountability",
+        "Préparation optimale pour audit externe septembre 2024"
+      ]
+    }
+  },
+  "management_response": {
+    "overall_acceptance": "Management accepts all findings and commits to implementing the corrective action plan",
+    "statement_by": "Laurent Dumont (CISO) et Olivier Roux (IT Director)",
+    "statement": "Nous reconnaissons les lacunes identifiées dans cet audit et prenons ces findings très au sérieux. Un plan d'action détaillé a été établi avec responsabilités et échéances claires. Les actions critiques seront implémentées immédiatement (cible fin février 2024). Les actions majeures et moyennes seront traitées selon le calendrier proposé avec cible de remédiation complète au 30 juin 2024. Un budget de 200k€ a été validé par le CFO pour financer les projets d'automatisation et l'acquisition de la solution PAM. Un comité de suivi mensuel sera mis en place pour monitorer l'avancement du plan d'action.",
+    "action_plan_status": "accepted_with_commitment",
+    "resources_allocated": {
+      "budget": "200k€",
+      "team": "IAM Manager (full-time), Security Engineer (50%), IT Operations (25%), + contractors pour projet PAM"
+    },
+    "governance": {
+      "oversight": "Comité de pilotage mensuel présidé par CISO",
+      "reporting": "Reporting mensuel au COMEX sur avancement plan d'action",
+      "accountability": "Mathieu Girard (IAM Manager) responsable overall delivery"
+    },
+    "milestones": [
+      {
+        "date": "2024-02-28",
+        "description": "Actions critiques complétées",
+        "owner": "IT Operations"
+      },
+      {
+        "date": "2024-03-31",
+        "description": "Politiques publiées, enforcement MFA déployé",
+        "owner": "IAM Manager + CISO"
+      },
+      {
+        "date": "2024-04-30",
+        "description": "Première revue d'accès complétée, password policy updated",
+        "owner": "IAM Manager + Managers"
+      },
+      {
+        "date": "2024-06-30",
+        "description": "Solution PAM déployée, automatisations en place, password manager rollout complet",
+        "owner": "IT Director + IAM Manager"
+      },
+      {
+        "date": "2024-07-15",
+        "description": "Audit de suivi (vérification implémentation)",
+        "owner": "Internal Audit"
+      }
+    ]
+  },
+  "conclusion": {
+    "summary": "L'audit a révélé une conformité partielle (62.5%) aux exigences ISO 27001 Annexe A.9 avec 9 non-conformités identifiées, dont 1 critique et 3 majeures. Les lacunes principales concernent la gestion du cycle de vie des accès (provisioning/deprovisioning), l'absence de revue périodique des droits, et une gouvernance IAM insuffisante.",
+    "root_cause_analysis": "Les causes racines communes identifiées sont: (1) Absence d'automatisation des processus IAM critiques, (2) Turnover dans l'équipe sécurité ayant causé des projets déprioritisés en 2023, (3) Gouvernance IAM insuffisante avec absence de responsabilités claires et de processus formels, (4) Culture documentation faible.",
+    "positive_aspects": "L'organisation a néanmoins des bases solides avec une politique d'accès formelle, des contrôles techniques en place (séparation environnements, logs, etc.), et un management engagé pour la remédiation.",
+    "remediation_feasibility": "Le plan d'action proposé est réaliste et réalisable dans les délais impartis avec les ressources allouées. Les actions critiques sont simples (désactivation comptes, activation MFA) et peuvent être implémentées immédiatement. Les projets plus complexes (automatisation, PAM) nécessitent 3-4 mois mais disposent du budget et des ressources nécessaires.",
+    "certification_risk": "Avec remédiation rapide des findings critiques et majeurs (cible mars-avril 2024), le risque pour la certification ISO 27001 est FAIBLE. L'audit externe de recertification (septembre 2024) devrait se dérouler favorablement si le plan d'action est respecté.",
+    "audit_opinion": "QUALIFIED OPINION - L'organisation présente des lacunes significatives nécessitant des actions correctives, mais dispose d'un SMSI fonctionnel et d'un engagement management pour la remédiation. Avec l'implémentation du plan d'action, la conformité complète est atteignable d'ici juin 2024."
+  },
+  "follow_up": {
+    "follow_up_audit_date": "2024-07-15",
+    "follow_up_scope": "Vérification de l'implémentation effective des 25 actions correctives, en particulier les findings critiques et majeurs. Re-testing des contrôles non-conformes.",
+    "closure_criteria": [
+      "Tous les findings critiques remediés et vérifiés",
+      "Tous les findings majeurs remediés et vérifiés",
+      "Au moins 80% des findings moyens remediés",
+      "Evidence documentaire de l'implémentation des actions",
+      "Re-testing confirme efficacité opérationnelle des contrôles"
+    ],
+    "external_audit": {
+      "date": "2024-09-01",
+      "auditor": "Bureau Veritas Certification",
+      "scope": "Full ISO 27001:2013 recertification audit (all annexes)",
+      "preparation": "Internal audit findings and remediation will be presented to external auditors as evidence of continuous improvement"
+    }
+  },
+  "appendices": {
+    "appendix_a": {
+      "title": "Checklist complète des 24 contrôles testés",
+      "description": "Table détaillée de tous les contrôles ISO 27001 A.9.x testés avec résultat de conformité, preuves, et commentaires",
+      "reference": "AUD-002-CHECKLIST"
+    },
+    "appendix_b": {
+      "title": "Liste des 47 éléments de preuve collectés",
+      "description": "Inventaire complet des preuves avec type, source, date de collecte, fiabilité, et findings associés",
+      "reference": "AUD-002-EVIDENCE-LIST"
+    },
+    "appendix_c": {
+      "title": "Personnes interviewées",
+      "description": "Liste des 8 personnes interviewées avec rôle, département, date d'interview et sujets couverts",
+      "reference": "AUD-002-INTERVIEWS"
+    },
+    "appendix_d": {
+      "title": "Références et standards",
+      "description": "Bibliographie complète: ISO 27001:2013, ISO 19011:2018, ISA 500, bonnes pratiques ISACA et IIA",
+      "reference": "AUD-002-REFERENCES"
+    },
+    "appendix_e": {
+      "title": "Evidence Packs (9 packs)",
+      "description": "Evidence packs détaillés pour chaque finding majeur avec toutes les preuves à l'appui",
+      "reference": "EP-AUD-002-F001 through EP-AUD-002-F009"
+    }
+  },
+  "signatures": {
+    "auditor": {
+      "name": "Claire Fontaine",
+      "title": "Lead Auditor ISO 27001",
+      "date": "2024-02-23",
+      "signature": "digitally_signed"
+    },
+    "audit_manager": {
+      "name": "Marc Leblanc",
+      "title": "Analyst - Audit Team",
+      "date": "2024-02-23",
+      "signature": "digitally_signed"
+    },
+    "auditee_ciso": {
+      "name": "Laurent Dumont",
+      "title": "CISO - Auditee Representative",
+      "date": "2024-02-23",
+      "signature": "digitally_signed",
+      "comment": "Findings accepted, action plan committed"
+    },
+    "auditee_it_director": {
+      "name": "Olivier Roux",
+      "title": "IT Director - Auditee Representative",
+      "date": "2024-02-23",
+      "signature": "digitally_signed",
+      "comment": "Resources and budget allocated for remediation"
+    }
+  },
+  "metadata": {
+    "format_version": "1.0",
+    "total_pages": 52,
+    "reading_time_minutes": 90,
+    "document_language": "fr-FR",
+    "confidentiality": "restricted",
+    "retention_period_years": 7,
+    "distribution_list": [
+      "CISO",
+      "IT Director",
+      "Executive Management",
+      "IAM Manager",
+      "IT Operations Manager",
+      "Compliance Officer",
+      "External Auditor (upon request)"
+    ],
+    "related_documents": [
+      "MISS-2024-AUD-002 - Audit Mission",
+      "AUD-002-PLAN - Audit Plan",
+      "AUD-002-CHECKLIST - Audit Checklist",
+      "EP-AUD-002-F001 to F009 - Evidence Packs",
+      "AUD-002-ACTION - Action Plan Details"
+    ],
+    "keywords": [
+      "audit",
+      "ISO 27001",
+      "access control",
+      "conformity",
+      "information security",
+      "ISMS",
+      "findings",
+      "remediation"
+    ],
+    "file_hash_sha256": "a3f5e8d9c2b1f4a7e6d5c4b3a2f1e0d9c8b7a6f5e4d3c2b1a0f9e8d7c6b5a4f3",
+    "created_with": "Arka HCM v1.0 + Manual compilation"
+  }
+}

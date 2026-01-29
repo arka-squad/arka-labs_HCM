@@ -1,0 +1,156 @@
+{
+  "$schema": "https://arka.labs/schemas/hindex_classification.v1.json",
+  "version": "1.0.0",
+  "description": "Deterministic classification of search queries to route to appropriate HCM sources",
+  "classifications": [
+    {
+      "class": "mission_history",
+      "label": "Mission History & State",
+      "description": "Queries about mission progress, journal entries, decisions, and current state",
+      "keywords": [
+        "hier",
+        "yesterday",
+        "ce que nous avons fait",
+        "what we did",
+        "progression",
+        "progress",
+        "journal",
+        "log",
+        "state",
+        "status",
+        "actuel",
+        "current",
+        "dernières actions",
+        "recent actions"
+      ],
+      "targets": ["state/missions"],
+      "priority": 1,
+      "deterministic": true
+    },
+    {
+      "class": "decisions",
+      "label": "Decisions & Governance",
+      "description": "Queries about decisions made, validation status, and governance",
+      "keywords": [
+        "décision",
+        "decision",
+        "validé",
+        "validated",
+        "approuvé",
+        "approved",
+        "governance",
+        "gouvernance",
+        "choix",
+        "choice"
+      ],
+      "targets": ["state/missions/*/decisions.json"],
+      "priority": 1,
+      "deterministic": true
+    },
+    {
+      "class": "evidence",
+      "label": "Evidence & Proof",
+      "description": "Queries about evidence, proofs, findings, and supporting materials",
+      "keywords": [
+        "preuve",
+        "evidence",
+        "finding",
+        "découverte",
+        "synthèse",
+        "synthesis",
+        "analyse",
+        "analysis",
+        "atelier",
+        "workshop"
+      ],
+      "targets": ["state/missions/*/evidence"],
+      "priority": 2,
+      "deterministic": true
+    },
+    {
+      "class": "domain_knowledge",
+      "label": "Business & Domain Knowledge",
+      "description": "Queries about products, business capabilities, systems, and organizational context",
+      "keywords": [
+        "produit",
+        "product",
+        "service",
+        "capability",
+        "capacité",
+        "système",
+        "system",
+        "application",
+        "politique",
+        "policy",
+        "procédure",
+        "procedure"
+      ],
+      "targets": ["domain"],
+      "priority": 2,
+      "deterministic": false
+    },
+    {
+      "class": "core_reference",
+      "label": "Core References & Definitions",
+      "description": "Queries about terminology, definitions, roles, and referentials",
+      "keywords": [
+        "définition",
+        "definition",
+        "glossaire",
+        "glossary",
+        "c'est quoi",
+        "what is",
+        "rôle",
+        "role",
+        "type",
+        "référentiel",
+        "referential"
+      ],
+      "targets": ["stable/glossary", "stable/referentials"],
+      "priority": 3,
+      "deterministic": true
+    },
+    {
+      "class": "patterns",
+      "label": "Patterns & Examples",
+      "description": "Queries about best practices, templates, and example missions",
+      "keywords": [
+        "pattern",
+        "modèle",
+        "template",
+        "exemple",
+        "example",
+        "best practice",
+        "bonne pratique",
+        "comment faire",
+        "how to"
+      ],
+      "targets": ["stable/patterns", "stable/examples"],
+      "priority": 3,
+      "deterministic": true
+    },
+    {
+      "class": "team",
+      "label": "Team & Resources",
+      "description": "Queries about team members, agents, roles, and availability",
+      "keywords": [
+        "équipe",
+        "team",
+        "agent",
+        "humain",
+        "human",
+        "qui",
+        "who",
+        "disponible",
+        "available",
+        "responsable",
+        "owner"
+      ],
+      "targets": ["state/team"],
+      "priority": 2,
+      "deterministic": true
+    }
+  ],
+  "fallback_class": "domain_knowledge",
+  "multi_class_strategy": "highest_priority"
+}

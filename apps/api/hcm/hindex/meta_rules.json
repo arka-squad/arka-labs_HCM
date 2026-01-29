@@ -1,0 +1,59 @@
+{
+  "$schema": "https://arka.labs/schemas/hindex_meta_rules.v1.json",
+  "version": "1.0.0",
+  "description": "Meta rules for access control, sensitivity, and visibility filtering",
+  "rules": {
+    "sensitivity_levels": {
+      "public": {
+        "description": "Accessible to all users and agents",
+        "zones": ["stable/glossary", "stable/referentials", "stable/patterns"]
+      },
+      "internal": {
+        "description": "Accessible to authenticated users and agents",
+        "zones": ["domain/**", "state/team/**", "state/missions/*/meta.json"],
+        "required_roles": ["agent", "human"]
+      },
+      "restricted": {
+        "description": "Accessible only to specific roles",
+        "zones": ["state/missions/*/decisions.json", "state/missions/*/evidence/**"],
+        "required_roles": ["pmo", "sponsor", "product_manager", "tech_lead"]
+      },
+      "confidential": {
+        "description": "Highest sensitivity, explicit grants only",
+        "zones": [],
+        "required_roles": ["founder_cto", "executive_sponsor"]
+      }
+    },
+    "default_visibility": "internal",
+    "role_hierarchy": {
+      "founder_cto": ["executive_sponsor", "tech_lead", "product_manager", "pmo"],
+      "executive_sponsor": ["pmo", "product_manager"],
+      "tech_lead": ["developer", "qa"],
+      "product_manager": ["analyst"],
+      "pmo": ["analyst", "architect"]
+    },
+    "agent_permissions": {
+      "arka_pmo_01": {
+        "sensitivity_access": ["public", "internal", "restricted"],
+        "can_write": ["state/missions/*/journal.jsonl", "state/missions/*/snapshots/**"],
+        "can_read_all_missions": true
+      },
+      "arka_analyst_01": {
+        "sensitivity_access": ["public", "internal"],
+        "can_write": ["state/missions/*/evidence/**", "state/missions/*/journal.jsonl"],
+        "can_read_all_missions": false
+      },
+      "arka_architect_01": {
+        "sensitivity_access": ["public", "internal"],
+        "can_write": ["state/missions/*/evidence/**", "state/missions/*/decisions.json"],
+        "can_read_all_missions": false
+      }
+    },
+    "audit_trail": {
+      "log_all_reads": false,
+      "log_sensitive_reads": true,
+      "log_all_writes": true,
+      "retention_days": 90
+    }
+  }
+}

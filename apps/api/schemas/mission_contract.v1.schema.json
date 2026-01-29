@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arka.local/schemas/mission_contract.v1.schema.json",
+  "title": "Arka Mission Contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_meta", "contract_payload"],
+  "properties": {
+    "contract_meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_id",
+        "mission_id",
+        "project_id",
+        "schema_version",
+        "contract_version",
+        "status",
+        "classification",
+        "created_at",
+        "created_by",
+        "updated_at",
+        "updated_by",
+        "tags"
+      ],
+      "properties": {
+        "contract_id": { "type": "string", "minLength": 1 },
+        "mission_id": { "type": "string", "minLength": 1 },
+        "project_id": { "type": "string", "minLength": 1 },
+        "schema_version": { "type": "string", "minLength": 1 },
+        "contract_version": { "type": "integer", "minimum": 1 },
+        "contract_hash": { "$ref": "#/$defs/Sha256RefOrNull" },
+        "payload_hash": { "$ref": "#/$defs/Sha256RefOrNull" },
+        "meta_hash": { "$ref": "#/$defs/Sha256RefOrNull" },
+        "status": {
+          "type": "string",
+          "enum": [
+            "DRAFT",
+            "PENDING_GATES",
+            "PENDING_OWNER_SIGNATURE",
+            "ACTIVE",
+            "PAUSED",
+            "COMPLETED",
+            "CANCELLED",
+            "ARCHIVED"
+          ]
+        },
+        "classification": { "$ref": "#/$defs/Classification" },
+        "term_id": { "type": ["string", "null"] },
+        "risk_severity": { "type": ["string", "null"] },
+        "audit_type": { "type": ["string", "null"] },
+        "domain": { "type": ["string", "null"] },
+        "created_at": { "type": "string", "format": "date-time" },
+        "created_by": { "$ref": "#/$defs/ActorRef" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "updated_by": { "$ref": "#/$defs/ActorRef" },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": { "enum": ["ACTIVE", "PAUSED", "COMPLETED", "CANCELLED", "ARCHIVED"] }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "required": ["contract_hash", "payload_hash"]
+          }
+        }
+      ]
+    },
+    "contract_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cadrage",
+        "routage",
+        "workflow",
+        "task_registry",
+        "outputs_expected",
+        "outputs_actual",
+        "evidence",
+        "audit",
+        "signatures",
+        "traces",
+        "indexes"
+      ],
+      "properties": {
+        "cadrage": { "$ref": "#/$defs/FreeObject" },
+        "routage": { "$ref": "#/$defs/FreeObject" },
+        "workflow": { "$ref": "#/$defs/FreeObject" },
+        "task_registry": { "$ref": "#/$defs/FreeObject" },
+        "outputs_expected": { "$ref": "#/$defs/FreeObject" },
+        "outputs_actual": { "$ref": "#/$defs/FreeObject" },
+        "evidence": { "$ref": "#/$defs/FreeObject" },
+        "audit": { "$ref": "#/$defs/FreeObject" },
+        "signatures": { "$ref": "#/$defs/FreeObject" },
+        "traces": { "$ref": "#/$defs/FreeObject" },
+        "indexes": { "$ref": "#/$defs/FreeObject" }
+      }
+    }
+  },
+  "$defs": {
+    "FreeObject": {
+      "type": "object",
+      "description": "Bloc payload extensible (interne). Le déterminisme vient des hashes + refs, pas de la complétude du contenu."
+    },
+    "ActorRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actor_type", "actor_id"],
+      "properties": {
+        "actor_type": { "type": "string", "minLength": 1 },
+        "actor_id": { "type": "string", "minLength": 1 }
+      }
+    },
+    "Classification": {
+      "type": "string",
+      "enum": ["PUBLIC", "INTERNAL", "RESTRICTED", "HIGHLY_RESTRICTED"]
+    },
+    "Sha256Ref": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "Sha256RefOrNull": {
+      "oneOf": [{ "$ref": "#/$defs/Sha256Ref" }, { "type": "null" }]
+    }
+  }
+}

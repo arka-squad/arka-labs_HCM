@@ -1,0 +1,43 @@
+{
+  "$schema": "https://arka.labs/schemas/referential.v1.json",
+  "referential_id": "mission_types",
+  "version": "1.0.0",
+  "description": "Standard mission types in Arka OS",
+  "mission_types": [
+    {
+      "code": "discovery",
+      "label": "Discovery Mission",
+      "description": "Understanding context, stakes, actors, and landscape through structured exploration.",
+      "typical_duration_days": 14,
+      "required_capabilities": ["analysis", "synthesis", "interview"]
+    },
+    {
+      "code": "audit",
+      "label": "Audit Mission",
+      "description": "Systematic evaluation of a system, process, or organization against defined criteria.",
+      "typical_duration_days": 21,
+      "required_capabilities": ["analysis", "audit", "evidence_collection"]
+    },
+    {
+      "code": "transformation",
+      "label": "Transformation Mission",
+      "description": "Design and orchestration of significant organizational or technical change.",
+      "typical_duration_days": 90,
+      "required_capabilities": ["design", "change_management", "stakeholder_management"]
+    },
+    {
+      "code": "implementation",
+      "label": "Implementation Mission",
+      "description": "Execution of a defined solution or change program with delivery milestones.",
+      "typical_duration_days": 60,
+      "required_capabilities": ["execution", "project_management", "delivery"]
+    },
+    {
+      "code": "support",
+      "label": "Support Mission",
+      "description": "Ongoing assistance, monitoring, and optimization of existing systems or processes.",
+      "typical_duration_days": null,
+      "required_capabilities": ["monitoring", "troubleshooting", "optimization"]
+    }
+  ]
+}

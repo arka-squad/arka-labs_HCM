@@ -1,0 +1,340 @@
+{
+  "$schema": "https://arka.labs/schemas/procedure.v1.json",
+  "procedure_id": "release_checklist",
+  "version": "1.0.0",
+  "category": "product",
+  "title": "Production Release Checklist",
+  "description": "Comprehensive checklist for preparing and executing production releases.",
+  "owner": "release_team",
+  "last_updated": "2025-12-10T00:00:00Z",
+  "pre_release": {
+    "title": "Pre-Release Preparation",
+    "sections": [
+      {
+        "section": "Code Quality",
+        "items": [
+          {
+            "item": "All code reviews completed and approved",
+            "required": true,
+            "owner": "dev_team"
+          },
+          {
+            "item": "No open P0/P1 bugs",
+            "required": true,
+            "owner": "qa_team"
+          },
+          {
+            "item": "Code coverage meets minimum threshold (>80%)",
+            "required": true,
+            "owner": "dev_team"
+          },
+          {
+            "item": "Static analysis passed with no critical issues",
+            "required": true,
+            "owner": "dev_team"
+          }
+        ]
+      },
+      {
+        "section": "Testing",
+        "items": [
+          {
+            "item": "All unit tests passing",
+            "required": true,
+            "owner": "dev_team"
+          },
+          {
+            "item": "Integration tests passing",
+            "required": true,
+            "owner": "qa_team"
+          },
+          {
+            "item": "Regression testing completed",
+            "required": true,
+            "owner": "qa_team"
+          },
+          {
+            "item": "Performance testing completed for high-traffic features",
+            "required": false,
+            "owner": "qa_team"
+          },
+          {
+            "item": "Security testing completed",
+            "required": true,
+            "owner": "security_team"
+          },
+          {
+            "item": "Accessibility testing completed",
+            "required": false,
+            "owner": "qa_team"
+          }
+        ]
+      },
+      {
+        "section": "Documentation",
+        "items": [
+          {
+            "item": "Release notes written",
+            "required": true,
+            "owner": "product_team"
+          },
+          {
+            "item": "API documentation updated",
+            "required": true,
+            "owner": "dev_team"
+          },
+          {
+            "item": "User documentation updated",
+            "required": true,
+            "owner": "product_team"
+          },
+          {
+            "item": "Support team briefed on changes",
+            "required": true,
+            "owner": "product_team"
+          }
+        ]
+      },
+      {
+        "section": "Infrastructure",
+        "items": [
+          {
+            "item": "Database migrations tested",
+            "required": true,
+            "owner": "dev_team"
+          },
+          {
+            "item": "Rollback plan documented and tested",
+            "required": true,
+            "owner": "devops_team"
+          },
+          {
+            "item": "Monitoring and alerts configured",
+            "required": true,
+            "owner": "devops_team"
+          },
+          {
+            "item": "Capacity planning verified for expected load",
+            "required": true,
+            "owner": "devops_team"
+          },
+          {
+            "item": "Feature flags configured (if applicable)",
+            "required": false,
+            "owner": "dev_team"
+          }
+        ]
+      },
+      {
+        "section": "Approvals",
+        "items": [
+          {
+            "item": "Product Owner sign-off",
+            "required": true,
+            "owner": "product_team"
+          },
+          {
+            "item": "Engineering Lead sign-off",
+            "required": true,
+            "owner": "engineering_lead"
+          },
+          {
+            "item": "QA sign-off",
+            "required": true,
+            "owner": "qa_lead"
+          },
+          {
+            "item": "Security review approved (for security-sensitive changes)",
+            "required": false,
+            "owner": "security_team"
+          }
+        ]
+      }
+    ]
+  },
+  "during_release": {
+    "title": "Release Execution",
+    "sections": [
+      {
+        "section": "Deployment",
+        "items": [
+          {
+            "item": "Announce release window to team",
+            "required": true,
+            "owner": "release_manager"
+          },
+          {
+            "item": "Verify no conflicting deployments",
+            "required": true,
+            "owner": "release_manager"
+          },
+          {
+            "item": "Deploy to staging and verify",
+            "required": true,
+            "owner": "devops_team"
+          },
+          {
+            "item": "Execute production deployment",
+            "required": true,
+            "owner": "devops_team"
+          },
+          {
+            "item": "Run smoke tests",
+            "required": true,
+            "owner": "qa_team"
+          },
+          {
+            "item": "Verify database migrations completed",
+            "required": true,
+            "owner": "dev_team"
+          }
+        ]
+      },
+      {
+        "section": "Verification",
+        "items": [
+          {
+            "item": "Check all services healthy",
+            "required": true,
+            "owner": "devops_team"
+          },
+          {
+            "item": "Verify monitoring showing normal metrics",
+            "required": true,
+            "owner": "devops_team"
+          },
+          {
+            "item": "Check no new errors in logs",
+            "required": true,
+            "owner": "dev_team"
+          },
+          {
+            "item": "Validate key user flows",
+            "required": true,
+            "owner": "qa_team"
+          },
+          {
+            "item": "Monitor for 30 minutes post-deployment",
+            "required": true,
+            "owner": "release_team"
+          }
+        ]
+      }
+    ]
+  },
+  "post_release": {
+    "title": "Post-Release Activities",
+    "sections": [
+      {
+        "section": "Communication",
+        "items": [
+          {
+            "item": "Announce release completion",
+            "required": true,
+            "owner": "release_manager"
+          },
+          {
+            "item": "Publish release notes",
+            "required": true,
+            "owner": "product_team"
+          },
+          {
+            "item": "Notify support team",
+            "required": true,
+            "owner": "product_team"
+          },
+          {
+            "item": "Update status page (if applicable)",
+            "required": false,
+            "owner": "devops_team"
+          }
+        ]
+      },
+      {
+        "section": "Monitoring",
+        "items": [
+          {
+            "item": "Monitor error rates for 24h",
+            "required": true,
+            "owner": "devops_team"
+          },
+          {
+            "item": "Track key metrics (adoption, performance)",
+            "required": true,
+            "owner": "product_team"
+          },
+          {
+            "item": "Review user feedback",
+            "required": true,
+            "owner": "product_team"
+          },
+          {
+            "item": "Address any critical issues immediately",
+            "required": true,
+            "owner": "dev_team"
+          }
+        ]
+      },
+      {
+        "section": "Documentation",
+        "items": [
+          {
+            "item": "Document any deployment issues",
+            "required": true,
+            "owner": "devops_team"
+          },
+          {
+            "item": "Update runbooks if needed",
+            "required": false,
+            "owner": "devops_team"
+          },
+          {
+            "item": "Close release ticket",
+            "required": true,
+            "owner": "release_manager"
+          },
+          {
+            "item": "Schedule retrospective (if issues occurred)",
+            "required": false,
+            "owner": "release_manager"
+          }
+        ]
+      }
+    ]
+  },
+  "rollback_procedure": {
+    "title": "Emergency Rollback",
+    "trigger_conditions": [
+      "Critical bugs affecting > 20% of users",
+      "Data integrity issues",
+      "Security vulnerability introduced",
+      "Service degradation > 50%"
+    ],
+    "steps": [
+      {
+        "step": "Decide to rollback (incident commander decision)",
+        "owner": "incident_commander"
+      },
+      {
+        "step": "Announce rollback in progress",
+        "owner": "release_manager"
+      },
+      {
+        "step": "Execute rollback procedure",
+        "owner": "devops_team"
+      },
+      {
+        "step": "Verify services restored",
+        "owner": "devops_team"
+      },
+      {
+        "step": "Announce rollback complete",
+        "owner": "release_manager"
+      },
+      {
+        "step": "Schedule incident postmortem",
+        "owner": "incident_commander"
+      }
+    ]
+  }
+}

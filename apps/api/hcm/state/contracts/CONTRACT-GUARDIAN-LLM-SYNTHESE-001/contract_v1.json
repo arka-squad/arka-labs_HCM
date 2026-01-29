@@ -1,0 +1,81 @@
+{
+  "contract_meta": {
+    "contract_id": "CONTRACT-GUARDIAN-LLM-SYNTHESE-001",
+    "mission_id": "MIS-ARKA-LABS-OS-001",
+    "project_id": "PROJ-ARKA-LABS-OS-001",
+    "project_name": "Arka-labs-os",
+    "schema_version": "1.0.0",
+    "contract_version": 1,
+    "contract_hash": "sha256:7f86a2c584ea8c19054dd4327d99797093b34af25cd7b9401aa22deb6bc69f90",
+    "status": "ACTIVE",
+    "classification": "INTERNAL",
+    "created_at": "2025-12-09T22:09:12.752Z",
+    "created_by": {
+      "actor_type": "HUMAN",
+      "actor_id": "CL-ARKA-LABS-001",
+      "actor_name": "Arka-labs"
+    },
+    "updated_at": "2025-12-09T22:09:12.752Z",
+    "updated_by": {
+      "actor_type": "HUMAN",
+      "actor_id": "CL-ARKA-LABS-001"
+    },
+    "tags": [
+      "guardian",
+      "llm",
+      "synthese"
+    ],
+    "labels": {
+      "client": "Arka-labs"
+    }
+  },
+  "contract_payload": {
+    "cadrage": {
+      "title": "Guardian_llm_syntese",
+      "summary": "Synthese LLM certifiee par Guardian",
+      "objectives": [],
+      "scope": {},
+      "constraints": [],
+      "risks": []
+    },
+    "routage": {
+      "owner": {
+        "name": "Arka-labs",
+        "id": "CL-ARKA-LABS-001"
+      },
+      "squad": {
+        "id": "SQUAD-DEFAULT",
+        "membres": [],
+        "max_agents_actifs": 0
+      }
+    },
+    "workflow": {
+      "steps": [],
+      "workflow_id_selected": "WF-DEFAULT"
+    },
+    "task_registry": {
+      "entries": []
+    },
+    "outputs_expected": {
+      "items": [],
+      "acceptance": []
+    },
+    "outputs_actual": {
+      "items": []
+    },
+    "evidence": {
+      "root": "evidence/Arka-labs-os",
+      "storage_policy": {},
+      "pack_refs": []
+    },
+    "audit": {
+      "timeline": []
+    },
+    "signatures": {},
+    "traces": {
+      "created_from": "manual",
+      "history": []
+    },
+    "indexes": {}
+  }
+}

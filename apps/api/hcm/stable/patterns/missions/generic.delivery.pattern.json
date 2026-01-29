@@ -1,0 +1,169 @@
+{
+  "$schema": "https://arka.labs/schemas/mission_pattern.v1.json",
+  "pattern_id": "generic.delivery",
+  "version": "1.0.0",
+  "pattern_type": "mission",
+  "mission_type": "implementation",
+  "title": "Generic Delivery Mission Pattern",
+  "description": "Standard pattern for implementation/delivery missions focused on executing defined solutions.",
+  "typical_duration_weeks": 8,
+  "phases": [
+    {
+      "phase": "kickoff",
+      "duration_days": 3,
+      "objectives": [
+        "Align team on objectives and scope",
+        "Review requirements and acceptance criteria",
+        "Set up delivery infrastructure",
+        "Plan sprints and milestones"
+      ],
+      "deliverables": ["project_charter", "delivery_plan", "sprint_plan", "team_setup"]
+    },
+    {
+      "phase": "sprint_1",
+      "duration_days": 10,
+      "objectives": [
+        "Build foundational components",
+        "Set up CI/CD pipeline",
+        "Implement core features",
+        "Conduct sprint review"
+      ],
+      "deliverables": ["working_software", "test_coverage", "sprint_review", "retrospective"]
+    },
+    {
+      "phase": "sprint_2",
+      "duration_days": 10,
+      "objectives": [
+        "Implement additional features",
+        "Refine based on feedback",
+        "Integration testing",
+        "Performance optimization"
+      ],
+      "deliverables": ["enhanced_features", "test_results", "performance_report", "retrospective"]
+    },
+    {
+      "phase": "sprint_3",
+      "duration_days": 10,
+      "objectives": [
+        "Complete remaining features",
+        "Bug fixes and polish",
+        "User acceptance testing",
+        "Prepare for release"
+      ],
+      "deliverables": ["feature_complete", "uat_results", "release_notes", "retrospective"]
+    },
+    {
+      "phase": "release",
+      "duration_days": 5,
+      "objectives": [
+        "Deploy to production",
+        "Monitor stability",
+        "Support initial users",
+        "Gather feedback"
+      ],
+      "deliverables": ["deployed_solution", "monitoring_dashboard", "support_documentation", "feedback_summary"]
+    },
+    {
+      "phase": "closure",
+      "duration_days": 2,
+      "objectives": [
+        "Handover to operations/support",
+        "Document lessons learned",
+        "Celebrate success",
+        "Archive artifacts"
+      ],
+      "deliverables": ["handover_documentation", "lessons_learned", "final_report"]
+    }
+  ],
+  "typical_activities": [
+    "sprint_planning",
+    "daily_standups",
+    "development",
+    "code_review",
+    "testing",
+    "sprint_review",
+    "retrospective",
+    "deployment",
+    "monitoring",
+    "support"
+  ],
+  "typical_roles": ["developer", "qa", "pmo", "architect", "product_manager"],
+  "agile_ceremonies": {
+    "sprint_planning": {
+      "frequency": "start_of_sprint",
+      "duration_hours": 2,
+      "participants": ["team", "product_owner"]
+    },
+    "daily_standup": {
+      "frequency": "daily",
+      "duration_minutes": 15,
+      "participants": ["team"]
+    },
+    "sprint_review": {
+      "frequency": "end_of_sprint",
+      "duration_hours": 1,
+      "participants": ["team", "stakeholders"]
+    },
+    "retrospective": {
+      "frequency": "end_of_sprint",
+      "duration_hours": 1,
+      "participants": ["team"]
+    }
+  },
+  "key_deliverables": {
+    "working_software": {
+      "description": "Deployed, tested software meeting acceptance criteria",
+      "quality_gates": ["tests_passing", "code_reviewed", "security_scanned"]
+    },
+    "documentation": {
+      "description": "Technical and user documentation",
+      "types": ["api_docs", "user_guide", "runbook", "architecture_doc"]
+    },
+    "handover_pack": {
+      "description": "Everything needed for operations to support the solution",
+      "contents": ["runbook", "support_contacts", "known_issues", "monitoring_setup"]
+    }
+  },
+  "definition_of_done": [
+    "Code complete and reviewed",
+    "Unit tests written and passing",
+    "Integration tests passing",
+    "Security scan passed",
+    "Documentation updated",
+    "Acceptance criteria met",
+    "Deployed to production",
+    "Monitoring configured"
+  ],
+  "success_criteria": [
+    "All planned features delivered",
+    "Quality gates met",
+    "Deployed to production successfully",
+    "Users trained and supported",
+    "Handover completed",
+    "Stakeholder acceptance achieved"
+  ],
+  "evidence_types_used": [
+    "test_result",
+    "code_review",
+    "deployment_log",
+    "monitoring_report"
+  ],
+  "typical_risks": [
+    {
+      "risk": "Scope creep",
+      "mitigation": "Strict change control, prioritization framework"
+    },
+    {
+      "risk": "Technical blockers",
+      "mitigation": "Early spike solutions, escalation process"
+    },
+    {
+      "risk": "Quality issues",
+      "mitigation": "Test automation, continuous integration, code reviews"
+    },
+    {
+      "risk": "Deployment failures",
+      "mitigation": "Robust testing, rollback plan, staged rollout"
+    }
+  ]
+}

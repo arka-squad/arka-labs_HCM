@@ -1,0 +1,703 @@
+{
+  "$schema": "https://arka.labs/schemas/kpi_definitions.v1.json",
+  "catalog_id": "arka-kpi-catalog",
+  "version": "1.2.0",
+  "last_updated": "2024-02-24T11:00:00Z",
+  "organization": "Arka Labs",
+  "description": "Catalogue des KPIs (Key Performance Indicators) utilisés pour mesurer la performance business, produit, delivery et opérationnelle d'Arka Labs.",
+  "kpi_categories": [
+    {
+      "category_id": "financial",
+      "category_name": "Financial KPIs",
+      "description": "Indicateurs financiers et de croissance",
+      "kpis": [
+        {
+          "kpi_id": "KPI-FIN-001",
+          "kpi_name": "Monthly Recurring Revenue (MRR)",
+          "definition": "Revenus récurrents mensuels (abonnements produits + retainers services)",
+          "unit": "EUR",
+          "calculation": "Sum of all active subscription and retainer contracts normalized to monthly value",
+          "data_source": "Billing system + CRM",
+          "frequency": "monthly",
+          "owner": "CFO",
+          "targets": {
+            "2024_q1": 50000,
+            "2024_q2": 75000,
+            "2024_q3": 100000,
+            "2024_q4": 150000
+          },
+          "current_value": 45000,
+          "last_updated": "2024-02-01",
+          "trend": "increasing",
+          "importance": "critical"
+        },
+        {
+          "kpi_id": "KPI-FIN-002",
+          "kpi_name": "Annual Recurring Revenue (ARR)",
+          "definition": "MRR × 12, indicateur de revenus annuels récurrents",
+          "unit": "EUR",
+          "calculation": "MRR × 12",
+          "data_source": "Derived from MRR",
+          "frequency": "monthly",
+          "owner": "CFO",
+          "targets": {
+            "2024": 1200000
+          },
+          "current_value": 540000,
+          "last_updated": "2024-02-01",
+          "trend": "increasing",
+          "importance": "critical"
+        },
+        {
+          "kpi_id": "KPI-FIN-003",
+          "kpi_name": "Revenue Growth Rate (MoM)",
+          "definition": "Taux de croissance des revenus mensuels",
+          "unit": "%",
+          "calculation": "((Revenue_current_month - Revenue_previous_month) / Revenue_previous_month) × 100",
+          "data_source": "Accounting system",
+          "frequency": "monthly",
+          "owner": "CFO",
+          "targets": {
+            "minimum": 10,
+            "target": 15,
+            "stretch": 20
+          },
+          "current_value": 12.5,
+          "last_updated": "2024-02-01",
+          "trend": "stable",
+          "importance": "high"
+        },
+        {
+          "kpi_id": "KPI-FIN-004",
+          "kpi_name": "Gross Margin",
+          "definition": "Marge brute (revenus - coûts directs) en pourcentage",
+          "unit": "%",
+          "calculation": "((Revenue - Direct_Costs) / Revenue) × 100",
+          "data_source": "Accounting system",
+          "frequency": "monthly",
+          "owner": "CFO",
+          "targets": {
+            "minimum": 60,
+            "target": 70,
+            "stretch": 75
+          },
+          "current_value": 68,
+          "last_updated": "2024-02-01",
+          "trend": "stable",
+          "importance": "high",
+          "notes": "Direct costs = salaries delivery team + cloud costs + contractors"
+        },
+        {
+          "kpi_id": "KPI-FIN-005",
+          "kpi_name": "Burn Rate",
+          "definition": "Dépenses mensuelles nettes (monthly burn)",
+          "unit": "EUR",
+          "calculation": "Total_expenses - Total_revenue (monthly)",
+          "data_source": "Accounting system",
+          "frequency": "monthly",
+          "owner": "CFO",
+          "targets": {
+            "maximum": 50000
+          },
+          "current_value": 35000,
+          "last_updated": "2024-02-01",
+          "trend": "decreasing",
+          "importance": "high",
+          "notes": "Decreasing trend is positive (approaching profitability)"
+        },
+        {
+          "kpi_id": "KPI-FIN-006",
+          "kpi_name": "Runway (months)",
+          "definition": "Nombre de mois avant épuisement trésorerie au burn actuel",
+          "unit": "months",
+          "calculation": "Cash_balance / Burn_rate",
+          "data_source": "Accounting system",
+          "frequency": "monthly",
+          "owner": "CFO",
+          "targets": {
+            "minimum": 12,
+            "target": 18,
+            "stretch": 24
+          },
+          "current_value": 16,
+          "last_updated": "2024-02-01",
+          "trend": "stable",
+          "importance": "critical"
+        }
+      ]
+    },
+    {
+      "category_id": "sales",
+      "category_name": "Sales & Marketing KPIs",
+      "description": "Indicateurs commerciaux et marketing",
+      "kpis": [
+        {
+          "kpi_id": "KPI-SAL-001",
+          "kpi_name": "Pipeline Value",
+          "definition": "Valeur totale des opportunités commerciales en cours",
+          "unit": "EUR",
+          "calculation": "Sum of all open opportunities weighted by probability",
+          "data_source": "CRM (Salesforce)",
+          "frequency": "weekly",
+          "owner": "Head of Sales",
+          "targets": {
+            "minimum": 300000,
+            "target": 500000
+          },
+          "current_value": 420000,
+          "last_updated": "2024-02-20",
+          "trend": "increasing",
+          "importance": "high"
+        },
+        {
+          "kpi_id": "KPI-SAL-002",
+          "kpi_name": "Win Rate",
+          "definition": "Taux de conversion opportunités → deals signés",
+          "unit": "%",
+          "calculation": "(Won_opportunities / (Won + Lost opportunities)) × 100",
+          "data_source": "CRM",
+          "frequency": "monthly",
+          "owner": "Head of Sales",
+          "targets": {
+            "minimum": 30,
+            "target": 40,
+            "stretch": 50
+          },
+          "current_value": 38,
+          "last_updated": "2024-02-01",
+          "trend": "stable",
+          "importance": "high"
+        },
+        {
+          "kpi_id": "KPI-SAL-003",
+          "kpi_name": "Average Deal Size",
+          "definition": "Taille moyenne des deals signés",
+          "unit": "EUR",
+          "calculation": "Total_revenue_won / Number_of_deals_won",
+          "data_source": "CRM",
+          "frequency": "monthly",
+          "owner": "Head of Sales",
+          "targets": {
+            "minimum": 25000,
+            "target": 40000,
+            "stretch": 60000
+          },
+          "current_value": 35000,
+          "last_updated": "2024-02-01",
+          "trend": "stable",
+          "importance": "medium"
+        },
+        {
+          "kpi_id": "KPI-SAL-004",
+          "kpi_name": "Sales Cycle Length",
+          "definition": "Durée moyenne du cycle de vente (premier contact → signature)",
+          "unit": "days",
+          "calculation": "Average of (signature_date - first_contact_date) for won deals",
+          "data_source": "CRM",
+          "frequency": "monthly",
+          "owner": "Head of Sales",
+          "targets": {
+            "maximum": 45,
+            "target": 30,
+            "stretch": 21
+          },
+          "current_value": 38,
+          "last_updated": "2024-02-01",
+          "trend": "decreasing",
+          "importance": "medium",
+          "notes": "Lower is better"
+        },
+        {
+          "kpi_id": "KPI-SAL-005",
+          "kpi_name": "Customer Acquisition Cost (CAC)",
+          "definition": "Coût d'acquisition d'un nouveau client",
+          "unit": "EUR",
+          "calculation": "(Sales_expenses + Marketing_expenses) / Number_of_new_customers",
+          "data_source": "Accounting + CRM",
+          "frequency": "quarterly",
+          "owner": "CFO + Head of Sales",
+          "targets": {
+            "maximum": 15000,
+            "target": 10000,
+            "stretch": 7500
+          },
+          "current_value": 12000,
+          "last_updated": "2024-02-01",
+          "trend": "decreasing",
+          "importance": "high",
+          "notes": "Lower is better. Must be < LTV/3 for healthy economics"
+        }
+      ]
+    },
+    {
+      "category_id": "customer",
+      "category_name": "Customer Success KPIs",
+      "description": "Indicateurs de satisfaction et rétention client",
+      "kpis": [
+        {
+          "kpi_id": "KPI-CUS-001",
+          "kpi_name": "Net Promoter Score (NPS)",
+          "definition": "Probabilité que clients recommandent Arka Labs",
+          "unit": "score",
+          "calculation": "% Promoters (9-10) - % Detractors (0-6)",
+          "data_source": "Survey tool",
+          "frequency": "quarterly",
+          "owner": "Customer Success",
+          "targets": {
+            "minimum": 40,
+            "target": 60,
+            "stretch": 70
+          },
+          "current_value": 58,
+          "last_updated": "2024-01-15",
+          "trend": "stable",
+          "importance": "high"
+        },
+        {
+          "kpi_id": "KPI-CUS-002",
+          "kpi_name": "Customer Satisfaction (CSAT)",
+          "definition": "Score de satisfaction client post-mission",
+          "unit": "score (1-5)",
+          "calculation": "Average rating from post-mission surveys",
+          "data_source": "Survey tool",
+          "frequency": "per mission",
+          "owner": "Delivery",
+          "targets": {
+            "minimum": 4.0,
+            "target": 4.5,
+            "stretch": 4.8
+          },
+          "current_value": 4.6,
+          "last_updated": "2024-02-20",
+          "trend": "stable",
+          "importance": "high"
+        },
+        {
+          "kpi_id": "KPI-CUS-003",
+          "kpi_name": "Customer Retention Rate",
+          "definition": "Taux de rétention clients annuel",
+          "unit": "%",
+          "calculation": "((Customers_end_period - New_customers) / Customers_start_period) × 100",
+          "data_source": "CRM",
+          "frequency": "quarterly",
+          "owner": "Customer Success",
+          "targets": {
+            "minimum": 85,
+            "target": 90,
+            "stretch": 95
+          },
+          "current_value": 88,
+          "last_updated": "2024-02-01",
+          "trend": "stable",
+          "importance": "critical"
+        },
+        {
+          "kpi_id": "KPI-CUS-004",
+          "kpi_name": "Customer Lifetime Value (LTV)",
+          "definition": "Valeur totale générée par un client sur sa durée de vie",
+          "unit": "EUR",
+          "calculation": "Average_contract_value × Average_contract_duration × Average_number_of_contracts",
+          "data_source": "CRM + Billing",
+          "frequency": "quarterly",
+          "owner": "Customer Success + Finance",
+          "targets": {
+            "minimum": 50000,
+            "target": 100000,
+            "stretch": 150000
+          },
+          "current_value": 85000,
+          "last_updated": "2024-02-01",
+          "trend": "increasing",
+          "importance": "high"
+        },
+        {
+          "kpi_id": "KPI-CUS-005",
+          "kpi_name": "Net Revenue Retention (NRR)",
+          "definition": "Revenus retenus et expansés des clients existants",
+          "unit": "%",
+          "calculation": "((Revenue_cohort_end - Churn - Contraction + Expansion) / Revenue_cohort_start) × 100",
+          "data_source": "Billing system",
+          "frequency": "quarterly",
+          "owner": "Customer Success + Finance",
+          "targets": {
+            "minimum": 100,
+            "target": 120,
+            "stretch": 140
+          },
+          "current_value": 115,
+          "last_updated": "2024-02-01",
+          "trend": "increasing",
+          "importance": "critical",
+          "notes": ">100% means expansion revenue offsets churn"
+        }
+      ]
+    },
+    {
+      "category_id": "delivery",
+      "category_name": "Delivery & Operations KPIs",
+      "description": "Indicateurs de performance delivery et opérations",
+      "kpis": [
+        {
+          "kpi_id": "KPI-DEL-001",
+          "kpi_name": "On-Time Delivery Rate",
+          "definition": "Pourcentage de missions/milestones livrés à temps",
+          "unit": "%",
+          "calculation": "(Deliveries_on_time / Total_deliveries) × 100",
+          "data_source": "Project management tool",
+          "frequency": "monthly",
+          "owner": "PMO",
+          "targets": {
+            "minimum": 85,
+            "target": 90,
+            "stretch": 95
+          },
+          "current_value": 91,
+          "last_updated": "2024-02-01",
+          "trend": "stable",
+          "importance": "high"
+        },
+        {
+          "kpi_id": "KPI-DEL-002",
+          "kpi_name": "Delivery Cycle Time",
+          "definition": "Durée moyenne d'une mission (kickoff → delivery)",
+          "unit": "days",
+          "calculation": "Average of (delivery_date - kickoff_date) for completed missions",
+          "data_source": "Arka OS + Project management",
+          "frequency": "monthly",
+          "owner": "PMO",
+          "targets": {
+            "discovery": 14,
+            "audit": 21,
+            "delivery": 56
+          },
+          "current_value": {
+            "discovery": 15,
+            "audit": 19,
+            "delivery": 58
+          },
+          "last_updated": "2024-02-01",
+          "trend": "stable",
+          "importance": "medium"
+        },
+        {
+          "kpi_id": "KPI-DEL-003",
+          "kpi_name": "Team Utilization Rate",
+          "definition": "Pourcentage du temps équipe alloué à missions billables",
+          "unit": "%",
+          "calculation": "(Billable_hours / Total_available_hours) × 100",
+          "data_source": "Time tracking tool",
+          "frequency": "weekly",
+          "owner": "Operations",
+          "targets": {
+            "minimum": 60,
+            "target": 70,
+            "stretch": 75
+          },
+          "current_value": 68,
+          "last_updated": "2024-02-20",
+          "trend": "stable",
+          "importance": "high",
+          "notes": "Target excludes vacations, leaves. 70% allows time for training, internal projects, sales support"
+        },
+        {
+          "kpi_id": "KPI-DEL-004",
+          "kpi_name": "Scope Change Rate",
+          "definition": "Fréquence des changements de scope en mission",
+          "unit": "%",
+          "calculation": "(Missions_with_scope_change / Total_missions) × 100",
+          "data_source": "Project management + Arka OS",
+          "frequency": "monthly",
+          "owner": "PMO",
+          "targets": {
+            "maximum": 30,
+            "target": 20,
+            "stretch": 10
+          },
+          "current_value": 25,
+          "last_updated": "2024-02-01",
+          "trend": "stable",
+          "importance": "medium",
+          "notes": "Lower is better. Indicates quality of scoping process"
+        },
+        {
+          "kpi_id": "KPI-DEL-005",
+          "kpi_name": "Pattern Reuse Rate",
+          "definition": "Pourcentage de missions utilisant patterns/templates Arka HCM",
+          "unit": "%",
+          "calculation": "(Missions_using_patterns / Total_missions) × 100",
+          "data_source": "Arka HCM",
+          "frequency": "monthly",
+          "owner": "Knowledge Management",
+          "targets": {
+            "2024_q2": 20,
+            "2024_q3": 50,
+            "2024_q4": 70
+          },
+          "current_value": 15,
+          "last_updated": "2024-02-01",
+          "trend": "increasing",
+          "importance": "high",
+          "notes": "Strategic KPI for Arka HCM adoption and value proof"
+        }
+      ]
+    },
+    {
+      "category_id": "product",
+      "category_name": "Product KPIs",
+      "description": "Indicateurs produit (Arka OS, Arka HCM)",
+      "kpis": [
+        {
+          "kpi_id": "KPI-PRD-001",
+          "kpi_name": "Active Users (Monthly)",
+          "definition": "Utilisateurs actifs mensuels des produits Arka",
+          "unit": "users",
+          "calculation": "Count of unique users with activity in last 30 days",
+          "data_source": "Product analytics",
+          "frequency": "weekly",
+          "owner": "Product",
+          "targets": {
+            "2024_q2": 50,
+            "2024_q3": 100,
+            "2024_q4": 200
+          },
+          "current_value": 42,
+          "last_updated": "2024-02-20",
+          "trend": "increasing",
+          "importance": "high"
+        },
+        {
+          "kpi_id": "KPI-PRD-002",
+          "kpi_name": "Feature Adoption Rate",
+          "definition": "Taux d'adoption des nouvelles features (users actifs feature / total users)",
+          "unit": "%",
+          "calculation": "(Users_using_feature / Total_active_users) × 100",
+          "data_source": "Product analytics",
+          "frequency": "per feature release",
+          "owner": "Product",
+          "targets": {
+            "30_days": 30,
+            "60_days": 50,
+            "90_days": 70
+          },
+          "current_value": "varies_by_feature",
+          "last_updated": "2024-02-20",
+          "trend": "varies",
+          "importance": "medium"
+        },
+        {
+          "kpi_id": "KPI-PRD-003",
+          "kpi_name": "Product Uptime",
+          "definition": "Disponibilité des produits Arka",
+          "unit": "%",
+          "calculation": "(Total_time - Downtime) / Total_time × 100",
+          "data_source": "Monitoring (AWS CloudWatch)",
+          "frequency": "real-time / monthly report",
+          "owner": "Platform Engineering",
+          "targets": {
+            "minimum": 99.5,
+            "target": 99.9,
+            "stretch": 99.95
+          },
+          "current_value": 99.87,
+          "last_updated": "2024-02-20",
+          "trend": "stable",
+          "importance": "critical"
+        },
+        {
+          "kpi_id": "KPI-PRD-004",
+          "kpi_name": "API Response Time (P95)",
+          "definition": "95ème percentile du temps de réponse des APIs",
+          "unit": "ms",
+          "calculation": "P95 of API response times",
+          "data_source": "Monitoring + Logs",
+          "frequency": "real-time / weekly report",
+          "owner": "Platform Engineering",
+          "targets": {
+            "maximum": 500,
+            "target": 300,
+            "stretch": 200
+          },
+          "current_value": 280,
+          "last_updated": "2024-02-20",
+          "trend": "stable",
+          "importance": "high",
+          "notes": "Lower is better"
+        },
+        {
+          "kpi_id": "KPI-PRD-005",
+          "kpi_name": "Bug/Issue Resolution Time",
+          "definition": "Durée moyenne de résolution des bugs/issues",
+          "unit": "hours",
+          "calculation": "Average of (resolved_at - reported_at) for bugs",
+          "data_source": "GitHub Issues",
+          "frequency": "weekly",
+          "owner": "Engineering",
+          "targets": {
+            "critical": 4,
+            "high": 24,
+            "medium": 72,
+            "low": 168
+          },
+          "current_value": {
+            "critical": 3,
+            "high": 20,
+            "medium": 68,
+            "low": 150
+          },
+          "last_updated": "2024-02-20",
+          "trend": "stable",
+          "importance": "medium"
+        }
+      ]
+    },
+    {
+      "category_id": "people",
+      "category_name": "People & Culture KPIs",
+      "description": "Indicateurs RH et culture",
+      "kpis": [
+        {
+          "kpi_id": "KPI-PEO-001",
+          "kpi_name": "Employee Net Promoter Score (eNPS)",
+          "definition": "Probabilité que les employés recommandent Arka Labs comme employeur",
+          "unit": "score",
+          "calculation": "% Promoters (9-10) - % Detractors (0-6)",
+          "data_source": "Employee survey",
+          "frequency": "quarterly",
+          "owner": "HR",
+          "targets": {
+            "minimum": 30,
+            "target": 50,
+            "stretch": 70
+          },
+          "current_value": 55,
+          "last_updated": "2024-01-15",
+          "trend": "stable",
+          "importance": "high"
+        },
+        {
+          "kpi_id": "KPI-PEO-002",
+          "kpi_name": "Employee Retention Rate",
+          "definition": "Taux de rétention des employés",
+          "unit": "%",
+          "calculation": "((Employees_end_period - New_hires) / Employees_start_period) × 100",
+          "data_source": "HR system",
+          "frequency": "quarterly",
+          "owner": "HR",
+          "targets": {
+            "minimum": 85,
+            "target": 90,
+            "stretch": 95
+          },
+          "current_value": 92,
+          "last_updated": "2024-02-01",
+          "trend": "stable",
+          "importance": "high"
+        },
+        {
+          "kpi_id": "KPI-PEO-003",
+          "kpi_name": "Time to Hire",
+          "definition": "Durée moyenne du processus de recrutement",
+          "unit": "days",
+          "calculation": "Average of (offer_accepted_date - job_posted_date)",
+          "data_source": "ATS (Applicant Tracking System)",
+          "frequency": "monthly",
+          "owner": "HR",
+          "targets": {
+            "maximum": 45,
+            "target": 30,
+            "stretch": 21
+          },
+          "current_value": 35,
+          "last_updated": "2024-02-01",
+          "trend": "stable",
+          "importance": "medium",
+          "notes": "Lower is better"
+        },
+        {
+          "kpi_id": "KPI-PEO-004",
+          "kpi_name": "Training Hours per Employee",
+          "definition": "Heures de formation par employé par an",
+          "unit": "hours",
+          "calculation": "Total_training_hours / Number_of_employees",
+          "data_source": "Learning platform + manual tracking",
+          "frequency": "quarterly",
+          "owner": "HR",
+          "targets": {
+            "minimum": 20,
+            "target": 40,
+            "stretch": 60
+          },
+          "current_value": 35,
+          "last_updated": "2024-02-01",
+          "trend": "increasing",
+          "importance": "medium"
+        }
+      ]
+    }
+  ],
+  "kpi_dashboards": [
+    {
+      "dashboard_name": "Executive Dashboard",
+      "audience": "C-level, Board",
+      "frequency": "monthly",
+      "kpis": ["KPI-FIN-001", "KPI-FIN-002", "KPI-FIN-003", "KPI-FIN-006", "KPI-SAL-001", "KPI-CUS-003", "KPI-CUS-005", "KPI-DEL-001"]
+    },
+    {
+      "dashboard_name": "Sales Dashboard",
+      "audience": "Sales team, Head of Sales",
+      "frequency": "weekly",
+      "kpis": ["KPI-SAL-001", "KPI-SAL-002", "KPI-SAL-003", "KPI-SAL-004", "KPI-SAL-005"]
+    },
+    {
+      "dashboard_name": "Delivery Dashboard",
+      "audience": "Delivery team, PMO",
+      "frequency": "weekly",
+      "kpis": ["KPI-DEL-001", "KPI-DEL-002", "KPI-DEL-003", "KPI-DEL-004", "KPI-DEL-005", "KPI-CUS-002"]
+    },
+    {
+      "dashboard_name": "Product Dashboard",
+      "audience": "Product team, Engineering",
+      "frequency": "daily/weekly",
+      "kpis": ["KPI-PRD-001", "KPI-PRD-002", "KPI-PRD-003", "KPI-PRD-004", "KPI-PRD-005"]
+    }
+  ],
+  "okr_alignment": {
+    "description": "KPIs alimentent les OKRs (Objectives and Key Results) trimestriels",
+    "example_okr_2024_q2": {
+      "objective": "Accélérer croissance et product-market fit",
+      "key_results": [
+        {
+          "kr": "Atteindre 75k€ MRR (KPI-FIN-001)",
+          "kpi_ref": "KPI-FIN-001",
+          "target": 75000
+        },
+        {
+          "kr": "NRR > 120% (KPI-CUS-005)",
+          "kpi_ref": "KPI-CUS-005",
+          "target": 120
+        },
+        {
+          "kr": "Pattern reuse rate 50% (KPI-DEL-005)",
+          "kpi_ref": "KPI-DEL-005",
+          "target": 50
+        },
+        {
+          "kr": "100 active users Arka OS (KPI-PRD-001)",
+          "kpi_ref": "KPI-PRD-001",
+          "target": 100
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "catalog_owner": "CFO + Operations",
+    "contributors": ["Finance", "Sales", "Customer Success", "Delivery", "Product", "HR"],
+    "review_frequency": "quarterly",
+    "last_review_date": "2024-02-01",
+    "next_review_date": "2024-05-01",
+    "tools_used": ["Metabase", "Tableau", "Google Sheets", "Custom dashboards"],
+    "data_quality_score": 85,
+    "notes": "Data quality varies by KPI. Product KPIs have highest quality (instrumented). Some financial KPIs require manual reconciliation.",
+    "tags": ["kpi", "metrics", "performance", "okr", "dashboard"]
+  }
+}

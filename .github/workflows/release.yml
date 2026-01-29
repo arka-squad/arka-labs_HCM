@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  github-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build API
+        run: npm run build:api
+
+      - name: Build UI
+        run: npm run build:ui
+
+      - name: Build release assets
+        run: |
+          tar -czf hcm-seed.tgz -C apps/api hcm
+          tar -czf ui-dist.tgz -C apps/ui dist
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            hcm-seed.tgz
+            ui-dist.tgz
+

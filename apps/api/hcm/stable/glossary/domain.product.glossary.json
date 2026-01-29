@@ -1,0 +1,69 @@
+{
+  "$schema": "https://arka.labs/schemas/glossary.v1.json",
+  "glossary_id": "domain.product",
+  "version": "1.0.0",
+  "category": "product",
+  "description": "Product management and development terminology",
+  "entries": [
+    {
+      "term": "backlog",
+      "definition": "Prioritized list of features, enhancements, and fixes awaiting implementation.",
+      "category": "product",
+      "aliases": ["product_backlog", "feature_backlog"]
+    },
+    {
+      "term": "user_story",
+      "definition": "A requirement expressed from the end-user perspective, typically following the format 'As a [user], I want [goal], so that [benefit]'.",
+      "category": "product",
+      "aliases": ["US", "story"]
+    },
+    {
+      "term": "sprint",
+      "definition": "Time-boxed iteration (typically 1-4 weeks) for completing a set of user stories or tasks.",
+      "category": "product",
+      "aliases": ["iteration", "cycle"]
+    },
+    {
+      "term": "epic",
+      "definition": "Large body of work that can be broken down into multiple user stories, typically spanning multiple sprints.",
+      "category": "product",
+      "aliases": ["feature_epic", "initiative"]
+    },
+    {
+      "term": "mvp",
+      "definition": "Minimum Viable Product - the smallest version of a product that delivers value and can be released to gather feedback.",
+      "category": "product",
+      "aliases": ["minimum_viable_product", "first_version"]
+    },
+    {
+      "term": "roadmap",
+      "definition": "Strategic plan showing the vision, direction, and progress of a product over time.",
+      "category": "product",
+      "aliases": ["product_roadmap", "strategic_roadmap"]
+    },
+    {
+      "term": "feature_flag",
+      "definition": "Toggle mechanism allowing features to be enabled or disabled without deploying new code.",
+      "category": "product",
+      "aliases": ["feature_toggle", "flag"]
+    },
+    {
+      "term": "acceptance_criteria",
+      "definition": "Conditions that must be met for a user story to be considered complete and accepted.",
+      "category": "product",
+      "aliases": ["AC", "done_criteria"]
+    },
+    {
+      "term": "product_market_fit",
+      "definition": "Degree to which a product satisfies strong market demand.",
+      "category": "product",
+      "aliases": ["PMF", "market_fit"]
+    },
+    {
+      "term": "technical_debt",
+      "definition": "Implied cost of additional rework caused by choosing quick solutions instead of better approaches that take longer.",
+      "category": "product",
+      "aliases": ["tech_debt", "code_debt"]
+    }
+  ]
+}

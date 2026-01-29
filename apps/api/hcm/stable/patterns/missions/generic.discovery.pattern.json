@@ -1,0 +1,107 @@
+{
+  "$schema": "https://arka.labs/schemas/mission_pattern.v1.json",
+  "pattern_id": "generic.discovery",
+  "version": "1.0.0",
+  "pattern_type": "mission",
+  "mission_type": "discovery",
+  "title": "Generic Discovery Mission Pattern",
+  "description": "Standard pattern for discovery missions focused on understanding context, actors, and landscape.",
+  "typical_duration_weeks": 2,
+  "phases": [
+    {
+      "phase": "preparation",
+      "duration_days": 2,
+      "objectives": [
+        "Define discovery scope and objectives",
+        "Identify key stakeholders to interview",
+        "Prepare interview guides and research materials"
+      ],
+      "deliverables": ["scope_document", "stakeholder_list", "interview_guide"]
+    },
+    {
+      "phase": "research",
+      "duration_days": 5,
+      "objectives": [
+        "Conduct stakeholder interviews",
+        "Review existing documentation",
+        "Observe current processes and systems",
+        "Gather quantitative and qualitative data"
+      ],
+      "deliverables": ["interview_notes", "document_analysis", "observation_reports", "data_collection"]
+    },
+    {
+      "phase": "synthesis",
+      "duration_days": 3,
+      "objectives": [
+        "Synthesize findings from all sources",
+        "Identify patterns and themes",
+        "Map current state",
+        "Surface key insights and pain points"
+      ],
+      "deliverables": ["synthesis_report", "current_state_map", "insights_list", "pain_points"]
+    },
+    {
+      "phase": "delivery",
+      "duration_days": 2,
+      "objectives": [
+        "Prepare discovery report",
+        "Present findings to stakeholders",
+        "Gather feedback",
+        "Define next steps or recommendations"
+      ],
+      "deliverables": ["discovery_report", "presentation", "recommendations"]
+    }
+  ],
+  "typical_activities": [
+    "stakeholder_interviews",
+    "process_observation",
+    "document_review",
+    "system_analysis",
+    "competitive_analysis",
+    "user_journey_mapping",
+    "pain_point_identification",
+    "opportunity_spotting"
+  ],
+  "typical_roles": ["analyst", "pmo", "researcher"],
+  "key_deliverables": {
+    "discovery_report": {
+      "description": "Comprehensive report of findings",
+      "sections": ["executive_summary", "context", "findings", "insights", "recommendations"]
+    },
+    "stakeholder_map": {
+      "description": "Map of actors and their relationships",
+      "format": "diagram"
+    },
+    "pain_points_analysis": {
+      "description": "Prioritized list of pain points with evidence",
+      "format": "structured_list"
+    }
+  },
+  "success_criteria": [
+    "All key stakeholders interviewed",
+    "Current state well understood and documented",
+    "Pain points identified and prioritized",
+    "Clear recommendations for next steps",
+    "Stakeholder buy-in on findings"
+  ],
+  "evidence_types_used": [
+    "interview_synthesis",
+    "document_analysis",
+    "observation",
+    "workshop_output"
+  ],
+  "typical_risks": [
+    {
+      "risk": "Stakeholder unavailability",
+      "mitigation": "Book interviews early, have backup contacts"
+    },
+    {
+      "risk": "Scope creep",
+      "mitigation": "Clear scope document, regular alignment with sponsor"
+    },
+    {
+      "risk": "Insufficient data",
+      "mitigation": "Multiple data collection methods, triangulation"
+    }
+  ]
+}

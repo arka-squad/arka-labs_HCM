@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arka.local/schemas/project_context.v1.schema.json",
+  "title": "Arka Project Context v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "schema_version", "project_meta", "project_payload", "sync_policy"],
+  "properties": {
+    "schema": { "const": "arka.project_context.v1" },
+    "schema_version": { "type": "integer", "const": 1 },
+    "project_meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project_id",
+        "project_name",
+        "document_version",
+        "status",
+        "classification",
+        "created_at",
+        "updated_at",
+        "owners"
+      ],
+      "properties": {
+        "project_id": { "type": "string", "minLength": 1 },
+        "project_name": { "type": "string", "minLength": 1 },
+        "project_code": { "type": "string" },
+        "document_version": { "type": "string", "minLength": 1 },
+        "status": { "type": "string", "enum": ["DRAFT", "ACTIVE", "PAUSED", "ARCHIVED"] },
+        "classification": { "$ref": "#/$defs/Classification" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "owners": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/Owner" } }
+      }
+    },
+    "project_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "north_star",
+        "objectives",
+        "scope",
+        "stakeholders",
+        "constraints",
+        "technical_context",
+        "risk_and_quality",
+        "knowledge",
+        "llm_context_digest"
+      ],
+      "properties": {
+        "north_star": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["vision", "mission", "value_proposition", "problem_statement"],
+          "properties": {
+            "vision": { "type": "string" },
+            "mission": { "type": "string" },
+            "value_proposition": { "type": "string" },
+            "problem_statement": { "type": "string" }
+          }
+        },
+        "objectives": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kpis", "okrs"],
+          "properties": {
+            "kpis": { "type": "array", "items": { "$ref": "#/$defs/FreeObject" } },
+            "okrs": { "type": "array", "items": { "$ref": "#/$defs/FreeObject" } }
+          }
+        },
+        "scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["in_scope", "out_of_scope", "assumptions", "critical_dependencies"],
+          "properties": {
+            "in_scope": { "type": "array", "items": { "type": "string" } },
+            "out_of_scope": { "type": "array", "items": { "type": "string" } },
+            "assumptions": { "type": "array", "items": { "type": "string" } },
+            "critical_dependencies": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "stakeholders": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["decision_rights", "key_contacts", "audiences"],
+          "properties": {
+            "decision_rights": { "type": "array", "items": { "$ref": "#/$defs/FreeObject" } },
+            "key_contacts": { "type": "array", "items": { "$ref": "#/$defs/FreeObject" } },
+            "audiences": { "type": "array", "items": { "$ref": "#/$defs/FreeObject" } }
+          }
+        },
+        "constraints": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["time", "budget", "technical", "regulatory_or_policy"],
+          "properties": {
+            "time": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["hard_deadlines", "soft_targets"],
+              "properties": {
+                "hard_deadlines": { "type": "array", "items": { "$ref": "#/$defs/FreeObject" } },
+                "soft_targets": { "type": "array", "items": { "$ref": "#/$defs/FreeObject" } }
+              }
+            },
+            "budget": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["note"],
+              "properties": { "note": { "type": "string" } }
+            },
+            "technical": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["must_use", "must_not_use", "non_negotiables"],
+              "properties": {
+                "must_use": { "type": "array", "items": { "type": "string" } },
+                "must_not_use": { "type": "array", "items": { "type": "string" } },
+                "non_negotiables": { "type": "array", "items": { "type": "string" } }
+              }
+            },
+            "regulatory_or_policy": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "technical_context": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["high_level_architecture", "systems_involved", "integrations", "data_notes"],
+          "properties": {
+            "high_level_architecture": { "type": "string" },
+            "systems_involved": { "type": "array", "items": { "type": "string" } },
+            "integrations": { "type": "array", "items": { "type": "string" } },
+            "data_notes": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["sensitive_data_types", "handling_rules"],
+              "properties": {
+                "sensitive_data_types": { "type": "array", "items": { "type": "string" } },
+                "handling_rules": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        },
+        "risk_and_quality": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["risk_appetite", "risks", "quality_standards"],
+          "properties": {
+            "risk_appetite": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH"] },
+            "risks": { "type": "array", "items": { "$ref": "#/$defs/FreeObject" } },
+            "quality_standards": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["definition_of_done", "verification_expectations"],
+              "properties": {
+                "definition_of_done": { "type": "array", "items": { "type": "string" } },
+                "verification_expectations": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          }
+        },
+        "knowledge": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["glossary", "reference_documents"],
+          "properties": {
+            "glossary": { "type": "array", "items": { "$ref": "#/$defs/FreeObject" } },
+            "reference_documents": { "type": "array", "items": { "$ref": "#/$defs/FreeObject" } }
+          }
+        },
+        "llm_context_digest": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["project_summary_short", "rules_of_engagement", "common_pitfalls", "always_check_against"],
+          "properties": {
+            "project_summary_short": { "type": "string" },
+            "rules_of_engagement": { "type": "array", "items": { "type": "string" } },
+            "common_pitfalls": { "type": "array", "items": { "type": "string" } },
+            "always_check_against": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "sync_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cloud_visibility"],
+      "properties": {
+        "cloud_visibility": { "type": "string", "enum": ["SAFE_SUMMARY_ONLY", "FULL_ALLOWED", "NO_CLOUD"] },
+        "notes": { "type": "string" }
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "description": "Zone d’extension contrôlée (namespace -> objet).",
+      "propertyNames": { "pattern": "^[a-zA-Z0-9_.:-]{1,64}$" },
+      "additionalProperties": { "$ref": "#/$defs/FreeObject" }
+    }
+  },
+  "$defs": {
+    "Owner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "role", "contact"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 },
+        "contact": { "type": "string", "minLength": 1 }
+      }
+    },
+    "FreeObject": { "type": "object" },
+    "Classification": {
+      "type": "string",
+      "enum": ["PUBLIC", "INTERNAL", "RESTRICTED", "HIGHLY_RESTRICTED"]
+    }
+  }
+}

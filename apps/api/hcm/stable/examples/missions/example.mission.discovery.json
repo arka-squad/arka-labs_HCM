@@ -1,0 +1,526 @@
+{
+  "$schema": "https://arka.labs/schemas/mission.v1.json",
+  "mission_id": "MISS-2024-DISC-001",
+  "mission_type": "discovery",
+  "status": "done",
+  "title": "Discovery - Processus de Facturation Client",
+  "description": "Mission de découverte pour comprendre les processus de facturation actuels, identifier les points de friction et opportunités d'amélioration.",
+  "context": {
+    "trigger": "Plaintes récurrentes des clients concernant des erreurs de facturation et des délais de traitement",
+    "sponsor": "CFO - Marie Dubois",
+    "business_unit": "Finance & Operations",
+    "urgency": "medium",
+    "expected_outcomes": [
+      "Cartographie complète du processus de facturation actuel",
+      "Identification des points de douleur et causes racines",
+      "Recommandations priorisées pour amélioration"
+    ]
+  },
+  "scope": {
+    "in_scope": [
+      "Processus de facturation B2B (clients entreprise)",
+      "Systèmes: ERP, CRM, outil de facturation",
+      "Équipes: Finance, Customer Success, IT",
+      "Période d'analyse: 6 derniers mois"
+    ],
+    "out_of_scope": [
+      "Facturation B2C",
+      "Processus de recouvrement",
+      "Conformité fiscale internationale"
+    ]
+  },
+  "timeline": {
+    "start_date": "2024-01-15",
+    "end_date": "2024-02-02",
+    "duration_days": 14,
+    "phases_executed": [
+      {
+        "phase": "preparation",
+        "start": "2024-01-15",
+        "end": "2024-01-16",
+        "status": "completed",
+        "deliverables_produced": [
+          "SCOPE-001 - Discovery Scope Document",
+          "STAKE-001 - Stakeholder Interview List (12 persons)",
+          "GUIDE-001 - Interview Guide & Questions"
+        ]
+      },
+      {
+        "phase": "research",
+        "start": "2024-01-17",
+        "end": "2024-01-23",
+        "status": "completed",
+        "deliverables_produced": [
+          "INT-001 to INT-012 - Interview Notes (12 interviews)",
+          "DOC-001 - Document Analysis Report",
+          "OBS-001 to OBS-003 - Process Observation Reports",
+          "DATA-001 - Billing Error Analysis (6 months data)"
+        ],
+        "notes": "Conducted 12 stakeholder interviews across Finance (4), Customer Success (3), Sales (2), IT (2), Management (1). Observed live billing process on 3 separate days."
+      },
+      {
+        "phase": "synthesis",
+        "start": "2024-01-24",
+        "end": "2024-01-26",
+        "status": "completed",
+        "deliverables_produced": [
+          "SYN-001 - Synthesis Report",
+          "MAP-001 - Current State Process Map (BPMN)",
+          "INS-001 - Key Insights Summary",
+          "PAIN-001 - Pain Points Analysis"
+        ],
+        "notes": "Identified 5 major pain points and 3 system integration gaps"
+      },
+      {
+        "phase": "delivery",
+        "start": "2024-01-29",
+        "end": "2024-02-02",
+        "status": "completed",
+        "deliverables_produced": [
+          "REP-001 - Discovery Report (Final)",
+          "PRES-001 - Executive Presentation",
+          "REC-001 - Recommendations (8 prioritized items)"
+        ],
+        "notes": "Presentation delivered to CFO and leadership team on 2024-02-01. Recommendations accepted, transformation mission approved."
+      }
+    ]
+  },
+  "team": {
+    "lead": {
+      "role": "analyst",
+      "name": "Sophie Laurent",
+      "agent_id": "arka_analyst_01"
+    },
+    "members": [
+      {
+        "role": "pmo",
+        "name": "Thomas Bernard",
+        "contribution": "Mission planning and stakeholder coordination"
+      },
+      {
+        "role": "analyst",
+        "name": "Julie Chen",
+        "contribution": "Data analysis and quantitative research"
+      }
+    ],
+    "stakeholders_interviewed": [
+      {
+        "name": "Marie Dubois",
+        "role": "CFO",
+        "department": "Finance",
+        "interview_date": "2024-01-17"
+      },
+      {
+        "name": "Pierre Moreau",
+        "role": "Billing Manager",
+        "department": "Finance",
+        "interview_date": "2024-01-17"
+      },
+      {
+        "name": "Camille Rousseau",
+        "role": "Senior Accountant",
+        "department": "Finance",
+        "interview_date": "2024-01-18"
+      },
+      {
+        "name": "Alexandre Petit",
+        "role": "Accountant",
+        "department": "Finance",
+        "interview_date": "2024-01-18"
+      },
+      {
+        "name": "Émilie Garnier",
+        "role": "Customer Success Manager",
+        "department": "Customer Success",
+        "interview_date": "2024-01-19"
+      },
+      {
+        "name": "Lucas Martin",
+        "role": "Customer Success Manager",
+        "department": "Customer Success",
+        "interview_date": "2024-01-19"
+      },
+      {
+        "name": "Sarah Blanc",
+        "role": "Support Lead",
+        "department": "Customer Success",
+        "interview_date": "2024-01-19"
+      },
+      {
+        "name": "Marc Durand",
+        "role": "Sales Director",
+        "department": "Sales",
+        "interview_date": "2024-01-22"
+      },
+      {
+        "name": "Nathalie Simon",
+        "role": "Account Executive",
+        "department": "Sales",
+        "interview_date": "2024-01-22"
+      },
+      {
+        "name": "Julien Leroy",
+        "role": "IT Manager",
+        "department": "IT",
+        "interview_date": "2024-01-23"
+      },
+      {
+        "name": "Antoine Mercier",
+        "role": "Integration Engineer",
+        "department": "IT",
+        "interview_date": "2024-01-23"
+      },
+      {
+        "name": "Isabelle Fournier",
+        "role": "COO",
+        "department": "Operations",
+        "interview_date": "2024-01-17"
+      }
+    ]
+  },
+  "key_findings": {
+    "summary": "Le processus de facturation actuel souffre de multiples points de friction dus à un manque d'intégration entre systèmes, des workflows manuels et l'absence de validation automatique. 23% des factures nécessitent des corrections manuelles.",
+    "pain_points": [
+      {
+        "id": "PAIN-001",
+        "title": "Saisie manuelle des données entre CRM et système de facturation",
+        "severity": "high",
+        "frequency": "daily",
+        "impact": "Erreurs de saisie dans 15% des factures, temps perdu ~4h/jour",
+        "affected_teams": ["Finance", "Customer Success"],
+        "evidence_ids": ["INT-002", "INT-003", "OBS-001", "DATA-001"]
+      },
+      {
+        "id": "PAIN-002",
+        "title": "Délai moyen de 8 jours entre signature contrat et première facture",
+        "severity": "high",
+        "frequency": "per_contract",
+        "impact": "Impact trésorerie, insatisfaction client, 12% de churn en phase onboarding",
+        "affected_teams": ["Finance", "Sales", "Customer Success"],
+        "evidence_ids": ["INT-005", "INT-008", "DATA-001"]
+      },
+      {
+        "id": "PAIN-003",
+        "title": "Absence de workflow de validation pour factures > 10k€",
+        "severity": "medium",
+        "frequency": "monthly",
+        "impact": "3 erreurs majeures détectées par clients en 6 mois, risque réputationnel",
+        "affected_teams": ["Finance", "Management"],
+        "evidence_ids": ["INT-001", "INT-002", "DOC-001"]
+      },
+      {
+        "id": "PAIN-004",
+        "title": "Informations contractuelles non synchronisées CRM ↔ ERP",
+        "severity": "high",
+        "frequency": "weekly",
+        "impact": "Source de 45% des erreurs de facturation, double-check manuel nécessaire",
+        "affected_teams": ["Finance", "Sales", "IT"],
+        "evidence_ids": ["INT-010", "INT-011", "OBS-002", "DATA-001"]
+      },
+      {
+        "id": "PAIN-005",
+        "title": "Pas de visibilité temps réel sur statut des factures pour Customer Success",
+        "severity": "medium",
+        "frequency": "daily",
+        "impact": "Équipe CS ne peut pas répondre aux questions clients, escalations inutiles",
+        "affected_teams": ["Customer Success", "Finance"],
+        "evidence_ids": ["INT-005", "INT-006", "INT-007"]
+      }
+    ],
+    "patterns_identified": [
+      "Les erreurs de facturation sont concentrées sur les contrats complexes (multi-produits, pricing custom)",
+      "Les équipes contournent le système officiel avec des fichiers Excel parallèles",
+      "Forte dépendance à 2 personnes clés (Pierre Moreau, Camille Rousseau) pour résoudre les cas complexes",
+      "Aucun SLA défini pour les corrections de facture, délai moyen de résolution: 5,3 jours"
+    ],
+    "root_causes": [
+      {
+        "issue": "Erreurs de saisie",
+        "root_cause": "Absence d'intégration API entre CRM (Salesforce) et système facturation (SAP)",
+        "contributing_factors": [
+          "Budget IT limité en 2022-2023",
+          "Projet d'intégration déprioritisé 2 fois",
+          "Turnover dans l'équipe IT"
+        ]
+      },
+      {
+        "issue": "Délai facturation",
+        "root_cause": "Processus d'approbation mal défini avec trop d'étapes manuelles",
+        "contributing_factors": [
+          "Workflow hérité de l'ancien système (10+ ans)",
+          "Pas de revue processus depuis 2019",
+          "Culture d'approbation hiérarchique systématique"
+        ]
+      },
+      {
+        "issue": "Manque de visibilité CS",
+        "root_cause": "Système de facturation isolé sans interface consultation externe",
+        "contributing_factors": [
+          "Contraintes de sécurité sur accès SAP",
+          "Pas de dashboard ou reporting temps réel",
+          "Communication inter-équipes par email uniquement"
+        ]
+      }
+    ]
+  },
+  "current_state_map": {
+    "description": "Processus de facturation en 7 étapes principales avec 3 systèmes impliqués",
+    "systems": [
+      {
+        "name": "Salesforce (CRM)",
+        "role": "Gestion contrats et opportunités",
+        "integration_level": "none"
+      },
+      {
+        "name": "SAP ERP",
+        "role": "Facturation et comptabilité",
+        "integration_level": "none"
+      },
+      {
+        "name": "Billing Tool (custom)",
+        "role": "Génération PDF factures",
+        "integration_level": "batch_export_from_SAP"
+      }
+    ],
+    "process_steps": [
+      {
+        "step": 1,
+        "name": "Signature contrat",
+        "system": "Salesforce",
+        "actors": ["Sales"],
+        "duration": "1 jour",
+        "manual": false
+      },
+      {
+        "step": 2,
+        "name": "Notification Finance",
+        "system": "Email",
+        "actors": ["Sales → Finance"],
+        "duration": "0-2 jours",
+        "manual": true,
+        "pain_point": "Notification manuelle, parfois oubliée"
+      },
+      {
+        "step": 3,
+        "name": "Saisie données contrat dans SAP",
+        "system": "SAP ERP",
+        "actors": ["Finance"],
+        "duration": "1-2 jours",
+        "manual": true,
+        "pain_point": "Ressaisie manuelle de Salesforce → SAP, source d'erreurs"
+      },
+      {
+        "step": 4,
+        "name": "Création ligne facture",
+        "system": "SAP ERP",
+        "actors": ["Finance"],
+        "duration": "0,5 jour",
+        "manual": true,
+        "pain_point": "Calculs manuels pour pricing custom"
+      },
+      {
+        "step": 5,
+        "name": "Validation manager (si > 10k€)",
+        "system": "Email + Excel",
+        "actors": ["Billing Manager"],
+        "duration": "0-3 jours",
+        "manual": true,
+        "pain_point": "Process informel, pas de workflow structuré"
+      },
+      {
+        "step": 6,
+        "name": "Génération PDF facture",
+        "system": "Billing Tool",
+        "actors": ["System"],
+        "duration": "0,5 jour",
+        "manual": false
+      },
+      {
+        "step": 7,
+        "name": "Envoi au client",
+        "system": "Email",
+        "actors": ["Finance"],
+        "duration": "0,5 jour",
+        "manual": true
+      }
+    ],
+    "total_lead_time": "5-10 jours",
+    "manual_touchpoints": 5,
+    "system_handoffs": 3
+  },
+  "recommendations": [
+    {
+      "id": "REC-001",
+      "title": "Implémenter intégration API Salesforce ↔ SAP",
+      "priority": "critical",
+      "impact": "high",
+      "effort": "high",
+      "expected_benefits": [
+        "Élimination de 90% des erreurs de saisie",
+        "Réduction délai facturation de 8j → 2j",
+        "Économie ~16h/semaine temps équipe Finance"
+      ],
+      "estimated_effort": "3 mois, 1 développeur + 0,5 architecte",
+      "dependencies": ["Budget IT à valider", "Ressource développeur disponible Q2"],
+      "risks": ["Complexité technique SAP", "Besoin formation équipe"]
+    },
+    {
+      "id": "REC-002",
+      "title": "Mettre en place workflow automatique de validation",
+      "priority": "high",
+      "impact": "medium",
+      "effort": "medium",
+      "expected_benefits": [
+        "Visibilité complète sur factures en attente",
+        "SLA défini et respecté pour validations",
+        "Traçabilité des approbations"
+      ],
+      "estimated_effort": "6 semaines, configuration outil workflow",
+      "dependencies": ["Choix outil workflow", "Définition règles validation"],
+      "risks": ["Adoption par managers", "Changement culturel nécessaire"]
+    },
+    {
+      "id": "REC-003",
+      "title": "Créer dashboard consultation factures pour Customer Success",
+      "priority": "high",
+      "impact": "medium",
+      "effort": "low",
+      "expected_benefits": [
+        "CS peut répondre aux clients en temps réel",
+        "Réduction escalations Finance de 60%",
+        "Amélioration satisfaction client"
+      ],
+      "estimated_effort": "3 semaines, développement dashboard read-only",
+      "dependencies": ["Accès lecture SAP pour CS", "Définition périmètre données visibles"],
+      "risks": ["Sécurité accès données"]
+    },
+    {
+      "id": "REC-004",
+      "title": "Standardiser templates contrats pour simplifier facturation",
+      "priority": "medium",
+      "impact": "medium",
+      "effort": "low",
+      "expected_benefits": [
+        "Réduction contrats custom de 40% → 15%",
+        "Simplification processus facturation",
+        "Moins d'erreurs sur pricing"
+      ],
+      "estimated_effort": "1 mois, revue avec Legal & Sales",
+      "dependencies": ["Accord Sales sur standardisation"],
+      "risks": ["Résistance Sales si perte flexibilité"]
+    },
+    {
+      "id": "REC-005",
+      "title": "Former 2 personnes supplémentaires sur cas complexes (réduire dépendance)",
+      "priority": "medium",
+      "impact": "low",
+      "effort": "low",
+      "expected_benefits": [
+        "Résilience en cas absence",
+        "Réduction bus factor de 2 → 4"
+      ],
+      "estimated_effort": "6 semaines formation + shadowing",
+      "dependencies": ["Identification candidats"],
+      "risks": ["Turnover après formation"]
+    },
+    {
+      "id": "REC-006",
+      "title": "Définir et publier SLA correction factures",
+      "priority": "medium",
+      "impact": "low",
+      "effort": "low",
+      "expected_benefits": [
+        "Attentes claires pour clients",
+        "Mesure performance équipe Finance"
+      ],
+      "estimated_effort": "2 semaines, définition + communication",
+      "dependencies": ["Accord CFO sur SLA cible"],
+      "risks": []
+    },
+    {
+      "id": "REC-007",
+      "title": "Audit mensuel qualité factures (sample aléatoire)",
+      "priority": "low",
+      "impact": "low",
+      "effort": "low",
+      "expected_benefits": [
+        "Détection proactive erreurs",
+        "Amélioration continue processus"
+      ],
+      "estimated_effort": "4h/mois, processus QA",
+      "dependencies": [],
+      "risks": []
+    },
+    {
+      "id": "REC-008",
+      "title": "Remplacer fichiers Excel parallèles par solution centralisée",
+      "priority": "low",
+      "impact": "low",
+      "effort": "medium",
+      "expected_benefits": [
+        "Élimination shadow IT",
+        "Single source of truth"
+      ],
+      "estimated_effort": "Dépend de REC-001 et REC-002",
+      "dependencies": ["REC-001", "REC-002"],
+      "risks": []
+    }
+  ],
+  "next_steps": {
+    "immediate": [
+      "Présentation résultats au COMEX - 2024-02-05",
+      "Validation budget pour REC-001 et REC-002",
+      "Lancement mission transformation si budget approuvé"
+    ],
+    "short_term": [
+      "Quick win: REC-006 (définir SLA) - 2 semaines",
+      "Quick win: REC-003 (dashboard CS) si ressource IT disponible"
+    ],
+    "dependencies_to_resolve": [
+      "Obtenir budget IT pour intégration Salesforce-SAP",
+      "Identifier ressource développeur Q2 2024",
+      "Valider avec Sales la standardisation contrats"
+    ]
+  },
+  "evidence_collected": {
+    "total_items": 28,
+    "by_type": {
+      "interview_synthesis": 12,
+      "document_analysis": 1,
+      "observation": 3,
+      "data_analysis": 1,
+      "screenshot": 6,
+      "process_diagram": 5
+    },
+    "evidence_packs_created": [
+      {
+        "pack_id": "EP-DISC-001-PAIN001",
+        "title": "Evidence - Saisie manuelle CRM → Facturation",
+        "evidence_count": 6,
+        "confidence": "high"
+      },
+      {
+        "pack_id": "EP-DISC-001-PAIN002",
+        "title": "Evidence - Délai facturation 8 jours",
+        "evidence_count": 5,
+        "confidence": "high"
+      },
+      {
+        "pack_id": "EP-DISC-001-PAIN004",
+        "title": "Evidence - Désynchronisation CRM-ERP",
+        "evidence_count": 7,
+        "confidence": "high"
+      }
+    ]
+  },
+  "metadata": {
+    "created_at": "2024-01-15T09:00:00Z",
+    "completed_at": "2024-02-02T17:00:00Z",
+    "last_updated": "2024-02-02T17:00:00Z",
+    "version": "1.0",
+    "pattern_used": "generic.discovery",
+    "tags": ["finance", "billing", "process_improvement", "integration"],
+    "classification": "internal",
+    "archived": false
+  }
+}

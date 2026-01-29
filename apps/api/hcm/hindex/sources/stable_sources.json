@@ -1,0 +1,62 @@
+{
+  "$schema": "https://arka.labs/schemas/hindex_sources.v1.json",
+  "version": "1.0.0",
+  "category": "stable",
+  "description": "Indexed sources from stable knowledge (glossaries, referentials, patterns)",
+  "sources": [
+    {
+      "source_id": "src_stable_001",
+      "path": "stable/glossary/core.glossary.json",
+      "type": "json",
+      "indexed_at": "2025-12-10T00:00:00Z",
+      "tags": ["glossary", "core", "definitions"],
+      "sensitivity": "public",
+      "searchable_fields": ["entries[].term", "entries[].definition", "entries[].aliases"]
+    },
+    {
+      "source_id": "src_stable_002",
+      "path": "stable/referentials/mission_types.json",
+      "type": "json",
+      "indexed_at": "2025-12-10T00:00:00Z",
+      "tags": ["referential", "mission", "types"],
+      "sensitivity": "public",
+      "searchable_fields": ["mission_types[].code", "mission_types[].label", "mission_types[].description"]
+    },
+    {
+      "source_id": "src_stable_003",
+      "path": "stable/referentials/status_codes.json",
+      "type": "json",
+      "indexed_at": "2025-12-10T00:00:00Z",
+      "tags": ["referential", "status", "codes"],
+      "sensitivity": "public",
+      "searchable_fields": ["status_codes[].code", "status_codes[].label", "status_codes[].description"]
+    },
+    {
+      "source_id": "src_stable_004",
+      "path": "stable/referentials/evidence_types.json",
+      "type": "json",
+      "indexed_at": "2025-12-10T00:00:00Z",
+      "tags": ["referential", "evidence", "types"],
+      "sensitivity": "public",
+      "searchable_fields": ["evidence_types[].code", "evidence_types[].label", "evidence_types[].description"]
+    },
+    {
+      "source_id": "src_stable_005",
+      "path": "stable/referentials/severity_levels.json",
+      "type": "json",
+      "indexed_at": "2025-12-10T00:00:00Z",
+      "tags": ["referential", "severity", "levels"],
+      "sensitivity": "public",
+      "searchable_fields": ["severity_levels[].code", "severity_levels[].label", "severity_levels[].description"]
+    },
+    {
+      "source_id": "src_stable_006",
+      "path": "stable/referentials/roles_taxonomy.json",
+      "type": "json",
+      "indexed_at": "2025-12-10T00:00:00Z",
+      "tags": ["referential", "roles", "taxonomy"],
+      "sensitivity": "public",
+      "searchable_fields": ["roles[].code", "roles[].label", "roles[].description"]
+    }
+  ]
+}

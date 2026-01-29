@@ -1,0 +1,23 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    environment:
+      PORT: "9096"
+      HCM_ROOT: "/hcm"
+      CORS_ORIGIN: "http://localhost:8080"
+    volumes:
+      - hcm_data:/hcm
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/ui/Dockerfile
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
+
+volumes:
+  hcm_data:

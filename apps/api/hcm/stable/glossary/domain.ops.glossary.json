@@ -1,0 +1,81 @@
+{
+  "$schema": "https://arka.labs/schemas/glossary.v1.json",
+  "glossary_id": "domain.ops",
+  "version": "1.0.0",
+  "category": "operations",
+  "description": "Operations, infrastructure, and DevOps terminology",
+  "entries": [
+    {
+      "term": "incident",
+      "definition": "Unplanned interruption or reduction in quality of an IT service.",
+      "category": "operations",
+      "aliases": ["outage", "service_incident"]
+    },
+    {
+      "term": "sla",
+      "definition": "Service Level Agreement - commitment between service provider and client defining expected service level.",
+      "category": "operations",
+      "aliases": ["service_level_agreement"]
+    },
+    {
+      "term": "slo",
+      "definition": "Service Level Objective - specific measurable target for service level (e.g., 99.9% uptime).",
+      "category": "operations",
+      "aliases": ["service_level_objective"]
+    },
+    {
+      "term": "sli",
+      "definition": "Service Level Indicator - quantitative measure of a service level (e.g., response time, error rate).",
+      "category": "operations",
+      "aliases": ["service_level_indicator"]
+    },
+    {
+      "term": "runbook",
+      "definition": "Documented procedures for routine operations and incident response.",
+      "category": "operations",
+      "aliases": ["playbook", "operations_manual"]
+    },
+    {
+      "term": "postmortem",
+      "definition": "Blameless analysis conducted after an incident to understand what happened and prevent recurrence.",
+      "category": "operations",
+      "aliases": ["incident_review", "retrospective"]
+    },
+    {
+      "term": "observability",
+      "definition": "Measure of how well internal states of a system can be inferred from external outputs (logs, metrics, traces).",
+      "category": "operations",
+      "aliases": ["o11y"]
+    },
+    {
+      "term": "on_call",
+      "definition": "Designated period when an engineer is responsible for responding to production incidents.",
+      "category": "operations",
+      "aliases": ["oncall", "duty"]
+    },
+    {
+      "term": "blue_green_deployment",
+      "definition": "Deployment strategy using two identical environments (blue and green) to reduce downtime and risk.",
+      "category": "operations",
+      "aliases": ["blue_green"]
+    },
+    {
+      "term": "canary_deployment",
+      "definition": "Gradual rollout strategy releasing changes to a small subset of users before full deployment.",
+      "category": "operations",
+      "aliases": ["canary_release"]
+    },
+    {
+      "term": "mttr",
+      "definition": "Mean Time To Recovery - average time to restore service after an incident.",
+      "category": "operations",
+      "aliases": ["mean_time_to_recovery"]
+    },
+    {
+      "term": "mtbf",
+      "definition": "Mean Time Between Failures - average time between system failures.",
+      "category": "operations",
+      "aliases": ["mean_time_between_failures"]
+    }
+  ]
+}

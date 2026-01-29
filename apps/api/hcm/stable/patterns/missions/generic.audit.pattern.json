@@ -1,0 +1,133 @@
+{
+  "$schema": "https://arka.labs/schemas/mission_pattern.v1.json",
+  "pattern_id": "generic.audit",
+  "version": "1.0.0",
+  "pattern_type": "mission",
+  "mission_type": "audit",
+  "title": "Generic Audit Mission Pattern",
+  "description": "Standard pattern for audit missions evaluating systems, processes, or organizations against defined criteria.",
+  "typical_duration_weeks": 3,
+  "phases": [
+    {
+      "phase": "planning",
+      "duration_days": 3,
+      "objectives": [
+        "Define audit scope and criteria",
+        "Identify audit standards/frameworks",
+        "Plan audit approach and schedule",
+        "Prepare audit tools and checklists"
+      ],
+      "deliverables": ["audit_plan", "audit_criteria", "audit_schedule", "audit_checklist"]
+    },
+    {
+      "phase": "fieldwork",
+      "duration_days": 10,
+      "objectives": [
+        "Collect evidence through multiple methods",
+        "Conduct interviews and observations",
+        "Review documentation and records",
+        "Test controls and processes",
+        "Perform gap analysis"
+      ],
+      "deliverables": ["evidence_packs", "interview_records", "test_results", "gap_analysis"]
+    },
+    {
+      "phase": "analysis",
+      "duration_days": 4,
+      "objectives": [
+        "Evaluate findings against criteria",
+        "Rate severity of findings",
+        "Identify root causes",
+        "Develop recommendations"
+      ],
+      "deliverables": ["findings_analysis", "severity_ratings", "root_cause_analysis", "recommendations"]
+    },
+    {
+      "phase": "reporting",
+      "duration_days": 3,
+      "objectives": [
+        "Prepare audit report",
+        "Present findings to management",
+        "Agree on corrective actions",
+        "Plan follow-up"
+      ],
+      "deliverables": ["audit_report", "management_presentation", "action_plan", "follow_up_schedule"]
+    }
+  ],
+  "typical_activities": [
+    "document_review",
+    "policy_compliance_check",
+    "process_walkthrough",
+    "control_testing",
+    "stakeholder_interviews",
+    "evidence_collection",
+    "risk_assessment",
+    "gap_identification",
+    "recommendation_development"
+  ],
+  "typical_roles": ["analyst", "qa", "auditor", "compliance_officer"],
+  "audit_frameworks": [
+    "ISO_27001",
+    "SOC2",
+    "GDPR",
+    "HIPAA",
+    "PCI_DSS",
+    "custom"
+  ],
+  "key_deliverables": {
+    "audit_report": {
+      "description": "Formal audit report with findings and recommendations",
+      "sections": [
+        "executive_summary",
+        "scope_and_methodology",
+        "findings",
+        "recommendations",
+        "action_plan",
+        "conclusion"
+      ]
+    },
+    "findings_register": {
+      "description": "Detailed register of all findings with severity and status",
+      "format": "structured_table"
+    },
+    "evidence_pack": {
+      "description": "Collection of all evidence supporting findings",
+      "format": "organized_repository"
+    }
+  },
+  "finding_severity_levels": {
+    "critical": "Immediate action required, significant risk",
+    "high": "Priority remediation needed, considerable risk",
+    "medium": "Should be addressed, moderate risk",
+    "low": "Can be addressed in normal course, minor risk",
+    "advisory": "Suggested improvement, minimal risk"
+  },
+  "success_criteria": [
+    "Audit completed per scope and schedule",
+    "All findings supported by evidence",
+    "Management accepts findings and commits to actions",
+    "Recommendations are actionable and prioritized",
+    "Follow-up plan agreed"
+  ],
+  "evidence_types_used": [
+    "audit_finding",
+    "document_analysis",
+    "test_result",
+    "interview_synthesis",
+    "observation"
+  ],
+  "typical_risks": [
+    {
+      "risk": "Access restrictions to systems or data",
+      "mitigation": "Secure authorizations early, escalate if blocked"
+    },
+    {
+      "risk": "Findings disputed by auditees",
+      "mitigation": "Strong evidence collection, collaborative approach"
+    },
+    {
+      "risk": "Audit scope too broad",
+      "mitigation": "Clear scope definition, focus on material risks"
+    }
+  ]
+}

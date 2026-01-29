@@ -1,0 +1,343 @@
+{
+  "$schema": "https://arka.labs/schemas/business_services.v1.json",
+  "catalog_id": "arka-services-catalog",
+  "version": "1.0.0",
+  "last_updated": "2024-02-24T10:00:00Z",
+  "organization": "Arka Labs",
+  "description": "Catalogue des services métier proposés par Arka Labs, organisés par domaine d'activité.",
+  "service_domains": [
+    {
+      "domain_id": "consulting",
+      "domain_name": "Consulting & Advisory",
+      "description": "Services de conseil stratégique et opérationnel",
+      "services": [
+        {
+          "service_id": "SRV-CONS-001",
+          "service_name": "Discovery & Diagnostic",
+          "service_type": "consulting",
+          "description": "Mission de découverte pour comprendre contexte, processus, systèmes et identifier opportunités d'amélioration",
+          "value_proposition": "Gain de clarté sur situation actuelle, identification pain points, recommandations priorisées",
+          "typical_duration": "2-4 semaines",
+          "deliverables": [
+            "Rapport de découverte avec findings",
+            "Cartographie processus/systèmes as-is",
+            "Recommandations priorisées",
+            "Roadmap d'amélioration"
+          ],
+          "target_customers": ["Startups", "Scale-ups", "PME en transformation"],
+          "pricing_model": "time_and_materials",
+          "status": "active"
+        },
+        {
+          "service_id": "SRV-CONS-002",
+          "service_name": "Architecture & Design",
+          "service_type": "consulting",
+          "description": "Conception d'architectures techniques et organisationnelles pour projets de transformation",
+          "value_proposition": "Architecture solide, scalable, alignée besoins métier et contraintes techniques",
+          "typical_duration": "3-6 semaines",
+          "deliverables": [
+            "Architecture Decision Records (ADR)",
+            "Diagrammes architecture (C4 model)",
+            "Spécifications techniques",
+            "Plan d'implémentation"
+          ],
+          "target_customers": ["Scale-ups", "Entreprises en croissance"],
+          "pricing_model": "fixed_price",
+          "status": "active"
+        },
+        {
+          "service_id": "SRV-CONS-003",
+          "service_name": "Audit & Compliance",
+          "service_type": "audit",
+          "description": "Audits de conformité (ISO 27001, GDPR, SOC2) et audits techniques (sécurité, performance, qualité code)",
+          "value_proposition": "Identification gaps conformité, réduction risques, préparation audits externes",
+          "typical_duration": "2-4 semaines",
+          "deliverables": [
+            "Rapport d'audit avec findings",
+            "Analyse d'écarts (gap analysis)",
+            "Plan d'action correctif priorisé",
+            "Evidence packs pour audits externes"
+          ],
+          "target_customers": ["Entreprises certifiées ou en cours de certification"],
+          "pricing_model": "time_and_materials",
+          "status": "active"
+        },
+        {
+          "service_id": "SRV-CONS-004",
+          "service_name": "Strategic Roadmapping",
+          "service_type": "consulting",
+          "description": "Définition roadmaps stratégiques produit, technologie ou organisation",
+          "value_proposition": "Vision claire, priorisation alignée stratégie, buy-in stakeholders",
+          "typical_duration": "3-5 semaines",
+          "deliverables": [
+            "Roadmap stratégique multi-horizon",
+            "Business cases des initiatives prioritaires",
+            "Plan d'allocation ressources",
+            "Framework de priorisation"
+          ],
+          "target_customers": ["C-level", "Product leaders", "CTOs"],
+          "pricing_model": "fixed_price",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "domain_id": "implementation",
+      "domain_name": "Implementation & Delivery",
+      "description": "Services d'implémentation technique et de delivery de solutions",
+      "services": [
+        {
+          "service_id": "SRV-IMPL-001",
+          "service_name": "Fullstack Development",
+          "service_type": "implementation",
+          "description": "Développement de features, applications ou modules fullstack (frontend + backend + infra)",
+          "value_proposition": "Delivery rapide de solutions de qualité production, ownership end-to-end",
+          "typical_duration": "4-12 semaines",
+          "deliverables": [
+            "Code production-ready avec tests",
+            "Documentation technique",
+            "CI/CD pipeline configuré",
+            "Handover et formation équipe"
+          ],
+          "target_customers": ["Startups", "Product teams"],
+          "pricing_model": "time_and_materials",
+          "tech_stack": ["React", "Node.js", "Python", "PostgreSQL", "AWS"],
+          "status": "active"
+        },
+        {
+          "service_id": "SRV-IMPL-002",
+          "service_name": "Backend & API Development",
+          "service_type": "implementation",
+          "description": "Développement backend, APIs REST/GraphQL, microservices",
+          "value_proposition": "APIs robustes, performantes, documentées, respectant best practices",
+          "typical_duration": "3-10 semaines",
+          "deliverables": [
+            "API endpoints avec documentation OpenAPI",
+            "Tests automatisés (unit + integration)",
+            "Monitoring et observabilité",
+            "Runbooks opérationnels"
+          ],
+          "target_customers": ["Product teams", "Platform teams"],
+          "pricing_model": "time_and_materials",
+          "tech_stack": ["FastAPI", "Node.js", "PostgreSQL", "Redis", "Docker"],
+          "status": "active"
+        },
+        {
+          "service_id": "SRV-IMPL-003",
+          "service_name": "Data Engineering",
+          "service_type": "implementation",
+          "description": "Pipelines de données, ETL/ELT, data warehousing, analytics engineering",
+          "value_proposition": "Données fiables, accessibles, actionables pour la décision",
+          "typical_duration": "6-16 semaines",
+          "deliverables": [
+            "Pipelines de données orchestrés",
+            "Data warehouse / lakehouse configuré",
+            "Dashboards et rapports analytics",
+            "Documentation data lineage"
+          ],
+          "target_customers": ["Data teams", "Analytics teams"],
+          "pricing_model": "time_and_materials",
+          "tech_stack": ["dbt", "Airflow", "PostgreSQL", "BigQuery", "Metabase"],
+          "status": "active"
+        },
+        {
+          "service_id": "SRV-IMPL-004",
+          "service_name": "AI/ML Integration",
+          "service_type": "implementation",
+          "description": "Intégration de solutions IA/ML dans produits existants (LLMs, RAG, agents autonomes)",
+          "value_proposition": "Augmentation produit avec capabilities IA de pointe, time-to-market rapide",
+          "typical_duration": "4-12 semaines",
+          "deliverables": [
+            "Solution IA intégrée et déployée",
+            "Prompt engineering et fine-tuning",
+            "Évaluation et monitoring qualité",
+            "Gouvernance et AI safety guardrails"
+          ],
+          "target_customers": ["Product teams innovants"],
+          "pricing_model": "time_and_materials",
+          "tech_stack": ["OpenAI API", "Anthropic Claude", "LangChain", "Vector DBs"],
+          "status": "active"
+        },
+        {
+          "service_id": "SRV-IMPL-005",
+          "service_name": "DevOps & Infrastructure",
+          "service_type": "implementation",
+          "description": "Setup infrastructure cloud, CI/CD, monitoring, sécurité",
+          "value_proposition": "Infrastructure robuste, automatisée, sécurisée, scalable",
+          "typical_duration": "3-8 semaines",
+          "deliverables": [
+            "Infrastructure as Code (Terraform)",
+            "CI/CD pipelines (GitHub Actions)",
+            "Monitoring et alerting (Prometheus/Grafana)",
+            "Security hardening et compliance"
+          ],
+          "target_customers": ["Startups", "Scale-ups sans équipe DevOps"],
+          "pricing_model": "fixed_price",
+          "tech_stack": ["AWS", "Terraform", "Docker", "Kubernetes", "GitHub Actions"],
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "domain_id": "products",
+      "domain_name": "Products & Platforms",
+      "description": "Produits et plateformes développés et opérés par Arka Labs",
+      "services": [
+        {
+          "service_id": "SRV-PROD-001",
+          "service_name": "Arka OS",
+          "service_type": "platform",
+          "description": "Operating system organisationnel pour la collaboration humain-IA via contracts et packs immuables",
+          "value_proposition": "Structuration travail humain-IA, traçabilité complète, gouvernance claire",
+          "typical_duration": "ongoing",
+          "deliverables": [
+            "Plateforme Arka OS opérationnelle",
+            "APIs et SDKs",
+            "Documentation et formation",
+            "Support et évolutions"
+          ],
+          "target_customers": ["Organisations adoptant IA à grande échelle"],
+          "pricing_model": "subscription",
+          "status": "beta",
+          "roadmap": ["GA Q3 2024", "Enterprise features Q4 2024"]
+        },
+        {
+          "service_id": "SRV-PROD-002",
+          "service_name": "Arka HCM (Hybrid Collective Memory)",
+          "service_type": "platform",
+          "description": "Système de mémoire collective hybride pour équipes humain-IA avec RAG gouverné et retrieval déterministe",
+          "value_proposition": "Mémoire organisationnelle structurée, retrieval précis et gouverné, continuité des missions",
+          "typical_duration": "ongoing",
+          "deliverables": [
+            "Service HCM avec APIs",
+            "Patterns et templates",
+            "Intégration Arka OS",
+            "Documentation complète"
+          ],
+          "target_customers": ["Équipes de consulting", "Product teams", "Research teams"],
+          "pricing_model": "subscription",
+          "status": "development",
+          "roadmap": ["MVP Q2 2024", "Beta Q3 2024", "GA Q4 2024"]
+        }
+      ]
+    },
+    {
+      "domain_id": "training",
+      "domain_name": "Training & Enablement",
+      "description": "Services de formation et d'enablement des équipes",
+      "services": [
+        {
+          "service_id": "SRV-TRAIN-001",
+          "service_name": "AI-First Transformation",
+          "service_type": "training",
+          "description": "Programme de formation pour transformer équipes en AI-first teams (mindset, outils, pratiques)",
+          "value_proposition": "Équipes autonomes et efficaces avec l'IA, multiplication productivité, culture innovation",
+          "typical_duration": "6-8 semaines",
+          "deliverables": [
+            "Workshop series (8-10 sessions)",
+            "Hands-on labs et exercices pratiques",
+            "Playbooks et documentation",
+            "Coaching post-formation (3 mois)"
+          ],
+          "target_customers": ["Product teams", "Engineering teams", "Leadership teams"],
+          "pricing_model": "fixed_price",
+          "status": "active"
+        },
+        {
+          "service_id": "SRV-TRAIN-002",
+          "service_name": "Technical Upskilling",
+          "service_type": "training",
+          "description": "Formations techniques sur mesure (Python, API design, Cloud architecture, etc.)",
+          "value_proposition": "Montée en compétence rapide et pratique, adaptée contexte entreprise",
+          "typical_duration": "2-6 semaines",
+          "deliverables": [
+            "Programme de formation personnalisé",
+            "Labs hands-on sur cas réels",
+            "Certification interne si applicable",
+            "Matériel pédagogique réutilisable"
+          ],
+          "target_customers": ["Development teams", "Data teams"],
+          "pricing_model": "time_and_materials",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "domain_id": "support",
+      "domain_name": "Support & Maintenance",
+      "description": "Services de support et maintenance continus",
+      "services": [
+        {
+          "service_id": "SRV-SUPP-001",
+          "service_name": "Retained Support",
+          "service_type": "support",
+          "description": "Support technique continu avec SLA (bug fixes, maintenance, évolutions mineures)",
+          "value_proposition": "Tranquillité d'esprit, continuité opérationnelle, évolutions continues",
+          "typical_duration": "ongoing (contrat 6-12 mois)",
+          "deliverables": [
+            "Support selon SLA défini",
+            "Maintenance préventive",
+            "Monitoring proactif",
+            "Reporting mensuel"
+          ],
+          "target_customers": ["Clients post-delivery"],
+          "pricing_model": "retainer",
+          "sla_tiers": ["Standard (48h)", "Priority (24h)", "Critical (4h)"],
+          "status": "active"
+        },
+        {
+          "service_id": "SRV-SUPP-002",
+          "service_name": "Advisory Retainer",
+          "service_type": "consulting",
+          "description": "Conseil stratégique continu (architecture, product, tech) sous forme de retainer mensuel",
+          "value_proposition": "Accès à expertise senior on-demand, décisions éclairées, évitement pièges",
+          "typical_duration": "ongoing (contrat 6-12 mois)",
+          "deliverables": [
+            "X heures conseil/mois",
+            "Reviews architecture/code",
+            "Participation décisions stratégiques",
+            "Async support via Slack"
+          ],
+          "target_customers": ["CTOs", "VPs Engineering", "Product leaders"],
+          "pricing_model": "retainer",
+          "status": "active"
+        }
+      ]
+    }
+  ],
+  "service_metrics": {
+    "total_services": 16,
+    "by_type": {
+      "consulting": 5,
+      "implementation": 5,
+      "platform": 2,
+      "training": 2,
+      "support": 2
+    },
+    "by_status": {
+      "active": 14,
+      "beta": 1,
+      "development": 1
+    }
+  },
+  "pricing_models_glossary": {
+    "time_and_materials": "Facturation au temps passé (hourly ou daily rate)",
+    "fixed_price": "Prix fixe défini à l'avance pour scope défini",
+    "subscription": "Abonnement mensuel ou annuel récurrent",
+    "retainer": "Montant mensuel fixe pour volume d'heures ou services défini"
+  },
+  "cross_selling_recommendations": {
+    "discovery_then_implementation": "Clients Discovery → Implementation projects (80% conversion)",
+    "implementation_then_support": "Clients Implementation → Retained Support (60% conversion)",
+    "consulting_then_training": "Clients Consulting → Training programs (40% conversion)",
+    "arka_os_platform": "All service clients → Arka OS adoption potential"
+  },
+  "metadata": {
+    "owner": "Product Management",
+    "maintained_by": "Product Team",
+    "review_frequency": "quarterly",
+    "last_review_date": "2024-02-01",
+    "next_review_date": "2024-05-01",
+    "tags": ["services", "catalog", "business", "offering"]
+  }
+}

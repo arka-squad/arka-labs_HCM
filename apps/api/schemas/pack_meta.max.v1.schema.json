@@ -1,0 +1,349 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arka-os/specs/schemas/pack_meta.max.v1.schema.json",
+  "title": "ARKA_OS pack_meta maximal (v1)",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "pack_id",
+    "pack_type",
+    "schema_version",
+    "mission_id",
+    "contract_ref",
+    "created_at",
+    "created_by",
+    "status",
+    "storage_ref",
+    "integrity"
+  ],
+  "properties": {
+    "pack_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pack_type": {
+      "type": "string",
+      "enum": [
+        "MISSION_CONTRACT",
+        "MISSION_CONTEXT",
+        "MISSION_PROGRESS",
+        "MISSION_SUMMARY",
+        "TASK_CONTEXT",
+        "TASK_INPUT",
+        "TASK_OUTPUT",
+        "TASK_REWORK",
+        "GUARDIAN_PRECHECK",
+        "GUARDIAN_POSTCHECK",
+        "CERTIFICATION",
+        "SIGNATURE",
+        "INCIDENT_RISK",
+        "AUDIT_TRAIL",
+        "KERNEL_RECIPE",
+        "POLICY_SET",
+        "CAPABILITIES"
+      ]
+    },
+    "schema_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mission_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contract_ref": {
+      "type": "object",
+      "required": [
+        "contract_id",
+        "contract_version"
+      ],
+      "properties": {
+        "contract_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contract_version": {
+          "oneOf": [
+            { "type": "integer", "minimum": 1 },
+            { "type": "string", "minLength": 1 }
+          ]
+        },
+        "contract_hash": {
+          "oneOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "null" }
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "created_by": {
+      "type": "object",
+      "required": [
+        "actor_type",
+        "actor_id"
+      ],
+      "properties": {
+        "actor_type": {
+          "type": "string",
+          "enum": [
+            "HUMAN",
+            "KERNEL",
+            "GUARDIAN",
+            "HCM",
+            "AGP",
+            "PO",
+            "ORCHESTRATOR",
+            "EXTERNAL",
+            "CONTRACTGEN"
+          ]
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "STORED",
+        "CERTIFIED",
+        "REJECTED",
+        "SUPERSEDED"
+      ]
+    },
+    "storage_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "integrity": {
+      "type": "object",
+      "required": [
+        "hash_algo",
+        "hash"
+      ],
+      "properties": {
+        "hash_algo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hash": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "task_ref": {
+      "type": "object",
+      "required": [
+        "task_id",
+        "intent",
+        "lane"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "intent": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lane": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "target_ref": {
+      "type": "object",
+      "required": [
+        "target_type",
+        "target_id",
+        "target_hash"
+      ],
+      "properties": {
+        "target_type": {
+          "type": "string",
+          "enum": [
+            "PACK",
+            "CONTRACT_VERSION",
+            "EVIDENCE",
+            "OTHER"
+          ]
+        },
+        "target_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_hash": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "supersedes": {
+      "type": "object",
+      "required": [
+        "supersedes_pack_id",
+        "supersedes_pack_hash"
+      ],
+      "properties": {
+        "supersedes_pack_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supersedes_pack_hash": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "classification": {
+      "type": "string",
+      "enum": [
+        "PUBLIC",
+        "INTERNAL",
+        "RESTRICTED",
+        "HIGHLY_RESTRICTED"
+      ]
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "signature_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "external_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "parent_pack_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "related_pack_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "trace_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "policy_set_id": {
+      "type": "string"
+    },
+    "requires_certification": {
+      "type": "boolean"
+    },
+    "certification_summary": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "PENDING",
+        "OK",
+        "WARN",
+        "BLOCK"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "pack_type": {
+            "enum": [
+              "TASK_CONTEXT",
+              "TASK_INPUT",
+              "TASK_OUTPUT",
+              "TASK_REWORK",
+              "GUARDIAN_PRECHECK",
+              "GUARDIAN_POSTCHECK"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "task_ref"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "pack_type": {
+            "enum": [
+              "CERTIFICATION",
+              "SIGNATURE"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "target_ref"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "SUPERSEDED"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "supersedes"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "pack_type": {
+            "const": "TASK_REWORK"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "supersedes"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "$schema": "https://arka.labs/schemas/procedure.v1.json",
+  "procedure_id": "incident_response",
+  "version": "1.0.0",
+  "category": "operations",
+  "title": "Incident Response Procedure",
+  "description": "Standard operating procedure for handling production incidents from detection to resolution and postmortem.",
+  "owner": "ops_team",
+  "last_updated": "2025-12-10T00:00:00Z",
+  "steps": [
+    {
+      "step_number": 1,
+      "name": "Detection & Alert",
+      "description": "Incident is detected via monitoring, alerts, or user reports",
+      "actions": [
+        "Acknowledge alert in monitoring system",
+        "Verify incident is real (not false positive)",
+        "Assign severity level based on impact"
+      ],
+      "roles_involved": ["on_call_engineer"],
+      "estimated_duration_minutes": 5
+    },
+    {
+      "step_number": 2,
+      "name": "Initial Assessment",
+      "description": "Quick assessment of scope and impact",
+      "actions": [
+        "Check affected services and users",
+        "Review recent deployments or changes",
+        "Estimate impact (users affected, revenue impact)",
+        "Determine if escalation is needed"
+      ],
+      "roles_involved": ["on_call_engineer", "sre"],
+      "estimated_duration_minutes": 10
+    },
+    {
+      "step_number": 3,
+      "name": "Communication",
+      "description": "Notify stakeholders and open communication channels",
+      "actions": [
+        "Create incident ticket/war room",
+        "Notify relevant teams (dev, product, support)",
+        "Post status update for stakeholders",
+        "If P0/P1: notify leadership"
+      ],
+      "roles_involved": ["incident_commander", "on_call_engineer"],
+      "estimated_duration_minutes": 5
+    },
+    {
+      "step_number": 4,
+      "name": "Investigation",
+      "description": "Root cause analysis and diagnosis",
+      "actions": [
+        "Review logs, metrics, traces",
+        "Reproduce issue if possible",
+        "Form hypothesis about root cause",
+        "Document findings in incident ticket"
+      ],
+      "roles_involved": ["on_call_engineer", "developer", "sre"],
+      "estimated_duration_minutes": 30
+    },
+    {
+      "step_number": 5,
+      "name": "Mitigation",
+      "description": "Apply fix or workaround to restore service",
+      "actions": [
+        "Deploy hotfix if available",
+        "Apply workaround (rollback, feature flag, traffic routing)",
+        "Verify mitigation restored service",
+        "Monitor for side effects"
+      ],
+      "roles_involved": ["on_call_engineer", "developer"],
+      "estimated_duration_minutes": 45
+    },
+    {
+      "step_number": 6,
+      "name": "Verification",
+      "description": "Confirm resolution and stability",
+      "actions": [
+        "Verify all metrics returned to normal",
+        "Check no new errors or alerts",
+        "Confirm with affected users if possible",
+        "Monitor for 15-30 minutes"
+      ],
+      "roles_involved": ["on_call_engineer", "sre"],
+      "estimated_duration_minutes": 30
+    },
+    {
+      "step_number": 7,
+      "name": "Communication Close",
+      "description": "Notify stakeholders of resolution",
+      "actions": [
+        "Post resolution message",
+        "Close incident ticket",
+        "Thank contributors"
+      ],
+      "roles_involved": ["incident_commander"],
+      "estimated_duration_minutes": 5
+    },
+    {
+      "step_number": 8,
+      "name": "Postmortem",
+      "description": "Blameless analysis and action items",
+      "actions": [
+        "Schedule postmortem meeting within 48h",
+        "Document timeline, root cause, impact",
+        "Identify action items to prevent recurrence",
+        "Share learnings with team"
+      ],
+      "roles_involved": ["incident_commander", "all_involved_parties"],
+      "estimated_duration_minutes": 90
+    }
+  ],
+  "escalation_criteria": {
+    "p0": "Critical system down, major revenue impact, > 50% users affected",
+    "p1": "Major feature broken, significant user impact, > 20% users affected",
+    "p2": "Minor feature broken, moderate impact, < 20% users affected",
+    "p3": "Cosmetic issue, minimal impact"
+  },
+  "tools_required": [
+    "monitoring_dashboard",
+    "incident_management_system",
+    "communication_platform",
+    "logging_system"
+  ],
+  "success_criteria": [
+    "Service restored to normal operation",
+    "Root cause identified",
+    "Postmortem completed with action items"
+  ]
+}

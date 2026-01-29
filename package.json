@@ -1,0 +1,27 @@
+{
+  "name": "@arkalabs/hcm-oss-pack",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Arka-Labs HCM open-source pack (docs + local UI).",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arka-labs/HCM-arkalabs.app.git"
+  },
+  "homepage": "https://github.com/arka-labs/HCM-arkalabs.app#readme",
+  "engines": {
+    "node": ">=20"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev -w @arkalabs/hcm-service",
+    "dev:ui": "npm run dev -w @arkalabs/hcm-ui",
+    "build:api": "npm run build -w @arkalabs/hcm-service",
+    "build:ui": "npm run build -w @arkalabs/hcm-ui",
+    "lint:api": "npm run lint -w @arkalabs/hcm-service",
+    "lint:ui": "npm run lint -w @arkalabs/hcm-ui"
+  }
+}

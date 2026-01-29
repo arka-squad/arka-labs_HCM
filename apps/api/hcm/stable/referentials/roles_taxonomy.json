@@ -1,0 +1,64 @@
+{
+  "$schema": "https://arka.labs/schemas/referential.v1.json",
+  "referential_id": "roles_taxonomy",
+  "version": "1.0.0",
+  "description": "Standard roles for agents and humans in Arka missions",
+  "roles": [
+    {
+      "code": "pmo",
+      "label": "PMO (Project Management Office)",
+      "type": "agent",
+      "description": "Coordinates mission planning, tracking, and governance.",
+      "capabilities": ["planning", "risk_management", "reporting", "governance"]
+    },
+    {
+      "code": "analyst",
+      "label": "Analyst",
+      "type": "agent",
+      "description": "Performs analysis, synthesis, and evidence collection.",
+      "capabilities": ["analysis", "synthesis", "evidence_building", "research"]
+    },
+    {
+      "code": "architect",
+      "label": "Architect",
+      "type": "agent",
+      "description": "Designs solutions, systems, and transformation roadmaps.",
+      "capabilities": ["design", "architecture", "modeling", "strategy"]
+    },
+    {
+      "code": "developer",
+      "label": "Developer",
+      "type": "agent",
+      "description": "Implements technical solutions and code artifacts.",
+      "capabilities": ["coding", "testing", "debugging", "deployment"]
+    },
+    {
+      "code": "qa",
+      "label": "QA (Quality Assurance)",
+      "type": "agent",
+      "description": "Validates quality, runs tests, ensures compliance.",
+      "capabilities": ["testing", "validation", "compliance_check", "audit"]
+    },
+    {
+      "code": "sponsor",
+      "label": "Executive Sponsor",
+      "type": "human",
+      "description": "Provides strategic direction and funding.",
+      "capabilities": ["decision_making", "funding", "strategic_alignment"]
+    },
+    {
+      "code": "product_manager",
+      "label": "Product Manager",
+      "type": "human",
+      "description": "Defines product vision and priorities.",
+      "capabilities": ["product_strategy", "roadmap", "stakeholder_management"]
+    },
+    {
+      "code": "tech_lead",
+      "label": "Technical Lead",
+      "type": "human",
+      "description": "Provides technical leadership and expertise.",
+      "capabilities": ["technical_guidance", "code_review", "architecture"]
+    }
+  ]
+}

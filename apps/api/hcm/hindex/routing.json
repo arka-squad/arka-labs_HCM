@@ -1,0 +1,49 @@
+{
+  "$schema": "https://arka.labs/schemas/hindex_routing.v1.json",
+  "version": "1.0.0",
+  "description": "Routing rules to determine which search engine to use for each classification class",
+  "routing": {
+    "mission_history": "deterministic",
+    "decisions": "deterministic",
+    "evidence": "deterministic",
+    "core_reference": "deterministic",
+    "patterns": "deterministic",
+    "team": "deterministic",
+    "domain_knowledge": "hybrid_vector"
+  },
+  "engines": {
+    "deterministic": {
+      "description": "Pure filesystem-based search with exact matching and filtering",
+      "implementation": "fs_search",
+      "config": {
+        "case_sensitive": false,
+        "match_mode": "contains",
+        "return_full_documents": true
+      }
+    },
+    "hybrid_vector": {
+      "description": "Deterministic pre-filtering followed by optional vector search",
+      "implementation": "fs_search_then_vector",
+      "config": {
+        "pre_filter_fs": true,
+        "vector_enabled": false,
+        "vector_provider": null,
+        "embedding_model": null,
+        "similarity_threshold": 0.7
+      }
+    },
+    "vector": {
+      "description": "Pure vector-based semantic search (not used in v1)",
+      "implementation": "vector_only",
+      "config": {
+        "enabled": false
+      }
+    }
+  },
+  "fallback": "deterministic",
+  "performance": {
+    "max_search_time_ms": 5000,
+    "cache_results": true,
+    "cache_ttl_seconds": 300
+  }
+}

@@ -1,0 +1,750 @@
+{
+  "$schema": "https://arka.labs/schemas/mission.v1.json",
+  "mission_id": "MISS-2024-AUD-002",
+  "mission_type": "audit",
+  "status": "done",
+  "title": "Audit - Conformité ISO 27001 Contrôles d'Accès",
+  "description": "Audit de conformité des contrôles d'accès aux systèmes d'information par rapport aux exigences ISO 27001:2013 Annexe A.9.",
+  "context": {
+    "trigger": "Audit annuel obligatoire pour maintien certification ISO 27001",
+    "sponsor": "CISO - Laurent Dumont",
+    "business_unit": "Information Security",
+    "urgency": "high",
+    "regulatory_framework": "ISO 27001:2013",
+    "audit_scope_reference": "Annexe A.9 - Access Control",
+    "expected_outcomes": [
+      "Évaluation conformité contrôles d'accès",
+      "Identification des écarts et non-conformités",
+      "Plan d'action correctif priorisé",
+      "Evidence pack pour audit externe"
+    ]
+  },
+  "scope": {
+    "in_scope": [
+      "Contrôles ISO 27001 A.9.1 (Business requirements for access control)",
+      "Contrôles ISO 27001 A.9.2 (User access management)",
+      "Contrôles ISO 27001 A.9.3 (User responsibilities)",
+      "Contrôles ISO 27001 A.9.4 (System and application access control)",
+      "Systèmes: Active Directory, AWS IAM, GitHub, Production servers",
+      "Périmètre: Tous les employés et contractors (142 users)"
+    ],
+    "out_of_scope": [
+      "Autres annexes ISO 27001 (A.10, A.11, etc.)",
+      "Systèmes legacy en cours de décommissioning",
+      "Environnements de développement individuels"
+    ],
+    "audit_period": "Activité des 12 derniers mois (2023-02 à 2024-01)"
+  },
+  "timeline": {
+    "start_date": "2024-02-05",
+    "end_date": "2024-02-23",
+    "duration_days": 15,
+    "phases_executed": [
+      {
+        "phase": "planning",
+        "start": "2024-02-05",
+        "end": "2024-02-07",
+        "status": "completed",
+        "deliverables_produced": [
+          "AUD-002-PLAN - Audit Plan",
+          "AUD-002-CRITERIA - Audit Criteria Checklist (24 controls)",
+          "AUD-002-SCHEDULE - Audit Schedule",
+          "AUD-002-SAMPLING - Sampling Methodology"
+        ]
+      },
+      {
+        "phase": "fieldwork",
+        "start": "2024-02-08",
+        "end": "2024-02-16",
+        "status": "completed",
+        "deliverables_produced": [
+          "AUD-002-EV-001 to EV-047 - Evidence items (47 total)",
+          "AUD-002-INT-001 to INT-008 - Interview records",
+          "AUD-002-TEST-001 to TEST-012 - Control testing results",
+          "AUD-002-GAP - Gap Analysis vs ISO 27001"
+        ],
+        "notes": "Tested 24 controls, collected 47 evidence items through inspection, interviews, observation, and reperformance. Sampled 30 user accounts for access review testing."
+      },
+      {
+        "phase": "analysis",
+        "start": "2024-02-17",
+        "end": "2024-02-19",
+        "status": "completed",
+        "deliverables_produced": [
+          "AUD-002-FINDINGS - Findings Register (9 findings)",
+          "AUD-002-SEVERITY - Severity Ratings",
+          "AUD-002-RCA - Root Cause Analysis",
+          "AUD-002-REC - Recommendations (12 items)"
+        ],
+        "notes": "Identified 9 findings: 1 critical, 3 high, 4 medium, 1 low"
+      },
+      {
+        "phase": "reporting",
+        "start": "2024-02-20",
+        "end": "2024-02-23",
+        "status": "completed",
+        "deliverables_produced": [
+          "AUD-002-REPORT - Final Audit Report",
+          "AUD-002-PRES - Management Presentation",
+          "AUD-002-ACTION - Corrective Action Plan",
+          "AUD-002-FOLLOWUP - Follow-up Schedule"
+        ],
+        "notes": "Report presented to CISO and IT Director on 2024-02-22. All findings accepted, action plan agreed with target completion in 90 days."
+      }
+    ]
+  },
+  "team": {
+    "lead": {
+      "role": "auditor",
+      "name": "Claire Fontaine",
+      "certification": "ISO 27001 Lead Auditor",
+      "agent_id": null
+    },
+    "members": [
+      {
+        "role": "analyst",
+        "name": "Marc Leblanc",
+        "contribution": "Technical controls testing and evidence collection"
+      },
+      {
+        "role": "qa",
+        "name": "Stéphanie Roy",
+        "contribution": "Documentation review and quality assurance"
+      }
+    ],
+    "auditees": [
+      {
+        "name": "Laurent Dumont",
+        "role": "CISO",
+        "department": "Security"
+      },
+      {
+        "name": "Olivier Roux",
+        "role": "IT Director",
+        "department": "IT"
+      },
+      {
+        "name": "Mathieu Girard",
+        "role": "IAM Manager",
+        "department": "IT Security"
+      },
+      {
+        "name": "Sophie Renard",
+        "role": "System Administrator",
+        "department": "IT Operations"
+      },
+      {
+        "name": "David Perrin",
+        "role": "DevOps Lead",
+        "department": "Engineering"
+      },
+      {
+        "name": "Caroline Mercier",
+        "role": "HR Manager",
+        "department": "HR"
+      },
+      {
+        "name": "Nicolas Faure",
+        "role": "Security Engineer",
+        "department": "IT Security"
+      },
+      {
+        "name": "Amélie Dupuis",
+        "role": "Compliance Officer",
+        "department": "Legal & Compliance"
+      }
+    ]
+  },
+  "findings": [
+    {
+      "finding_id": "F-001",
+      "severity": "critical",
+      "control_reference": "ISO 27001:2013 A.9.2.1 - User registration and de-registration",
+      "title": "Comptes utilisateurs orphelins non désactivés après départ",
+      "finding_statement": {
+        "observed": "7 comptes Active Directory actifs appartenant à des employés ayant quitté l'entreprise il y a 3-8 mois",
+        "required": "ISO 27001 A.9.2.1 exige que les droits d'accès soient retirés immédiatement lors du départ d'un employé",
+        "deviation": "Processus de dé-provisioning manuel non systématique, absence de contrôle automatique entre HR system et AD"
+      },
+      "evidence_pack_id": "EP-AUD-002-F001",
+      "impact": {
+        "operational": "Risque d'accès non autorisé aux systèmes par anciens employés",
+        "compliance": "Non-conformité majeure ISO 27001",
+        "security": "Risque CRITICAL - comptes avec accès VPN et email actifs",
+        "financial": "Potentiel incident sécurité avec impact réglementaire (GDPR)"
+      },
+      "root_cause": {
+        "immediate": "Processus manuel de notification HR → IT non fiable",
+        "contributing_factors": [
+          "Absence d'intégration HR system ↔ Active Directory",
+          "Checklist offboarding non complète dans 30% des cas",
+          "Pas de revue périodique des comptes actifs"
+        ],
+        "root_cause": "Absence d'automatisation et de contrôle de second niveau sur le processus d'offboarding"
+      },
+      "recommendations": [
+        {
+          "rec_id": "F-001-R1",
+          "priority": "critical",
+          "description": "Désactiver immédiatement les 7 comptes identifiés",
+          "responsible": "IT Operations",
+          "due_date": "2024-02-26",
+          "estimated_effort": "2 heures"
+        },
+        {
+          "rec_id": "F-001-R2",
+          "priority": "critical",
+          "description": "Implémenter automatisation HR system → AD pour dé-provisioning",
+          "responsible": "IAM Manager + HR",
+          "due_date": "2024-04-30",
+          "estimated_effort": "4 semaines développement"
+        },
+        {
+          "rec_id": "F-001-R3",
+          "priority": "high",
+          "description": "Mettre en place revue mensuelle automatique des comptes orphelins",
+          "responsible": "IAM Manager",
+          "due_date": "2024-03-31",
+          "estimated_effort": "1 semaine script + process"
+        }
+      ],
+      "management_response": {
+        "status": "accept",
+        "comment": "Non-conformité reconnue. Actions correctives F-001-R1 et R3 engagées immédiatement. F-001-R2 nécessite budget IT Q2, validation CFO en cours.",
+        "action_plan": "Désactivation immédiate des comptes, script de détection déployé d'ici 15/03, projet automatisation priorisé Q2 2024",
+        "responsible_person": "Mathieu Girard (IAM Manager)",
+        "target_completion": "2024-04-30"
+      }
+    },
+    {
+      "finding_id": "F-002",
+      "severity": "high",
+      "control_reference": "ISO 27001:2013 A.9.2.5 - Review of user access rights",
+      "title": "Absence de revue périodique des droits d'accès",
+      "finding_statement": {
+        "observed": "Aucune revue formelle des droits d'accès effectuée en 2023. Dernière revue documentée: octobre 2022.",
+        "required": "ISO 27001 A.9.2.5 exige des revues régulières des droits d'accès, best practice = au moins annuelle",
+        "deviation": "Processus de revue non implémenté, absence de calendrier et de responsable désigné"
+      },
+      "evidence_pack_id": "EP-AUD-002-F002",
+      "impact": {
+        "operational": "Accumulation de droits non nécessaires (privilege creep)",
+        "compliance": "Non-conformité ISO 27001",
+        "security": "Risque HIGH - violation principe du moindre privilège",
+        "financial": "Coûts licences inutiles (estimé 15 licences AWS admin non utilisées)"
+      },
+      "root_cause": {
+        "immediate": "Pas de processus défini ni de responsable",
+        "contributing_factors": [
+          "IAM Manager position vacante 6 mois en 2023",
+          "Pas d'outil automatique de revue d'accès",
+          "Managers métiers non sensibilisés à cette responsabilité"
+        ],
+        "root_cause": "Gouvernance IAM insuffisante, absence de politique formelle de revue"
+      },
+      "recommendations": [
+        {
+          "rec_id": "F-002-R1",
+          "priority": "high",
+          "description": "Définir et publier politique de revue d'accès (fréquence, processus, responsabilités)",
+          "responsible": "CISO + IAM Manager",
+          "due_date": "2024-03-15",
+          "estimated_effort": "1 semaine"
+        },
+        {
+          "rec_id": "F-002-R2",
+          "priority": "high",
+          "description": "Effectuer revue d'accès complète immédiate (tous systèmes)",
+          "responsible": "IAM Manager + Managers",
+          "due_date": "2024-04-30",
+          "estimated_effort": "20 heures managers + 40 heures IAM"
+        },
+        {
+          "rec_id": "F-002-R3",
+          "priority": "medium",
+          "description": "Évaluer outil automatisé de gestion revues d'accès (IGA tool)",
+          "responsible": "IAM Manager",
+          "due_date": "2024-06-30",
+          "estimated_effort": "2 semaines évaluation + budget"
+        }
+      ],
+      "management_response": {
+        "status": "accept",
+        "comment": "Reconnu. Processus sera formalisé et première revue lancée en mars 2024.",
+        "action_plan": "Politique publiée 15/03, revue Q1 2024 complétée 30/04, évaluation outil IGA en Q2",
+        "responsible_person": "Mathieu Girard (IAM Manager)",
+        "target_completion": "2024-04-30"
+      }
+    },
+    {
+      "finding_id": "F-003",
+      "severity": "high",
+      "control_reference": "ISO 27001:2013 A.9.4.2 - Secure log-on procedures",
+      "title": "MFA non activée pour 23% des utilisateurs à privilèges",
+      "finding_statement": {
+        "observed": "Sur 30 comptes testés avec accès admin/privilégié, 7 (23%) n'ont pas MFA activée",
+        "required": "ISO 27001 A.9.4.2 exige authentification forte pour accès privilégiés. Politique interne impose MFA pour tous les admins.",
+        "deviation": "Application incomplète de la politique MFA, certains admins exemptés sans justification formelle"
+      },
+      "evidence_pack_id": "EP-AUD-002-F003",
+      "impact": {
+        "operational": "Risque de compromission de comptes privilégiés",
+        "compliance": "Non-application de la politique interne",
+        "security": "Risque HIGH - phishing ou credential stuffing sur comptes admin",
+        "financial": "Potentiel incident avec accès privilégié compromis"
+      },
+      "root_cause": {
+        "immediate": "Exemptions accordées pour 'raisons pratiques' non documentées",
+        "contributing_factors": [
+          "Résistance de certains admins systèmes",
+          "MFA considérée 'trop contraignante' pour opérations urgentes",
+          "Absence de monitoring du déploiement MFA"
+        ],
+        "root_cause": "Politique MFA non enforced techniquement, application basée sur volontariat"
+      },
+      "recommendations": [
+        {
+          "rec_id": "F-003-R1",
+          "priority": "critical",
+          "description": "Activer MFA pour les 7 comptes admin identifiés sans délai",
+          "responsible": "IT Operations",
+          "due_date": "2024-02-28",
+          "estimated_effort": "2 heures"
+        },
+        {
+          "rec_id": "F-003-R2",
+          "priority": "high",
+          "description": "Enforcer MFA au niveau technique (Conditional Access Policy) pour tous les rôles privilégiés",
+          "responsible": "IAM Manager",
+          "due_date": "2024-03-31",
+          "estimated_effort": "1 semaine configuration + tests"
+        },
+        {
+          "rec_id":="F-003-R3",
+          "priority": "medium",
+          "description": "Dashboard monitoring conformité MFA temps réel",
+          "responsible": "Security Engineer",
+          "due_date": "2024-04-30",
+          "estimated_effort": "2 semaines"
+        }
+      ],
+      "management_response": {
+        "status": "accept",
+        "comment": "Accepté. MFA sera enforced techniquement, aucune exemption sans approbation CISO formelle.",
+        "action_plan": "Activation immédiate 7 comptes, enforcement technique déployé 31/03, monitoring en place 30/04",
+        "responsible_person": "Mathieu Girard (IAM Manager)",
+        "target_completion": "2024-03-31"
+      }
+    },
+    {
+      "finding_id": "F-004",
+      "severity": "high",
+      "control_reference": "ISO 27001:2013 A.9.2.3 - Management of privileged access rights",
+      "title": "12 comptes admin partagés sans traçabilité individuelle",
+      "finding_statement": {
+        "observed": "12 comptes admin partagés identifiés (ex: admin_prod, dbadmin_shared) utilisés par 3-5 personnes chacun",
+        "required": "ISO 27001 A.9.2.3 exige que les accès privilégiés soient individuels et traçables",
+        "deviation": "Utilisation de comptes partagés empêche toute traçabilité des actions et accountability"
+      },
+      "evidence_pack_id": "EP-AUD-002-F004",
+      "impact": {
+        "operational": "Impossibilité d'attribuer les actions à un individu spécifique",
+        "compliance": "Non-conformité ISO 27001",
+        "security": "Risque HIGH - pas de non-répudiation, investigation forensics impossible",
+        "reputational": "Problématique en cas d'incident sécurité (qui a fait quoi?)"
+      },
+      "root_cause": {
+        "immediate": "Pratique historique jamais remise en question",
+        "contributing_factors": [
+          "Confort opérationnel (pas besoin de changer mot de passe si collègue l'a changé)",
+          "Contraintes techniques sur anciens systèmes (limitation nombre comptes)",
+          "Résistance au changement équipe ops"
+        ],
+        "root_cause": "Absence de directive formelle interdisant comptes partagés, legacy practice acceptée"
+      },
+      "recommendations": [
+        {
+          "rec_id": "F-004-R1",
+          "priority": "high",
+          "description": "Inventaire complet des comptes partagés (au-delà des 12 identifiés)",
+          "responsible": "IT Operations + Security",
+          "due_date": "2024-03-15",
+          "estimated_effort": "1 semaine"
+        },
+        {
+          "rec_id": "F-004-R2",
+          "priority": "high",
+          "description": "Plan de migration vers comptes nominatifs avec PAM (Privileged Access Management)",
+          "responsible": "IAM Manager + IT Director",
+          "due_date": "2024-06-30",
+          "estimated_effort": "3 mois projet"
+        },
+        {
+          "rec_id": "F-004-R3",
+          "priority": "high",
+          "description": "Politique formelle interdisant comptes partagés sauf exception CISO",
+          "responsible": "CISO",
+          "due_date": "2024-03-31",
+          "estimated_effort": "1 semaine"
+        }
+      ],
+      "management_response": {
+        "status": "accept",
+        "comment": "Accepté. Migration vers solution PAM planifiée Q2 2024 (budget déjà validé).",
+        "action_plan": "Inventaire complet 15/03, politique publiée 31/03, projet PAM démarré avril avec cible go-live juin 2024",
+        "responsible_person": "Olivier Roux (IT Director) + Mathieu Girard (IAM)",
+        "target_completion": "2024-06-30"
+      }
+    },
+    {
+      "finding_id": "F-005",
+      "severity": "medium",
+      "control_reference": "ISO 27001:2013 A.9.3.1 - Use of secret authentication information",
+      "title": "Politique de mots de passe insuffisante (longueur minimale 8 caractères)",
+      "finding_statement": {
+        "observed": "Politique Active Directory configurée avec longueur minimale 8 caractères, complexité activée mais pas de vérification dictionnaire",
+        "required": "Best practices ISO 27001 et NIST recommandent minimum 12-14 caractères et vérification contre passwords communs",
+        "deviation": "Politique de mot de passe datée (configurée en 2019), pas alignée sur standards 2024"
+      },
+      "evidence_pack_id": "EP-AUD-002-F005",
+      "impact": {
+        "operational": "Mots de passe potentiellement faibles acceptés",
+        "compliance": "Non alignement best practices",
+        "security": "Risque MEDIUM - augmentation surface attaque brute-force",
+        "financial": "Faible"
+      },
+      "root_cause": {
+        "immediate": "Politique non révisée depuis 2019",
+        "contributing_factors": [
+          "Pas de processus de revue régulière des politiques techniques",
+          "Équipe IT focus sur projets vs hardening existant"
+        ],
+        "root_cause": "Absence de governance sur revue et mise à jour des politiques techniques"
+      },
+      "recommendations": [
+        {
+          "rec_id": "F-005-R1",
+          "priority": "medium",
+          "description": "Mettre à jour politique AD: longueur min 12 caractères, vérification passwords communs",
+          "responsible": "IT Operations",
+          "due_date": "2024-04-30",
+          "estimated_effort": "1 semaine (inclut communication utilisateurs)"
+        },
+        {
+          "rec_id": "F-005-R2",
+          "priority": "low",
+          "description": "Implémenter revue annuelle formelle des politiques techniques",
+          "responsible": "CISO",
+          "due_date": "2024-06-30",
+          "estimated_effort": "Processus récurrent"
+        }
+      ],
+      "management_response": {
+        "status": "accept",
+        "comment": "Accepté. Mise à jour planifiée avec communication utilisateurs pour minimiser support tickets.",
+        "action_plan": "Communication préventive mars, déploiement politique avril, processus revue formalisé Q2",
+        "responsible_person": "Sophie Renard (SysAdmin) + Laurent Dumont (CISO)",
+        "target_completion": "2024-04-30"
+      }
+    },
+    {
+      "finding_id": "F-006",
+      "severity": "medium",
+      "control_reference": "ISO 27001:2013 A.9.2.2 - User access provisioning",
+      "title": "Délai moyen de provisioning nouveaux employés: 4,2 jours",
+      "finding_statement": {
+        "observed": "Analyse de 15 onboardings récents montre délai moyen 4,2 jours entre date entrée et accès complets opérationnels",
+        "required": "Pas d'exigence ISO spécifique, mais best practice = J0 ou J+1 maximum pour productivité",
+        "deviation": "Processus manuel multi-étapes cause délais, impact productivité nouveaux employés"
+      },
+      "evidence_pack_id": "EP-AUD-002-F006",
+      "impact": {
+        "operational": "Nouveaux employés improductifs 3-4 jours",
+        "compliance": "N/A (pas d'exigence réglementaire)",
+        "security": "Risque faible - délai allongé est sûr, mais frustrant",
+        "financial": "Coût indirect: ~0.5 jour productivité perdue par employé"
+      },
+      "root_cause": {
+        "immediate": "Workflow manuel avec 7 étapes distinctes",
+        "contributing_factors": [
+          "Absence d'automatisation HR → IT",
+          "Tickets traités par ordre FIFO sans priorisation onboarding",
+          "Hardware parfois commandé en retard"
+        ],
+        "root_cause": "Processus d'onboarding IT non optimisé, pas de SLA défini"
+      },
+      "recommendations": [
+        {
+          "rec_id": "F-006-R1",
+          "priority": "medium",
+          "description": "Automatiser création comptes de base (AD, email) dès signature contrat",
+          "responsible": "IAM Manager + HR",
+          "due_date": "2024-06-30",
+          "estimated_effort": "4 semaines"
+        },
+        {
+          "rec_id": "F-006-R2",
+          "priority": "low",
+          "description": "Définir SLA onboarding IT = J+1 maximum",
+          "responsible": "IT Director",
+          "due_date": "2024-03-31",
+          "estimated_effort": "1 semaine"
+        }
+      ],
+      "management_response": {
+        "status": "accept",
+        "comment": "Accepté. Amélioration expérience onboarding est priorité RH 2024.",
+        "action_plan": "SLA défini Q1, automatisation partielle déployée Q2",
+        "responsible_person": "Olivier Roux (IT Director)",
+        "target_completion": "2024-06-30"
+      }
+    },
+    {
+      "finding_id": "F-007",
+      "severity": "medium",
+      "control_reference": "ISO 27001:2013 A.9.4.3 - Password management system",
+      "title": "Absence de solution password manager entreprise",
+      "finding_statement": {
+        "observed": "Aucune solution password manager fournie aux employés. Enquête auprès de 20 users: 14 utilisent solutions personnelles variées, 6 réutilisent mots de passe",
+        "required": "ISO 27001 A.9.4.3 recommande password manager pour gérer multiples identifiants de façon sécurisée",
+        "deviation": "Employés livrés à eux-mêmes, pratiques non homogènes, risque de réutilisation passwords"
+      },
+      "evidence_pack_id": "EP-AUD-002-F007",
+      "impact": {
+        "operational": "Perte productivité (password resets fréquents)",
+        "compliance": "Best practice non appliquée",
+        "security": "Risque MEDIUM - réutilisation passwords entre services, passwords faibles",
+        "financial": "Coût support password resets: ~5 tickets/semaine"
+      },
+      "root_cause": {
+        "immediate": "Pas de solution standard fournie",
+        "contributing_factors": [
+          "Jamais priorisé dans roadmap IT",
+          "Budget modeste (~3k€/an) mais jamais demandé",
+          "Manque de sensibilisation équipe"
+        ],
+        "root_cause": "Absence dans politique sécurité, pas identifié comme besoin critique"
+      },
+      "recommendations": [
+        {
+          "rec_id": "F-007-R1",
+          "priority": "medium",
+          "description": "Évaluer et sélectionner solution password manager entreprise (ex: 1Password Business, Bitwarden)",
+          "responsible": "Security Engineer",
+          "due_date": "2024-04-30",
+          "estimated_effort": "2 semaines"
+        },
+        {
+          "rec_id": "F-007-R2",
+          "priority": "medium",
+          "description": "Déploiement et formation utilisateurs",
+          "responsible": "IT Operations + Security",
+          "due_date": "2024-06-30",
+          "estimated_effort": "4 semaines"
+        }
+      ],
+      "management_response": {
+        "status": "accept",
+        "comment": "Accepté. Budget approuvé, déploiement planifié Q2 2024.",
+        "action_plan": "Évaluation mars-avril, sélection avril, déploiement mai-juin avec formation",
+        "responsible_person": "Nicolas Faure (Security Engineer)",
+        "target_completion": "2024-06-30"
+      }
+    },
+    {
+      "finding_id": "F-008",
+      "severity": "medium",
+      "control_reference": "ISO 27001:2013 A.9.1.2 - Access to networks and network services",
+      "title": "Documentation réseau et matrice accès non à jour",
+      "finding_statement": {
+        "observed": "Documentation architecture réseau datée de 2022, matrice accès par rôle jamais formalisée",
+        "required": "ISO 27001 A.9.1.2 exige documentation des droits d'accès réseau par groupe d'utilisateurs",
+        "deviation": "Connaissance implicite portée par équipe IT, pas de documentation formelle à jour"
+      },
+      "evidence_pack_id": "EP-AUD-002-F008",
+      "impact": {
+        "operational": "Risque de connaissance perdue si turnover IT",
+        "compliance": "Non-conformité documentation ISO 27001",
+        "security": "Risque faible - configuration technique OK mais doc manquante",
+        "financial": "Faible"
+      },
+      "root_cause": {
+        "immediate": "Documentation perçue comme overhead vs valeur",
+        "contributing_factors": [
+          "Équipe IT petite, focus delivery vs documentation",
+          "Pas de template ou processus doc défini"
+        ],
+        "root_cause": "Culture documentation faible, pas dans definition of done projets IT"
+      },
+      "recommendations": [
+        {
+          "rec_id": "F-008-R1",
+          "priority": "low",
+          "description": "Créer matrice accès réseau formelle (par rôle et par zone réseau)",
+          "responsible": "DevOps Lead",
+          "due_date": "2024-05-31",
+          "estimated_effort": "1 semaine"
+        },
+        {
+          "rec_id": "F-008-R2",
+          "priority": "low",
+          "description": "Mettre à jour diagramme architecture réseau",
+          "responsible": "System Administrator",
+          "due_date": "2024-05-31",
+          "estimated_effort": "2 jours"
+        }
+      ],
+      "management_response": {
+        "status": "accept",
+        "comment": "Accepté. Documentation sera mise à jour et processus de maintien défini.",
+        "action_plan": "Documentation réseau et matrice accès complétées d'ici fin mai 2024",
+        "responsible_person": "David Perrin (DevOps Lead)",
+        "target_completion": "2024-05-31"
+      }
+    },
+    {
+      "finding_id": "F-009",
+      "severity": "low",
+      "control_reference": "ISO 27001:2013 A.9.2.4 - Management of secret authentication information of users",
+      "title": "Procédure de changement password d'urgence non documentée",
+      "finding_statement": {
+        "observed": "Procédure de reset password d'urgence (hors heures) existe mais n'est pas documentée formellement",
+        "required": "ISO 27001 best practice = documenter toutes les procédures opérationnelles critiques",
+        "deviation": "Connaissance orale, risque si personne clé absente"
+      },
+      "evidence_pack_id": "EP-AUD-002-F009",
+      "impact": {
+        "operational": "Risque faible de délai si personne habituée absente",
+        "compliance": "Best practice documentation",
+        "security": "Impact faible",
+        "financial": "Négligeable"
+      },
+      "root_cause": {
+        "immediate": "Procédure simple, jamais pris le temps de documenter",
+        "contributing_factors": [
+          "Rarement utilisée (2-3 fois/an)",
+          "Équipe IT stable (peu de turnover)"
+        ],
+        "root_cause": "Documentation procédures simples/rares non priorisée"
+      },
+      "recommendations": [
+        {
+          "rec_id": "F-009-R1",
+          "priority": "low",
+          "description": "Documenter procédure reset password d'urgence dans runbook IT",
+          "responsible": "System Administrator",
+          "due_date": "2024-04-30",
+          "estimated_effort": "2 heures"
+        }
+      ],
+      "management_response": {
+        "status": "accept",
+        "comment": "Accepté, sera documenté dans runbook opérationnel IT.",
+        "action_plan": "Documentation ajoutée au runbook IT d'ici fin avril",
+        "responsible_person": "Sophie Renard (SysAdmin)",
+        "target_completion": "2024-04-30"
+      }
+    }
+  ],
+  "audit_summary": {
+    "total_controls_tested": 24,
+    "controls_compliant": 15,
+    "controls_non_compliant": 9,
+    "compliance_rate": "62.5%",
+    "findings_by_severity": {
+      "critical": 1,
+      "high": 3,
+      "medium": 4,
+      "low": 1,
+      "total": 9
+    },
+    "evidence_collected": {
+      "total_items": 47,
+      "documentary": 18,
+      "testimonial": 8,
+      "physical": 6,
+      "analytical": 12,
+      "reperformance": 3
+    },
+    "overall_assessment": "PARTIAL COMPLIANCE - Significant gaps identified requiring remediation within 90 days to maintain ISO 27001 certification. Critical and High findings must be addressed with priority."
+  },
+  "action_plan": {
+    "total_actions": 25,
+    "by_priority": {
+      "critical": 4,
+      "high": 9,
+      "medium": 9,
+      "low": 3
+    },
+    "milestones": [
+      {
+        "date": "2024-02-28",
+        "actions": "Critical fixes: disable orphan accounts, enable MFA for 7 admin accounts",
+        "status": "planned"
+      },
+      {
+        "date": "2024-03-31",
+        "actions": "High priority policies and processes: MFA enforcement, access review policy, shared accounts policy",
+        "status": "planned"
+      },
+      {
+        "date": "2024-04-30",
+        "actions": "First access review completed, password policy updated, documentation improved",
+        "status": "planned"
+      },
+      {
+        "date": "2024-06-30",
+        "actions": "PAM solution deployed, HR-AD automation live, password manager rolled out",
+        "status": "planned"
+      }
+    ],
+    "follow_up_audit_date": "2024-07-15",
+    "external_audit_date": "2024-09-01"
+  },
+  "evidence_packs": {
+    "total_packs": 9,
+    "packs": [
+      {
+        "pack_id": "EP-AUD-002-F001",
+        "finding_id": "F-001",
+        "title": "Evidence - Comptes orphelins",
+        "evidence_count": 8,
+        "confidence_level": "very_high",
+        "items": [
+          "AD export showing 7 active accounts with termination dates",
+          "HR termination records for 7 employees",
+          "Email logs showing continued mailbox activity",
+          "VPN logs showing no recent connections",
+          "Interview with HR Manager on offboarding process",
+          "Checklist review showing gaps",
+          "Screenshot AD user properties",
+          "Reperformance of AD query to validate finding"
+        ]
+      },
+      {
+        "pack_id": "EP-AUD-002-F002",
+        "title": "Evidence - Absence de revue d'accès",
+        "evidence_count": 5,
+        "confidence_level": "high"
+      },
+      {
+        "pack_id": "EP-AUD-002-F003",
+        "title": "Evidence - MFA non activée",
+        "evidence_count": 6,
+        "confidence_level": "very_high"
+      }
+    ]
+  },
+  "metadata": {
+    "created_at": "2024-02-05T08:00:00Z",
+    "completed_at": "2024-02-23T16:30:00Z",
+    "last_updated": "2024-02-23T16:30:00Z",
+    "version": "1.0",
+    "pattern_used": "generic.audit",
+    "audit_standard": "ISO 27001:2013",
+    "tags": ["security", "iso27001", "access_control", "compliance", "iam"],
+    "classification": "restricted",
+    "archived": false,
+    "next_audit_due": "2025-02-01"
+  }
+}

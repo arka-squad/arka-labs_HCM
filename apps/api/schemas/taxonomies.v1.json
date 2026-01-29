@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0",
+  "pack_type": [
+    "MISSION_CONTRACT",
+    "MISSION_CONTEXT",
+    "MISSION_PROGRESS",
+    "MISSION_SUMMARY",
+    "TASK_CONTEXT",
+    "TASK_INPUT",
+    "TASK_OUTPUT",
+    "TASK_REWORK",
+    "GUARDIAN_PRECHECK",
+    "GUARDIAN_POSTCHECK",
+    "CERTIFICATION",
+    "SIGNATURE",
+    "INCIDENT_RISK",
+    "AUDIT_TRAIL",
+    "KERNEL_RECIPE",
+    "POLICY_SET",
+    "CAPABILITIES"
+  ],
+  "pack_status": [
+    "DRAFT",
+    "STORED",
+    "CERTIFIED",
+    "REJECTED",
+    "SUPERSEDED"
+  ],
+  "actor_type": [
+    "HUMAN",
+    "KERNEL",
+    "GUARDIAN",
+    "HCM",
+    "AGP",
+    "PO",
+    "ORCHESTRATOR",
+    "EXTERNAL",
+    "CONTRACTGEN"
+  ],
+  "contract_status": [
+    "DRAFT",
+    "PENDING_GATES",
+    "PENDING_OWNER_SIGNATURE",
+    "ACTIVE",
+    "PAUSED",
+    "COMPLETED",
+    "CANCELLED",
+    "ARCHIVED"
+  ],
+  "classification": [
+    "PUBLIC",
+    "INTERNAL",
+    "RESTRICTED",
+    "HIGHLY_RESTRICTED"
+  ],
+  "verdict": [
+    "OK",
+    "WARN",
+    "BLOCK"
+  ],
+  "event_topics": [
+    "arka.contract",
+    "arka.pack",
+    "arka.guardian",
+    "arka.external"
+  ],
+  "event_types": [
+    "CONTRACT_VERSION_CREATED",
+    "PACK_CREATED",
+    "PACK_STORED",
+    "PACK_CERTIFIED",
+    "PACK_REJECTED",
+    "OUTPUT_CERTIFIED",
+    "OUTPUT_REJECTED",
+    "INCIDENT_OPENED",
+    "INCIDENT_UPDATED",
+    "AGENT_RUN_SUBMITTED",
+    "AGENT_RUN_COMPLETED"
+  ],
+  "required_actions": [
+    "REWORK_REQUIRED",
+    "HUMAN_REVIEW_REQUIRED",
+    "ESCALATE_TO_AGP",
+    "ESCALATE_TO_OWNER",
+    "RESTRICT_CONTEXT",
+    "MISSING_EVIDENCE"
+  ]
+}

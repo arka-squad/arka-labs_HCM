@@ -1,0 +1,699 @@
+{
+  "$schema": "https://arka.labs/schemas/org_policies.v1.json",
+  "catalog_id": "arka-org-policies",
+  "version": "3.2.0",
+  "effective_date": "2024-01-01",
+  "last_updated": "2024-02-24T12:30:00Z",
+  "organization": "Arka Labs",
+  "description": "Catalogue des politiques organisationnelles et RH d'Arka Labs couvrant emploi, bénéfices, remote work, et culture.",
+  "policy_categories": [
+    {
+      "category_id": "employment",
+      "category_name": "Employment & Contracts",
+      "policies": [
+        {
+          "policy_id": "POL-EMP-001",
+          "policy_name": "Types de Contrats",
+          "version": "2.0",
+          "effective_date": "2024-01-01",
+          "owner": "HR / Legal",
+          "summary": "Définit les types de contrats utilisés chez Arka Labs",
+          "details": {
+            "cdi": {
+              "description": "Contrat à Durée Indéterminée (permanent)",
+              "applicability": "Tous les employés permanents",
+              "trial_period": "3 mois (renouvelable 1 fois)",
+              "notice_period": {
+                "employee": "1 mois (ou selon ancienneté)",
+                "employer": "Selon convention collective"
+              }
+            },
+            "contractor": {
+              "description": "Freelance / Prestataire via contrat de prestation",
+              "applicability": "Expertise ponctuelle, flexibilité",
+              "engagement_types": ["Mission-based", "Part-time retainer", "Full-time fixed-term"],
+              "notice_period": "Selon contrat (généralement 2 semaines)"
+            },
+            "internship": {
+              "description": "Stage conventionné",
+              "duration": "3-6 mois",
+              "compensation": "Gratification légale (minimum légal)",
+              "conversion_to_cdi": "Possible si performance excellente et poste disponible"
+            }
+          },
+          "approval_required": "CEO pour tous contrats",
+          "related_documents": ["Template CDI", "Template contrat prestation"]
+        },
+        {
+          "policy_id": "POL-EMP-002",
+          "policy_name": "Onboarding Process",
+          "version": "2.1",
+          "effective_date": "2024-01-01",
+          "owner": "HR / Operations",
+          "summary": "Processus d'intégration standardisé pour nouveaux employés",
+          "details": {
+            "pre_boarding": {
+              "timeline": "J-7 to J-1",
+              "actions": [
+                "Envoi welcome email avec agenda première semaine",
+                "Setup matériel (laptop, écrans, accès)",
+                "Création comptes (email, Slack, GitHub, outils)",
+                "Invitation à Slack et channels pertinents",
+                "Attribution buddy/mentor"
+              ]
+            },
+            "week_1": {
+              "day_1": [
+                "Welcome meeting avec CEO (30 min)",
+                "Setup workspace et IT (2h)",
+                "Lunch avec équipe",
+                "Introduction à Arka OS et culture",
+                "Tour des outils et processus"
+              ],
+              "day_2_to_5": [
+                "1-on-1 avec manager (définir objectifs 30-60-90 jours)",
+                "Meet & greet avec chaque département (30 min each)",
+                "Formation produits Arka (Arka OS, HCM)",
+                "Premiers petits tasks pour prendre en main",
+                "Participation aux rituels équipe (standups, etc.)"
+              ]
+            },
+            "week_2_to_4": {
+              "objectives": "Devenir autonome sur son périmètre",
+              "activities": [
+                "Prendre ownership de vrais projets",
+                "Weekly 1-on-1 avec manager",
+                "Checkpoint 30 jours avec HR"
+              ]
+            },
+            "end_of_trial": {
+              "timeline": "3 mois",
+              "process": "Evaluation formelle avec manager, décision confirmation/prolongation/fin"
+            }
+          },
+          "success_metrics": ["Time to productivity", "30-day satisfaction score"],
+          "related_documents": ["Onboarding checklist", "Welcome deck"]
+        },
+        {
+          "policy_id": "POL-EMP-003",
+          "policy_name": "Offboarding Process",
+          "version": "1.5",
+          "effective_date": "2023-06-01",
+          "owner": "HR / IT",
+          "summary": "Processus de départ (volontaire ou involontaire)",
+          "details": {
+            "resignation": {
+              "notice_period": "1 mois minimum (CDI), selon contrat (contractors)",
+              "process": [
+                "Soumission lettre de démission à manager + HR",
+                "Exit interview avec HR",
+                "Knowledge transfer planifié avec manager",
+                "Retour matériel et accès révoqués dernier jour"
+              ]
+            },
+            "termination": {
+              "process": [
+                "Décision validée par CEO",
+                "Entretien avec employé (manager + HR)",
+                "Documentation légale préparée",
+                "Révocation accès immédiate si nécessaire",
+                "Payement selon obligations légales"
+              ]
+            },
+            "offboarding_checklist": [
+              "Exit interview completed",
+              "Knowledge transfer document créé",
+              "Tous les accès révoqués (email, Slack, GitHub, AWS, etc.)",
+              "Matériel retourné (laptop, badge, etc.)",
+              "Dernier payement traité",
+              "Alumni network invitation (si départ en bons termes)"
+            ]
+          },
+          "it_security": "Accès révoqués J+0 (jour de départ effectif)",
+          "related_documents": ["Offboarding checklist", "Exit interview template"]
+        }
+      ]
+    },
+    {
+      "category_id": "compensation",
+      "category_name": "Compensation & Benefits",
+      "policies": [
+        {
+          "policy_id": "POL-COMP-001",
+          "policy_name": "Compensation Philosophy",
+          "version": "2.0",
+          "effective_date": "2024-01-01",
+          "owner": "CEO + CFO",
+          "summary": "Philosophie de rémunération d'Arka Labs",
+          "details": {
+            "principles": [
+              "Rémunération compétitive vs marché tech parisien",
+              "Équité interne (cohérence entre rôles similaires)",
+              "Transparence sur grilles de salaires par niveau",
+              "Performance-based (bonus/equity selon contribution)",
+              "Revue annuelle systématique"
+            ],
+            "components": {
+              "base_salary": {
+                "description": "Salaire fixe mensuel brut",
+                "benchmark": "Médiane à P75 du marché tech Paris selon niveau/rôle",
+                "review_frequency": "Annuelle (+ exceptionnelle si promotion)"
+              },
+              "variable_bonus": {
+                "description": "Bonus variable basé sur performance individuelle et entreprise",
+                "eligibility": "Tous les employés CDI",
+                "target": "10-20% du salaire annuel selon niveau",
+                "payout_frequency": "Annuelle (après clôture exercice)"
+              },
+              "equity": {
+                "description": "Stock-options ou BSPCE",
+                "eligibility": "Employés clés et early joiners",
+                "vesting": "4 ans avec cliff 1 an",
+                "allocation": "Selon ancienneté, niveau, contribution stratégique"
+              }
+            }
+          },
+          "salary_bands": {
+            "junior": "40k - 55k€",
+            "intermediate": "55k - 75k€",
+            "senior": "75k - 95k€",
+            "lead": "90k - 120k€",
+            "head": "110k - 150k€",
+            "c_level": "130k - 200k€"
+          },
+          "related_documents": ["Salary grid", "Equity policy"]
+        },
+        {
+          "policy_id": "POL-COMP-002",
+          "policy_name": "Benefits Package",
+          "version": "1.8",
+          "effective_date": "2024-01-01",
+          "owner": "HR",
+          "summary": "Package d'avantages proposé aux employés",
+          "details": {
+            "mandatory": {
+              "health_insurance": {
+                "coverage": "Mutuelle santé (100% employeur pour employé, 50% pour famille)",
+                "provider": "Alan",
+                "coverage_level": "Premium (dentaire, optique, hospitalisation)"
+              },
+              "meal_vouchers": {
+                "value": "10€/jour travaillé",
+                "split": "60% employeur / 40% employé",
+                "provider": "Swile"
+              },
+              "transport": {
+                "public_transport": "50% Navigo (obligatoire légal)",
+                "bike": "Forfait mobilités durables 500€/an"
+              }
+            },
+            "optional": {
+              "remote_work_allowance": {
+                "amount": "50€/mois",
+                "purpose": "Internet, électricité, home office setup"
+              },
+              "learning_budget": {
+                "amount": "1000€/an/employé",
+                "usage": "Formations, conférences, livres, certifications",
+                "approval": "Manager approval required"
+              },
+              "coworking_spaces": {
+                "description": "Accès coworking spaces partenaires",
+                "locations": "Paris, Lyon, remote workers hors Paris",
+                "budget": "200€/mois max"
+              },
+              "equipment": {
+                "laptop": "MacBook Pro M3 (standard) ou équivalent Linux",
+                "accessories": "Écran, clavier, souris, casque (budget 800€)",
+                "renewal_cycle": "3 ans ou si obsolète"
+              }
+            }
+          },
+          "related_documents": ["Benefits guide"]
+        },
+        {
+          "policy_id": "POL-COMP-003",
+          "policy_name": "Performance Reviews & Raises",
+          "version": "1.3",
+          "effective_date": "2024-01-01",
+          "owner": "HR + Leadership",
+          "summary": "Processus d'évaluation performance et augmentations",
+          "details": {
+            "performance_review_cycle": {
+              "frequency": "Annuelle (+ mid-year checkpoint)",
+              "process": [
+                "Employee self-assessment",
+                "Manager assessment",
+                "360 feedback (pour leads et above)",
+                "1-on-1 review meeting",
+                "Written feedback summary"
+              ],
+              "criteria": [
+                "Achievement of OKRs / goals",
+                "Core values demonstration",
+                "Technical/functional skills growth",
+                "Collaboration & teamwork",
+                "Impact & ownership"
+              ]
+            },
+            "compensation_review": {
+              "timing": "Q1 chaque année (pour année précédente)",
+              "merit_increase": {
+                "range": "0-15% selon performance",
+                "ratings": {
+                  "exceptional": "10-15% increase",
+                  "strong": "5-10% increase",
+                  "meets_expectations": "2-5% increase",
+                  "needs_improvement": "0% increase + PIP"
+                }
+              },
+              "promotion": {
+                "criteria": "Performing at next level for 6+ months",
+                "salary_adjustment": "To match new level band",
+                "process": "Manager proposal → Leadership approval → HR execution"
+              }
+            }
+          },
+          "related_documents": ["Performance review template", "Promotion criteria by role"]
+        }
+      ]
+    },
+    {
+      "category_id": "time_off",
+      "category_name": "Time Off & Leave",
+      "policies": [
+        {
+          "policy_id": "POL-TIME-001",
+          "policy_name": "Paid Time Off (PTO)",
+          "version": "1.5",
+          "effective_date": "2023-01-01",
+          "owner": "HR",
+          "summary": "Politique de congés payés",
+          "details": {
+            "annual_leave": {
+              "accrual": "25 jours ouvrés/an (legal minimum = RTT inclus)",
+              "additional_days": "+1 jour tous les 5 ans d'ancienneté (max +5 jours)",
+              "carryover": "Max 10 jours sur année suivante (à prendre avant 30 juin)"
+            },
+            "request_process": [
+              "Demande via outil RH (ou email si outil indisponible)",
+              "Minimum 2 semaines d'avance (sauf urgence)",
+              "Approbation manager requise",
+              "Blackout periods: aucun, mais coordination équipe nécessaire"
+            ],
+            "holidays": {
+              "public_holidays": "Jours fériés français (11 jours)",
+              "company_shutdown": "Bureaux fermés 24 déc - 2 jan (ne compte pas comme PTO)"
+            }
+          },
+          "related_documents": ["PTO request form"]
+        },
+        {
+          "policy_id": "POL-TIME-002",
+          "policy_name": "Sick Leave",
+          "version": "1.2",
+          "effective_date": "2023-01-01",
+          "owner": "HR",
+          "summary": "Politique de congés maladie",
+          "details": {
+            "short_term": {
+              "duration": "1-3 jours",
+              "process": "Notification manager + HR via Slack/email le matin même",
+              "medical_certificate": "Non requis pour <3 jours consécutifs"
+            },
+            "long_term": {
+              "duration": ">3 jours",
+              "process": "Medical certificate requis (envoi à HR)",
+              "compensation": "Selon convention collective + maintien de salaire employeur"
+            },
+            "mental_health_days": {
+              "allowance": "2 jours/an sans justificatif médical",
+              "purpose": "Santé mentale, burn-out prevention, personal wellness",
+              "process": "Déclaration comme sick leave standard"
+            }
+          },
+          "notes": "Culture de confiance : pas de micro-management des sick days",
+          "related_documents": []
+        },
+        {
+          "policy_id": "POL-TIME-003",
+          "policy_name": "Parental Leave",
+          "version": "1.1",
+          "effective_date": "2023-01-01",
+          "owner": "HR",
+          "summary": "Congés parentaux (maternité, paternité, adoption)",
+          "details": {
+            "maternity_leave": {
+              "duration": "16 semaines (légal français)",
+              "compensation": "100% salaire maintenu par Arka Labs (complément à Sécurité Sociale)",
+              "extensions": "Selon cas particuliers (grossesse multiple, complications)"
+            },
+            "paternity_leave": {
+              "duration": "25 jours (légal français post-2021)",
+              "compensation": "100% salaire maintenu par Arka Labs"
+            },
+            "parental_leave": {
+              "duration": "Jusqu'à 6 mois (unpaid ou selon accord)",
+              "eligibility": "Après 1 an d'ancienneté",
+              "job_guarantee": "Retour au même poste ou équivalent garanti"
+            }
+          },
+          "related_documents": ["Parental leave guide"]
+        },
+        {
+          "policy_id": "POL-TIME-004",
+          "policy_name": "Sabbatical Leave",
+          "version": "1.0",
+          "effective_date": "2024-01-01",
+          "owner": "CEO + HR",
+          "summary": "Congé sabbatique pour employés long-terme",
+          "details": {
+            "eligibility": "Après 3 ans d'ancienneté",
+            "duration": "1-3 mois",
+            "compensation": "Unpaid",
+            "approval": "CEO approval required",
+            "job_guarantee": "Retour garanti si préavis 6 mois à l'avance",
+            "frequency": "Max 1 fois tous les 5 ans"
+          },
+          "purpose": "Personal projects, travel, learning, recharge",
+          "related_documents": []
+        }
+      ]
+    },
+    {
+      "category_id": "work_arrangements",
+      "category_name": "Work Arrangements",
+      "policies": [
+        {
+          "policy_id": "POL-WORK-001",
+          "policy_name": "Remote Work Policy",
+          "version": "3.0",
+          "effective_date": "2024-01-01",
+          "owner": "CEO + HR",
+          "summary": "Politique de travail à distance (remote-first)",
+          "details": {
+            "philosophy": "Arka Labs est remote-friendly. On privilégie la flexibilité et l'autonomie.",
+            "work_modes": {
+              "full_remote": {
+                "description": "100% remote, aucune obligation présence bureau",
+                "eligibility": "Tous les employés (sauf rôles spécifiques nécessitant présence)",
+                "locations": "France + EU (hors EU = case by case)",
+                "expectations": [
+                  "Disponibilité pendant heures de travail (overlap 10h-16h Paris time)",
+                  "Participation aux rituels équipe (visio)",
+                  "Présence aux All Hands bi-weekly",
+                  "Quarterly team offsites (optionnel mais encouragé)"
+                ]
+              },
+              "hybrid": {
+                "description": "Mix remote + bureau",
+                "default": "2-3 jours bureau/semaine (flexible selon équipe)",
+                "office_locations": "Paris (HQ)"
+              },
+              "office_based": {
+                "description": "Principalement au bureau",
+                "applicability": "Rare (certains rôles ops, préférence personnelle)"
+              }
+            },
+            "equipment_and_support": {
+              "home_office_budget": "500€ one-time (bureau, chaise, éclairage)",
+              "remote_work_allowance": "50€/mois (internet, électricité)",
+              "coworking": "Accès coworking si pas de bureau à domicile"
+            },
+            "communication_guidelines": {
+              "async_first": "Privilégier async (Slack, Notion) sur meetings",
+              "meeting_hours": "10h-18h Paris time (éviter before/after sauf urgence)",
+              "response_times": {
+                "urgent": "< 2h",
+                "normal": "< 24h",
+                "low_priority": "< 48h"
+              },
+              "camera_on": "Encouragé mais pas obligatoire (respect confort)"
+            }
+          },
+          "related_documents": ["Remote work guide", "Communication charter"]
+        },
+        {
+          "policy_id": "POL-WORK-002",
+          "policy_name": "Working Hours & Flexibility",
+          "version": "2.0",
+          "effective_date": "2024-01-01",
+          "owner": "HR",
+          "summary": "Horaires de travail et flexibilité",
+          "details": {
+            "standard_hours": {
+              "weekly": "35h (légal français) ou 39h avec RTT",
+              "core_hours": "10h-16h Paris time (overlap pour collaboration)",
+              "flexible_hours": "Début/fin journée flexible (ex: 8h-16h ou 10h-18h)"
+            },
+            "overtime": {
+              "applicability": "Évité autant que possible (sustainable pace)",
+              "compensation": "Récupération en temps (pas de paiement heures sup sauf exception)",
+              "approval": "Manager approval si >40h/semaine sustained"
+            },
+            "part_time": {
+              "availability": "Possible (80%, 60%, 50%)",
+              "process": "Discussion avec manager + HR, amendment contrat",
+              "pro_rata": "Salaire et bénéfices au pro-rata"
+            }
+          },
+          "work_life_balance": {
+            "principles": [
+              "Pas d'emails/Slack après 19h ou weekends (sauf urgence vraie)",
+              "Right to disconnect (droit à la déconnexion)",
+              "Pas de culture de présentéisme",
+              "Sustainable pace > crunch mode"
+            ]
+          },
+          "related_documents": ["Flexible working request form"]
+        },
+        {
+          "policy_id": "POL-WORK-003",
+          "policy_name": "Workation Policy",
+          "version": "1.0",
+          "effective_date": "2024-01-01",
+          "owner": "HR",
+          "summary": "Travailler en vacances (workation)",
+          "details": {
+            "definition": "Travailler depuis une destination de vacances/voyage",
+            "eligibility": "Tous les employés remote",
+            "duration": "Max 4 semaines consécutives, max 8 semaines/an",
+            "locations": "EU + pays avec timezone compatible (max -2/+3h vs Paris)",
+            "approval": "Manager approval + notification HR",
+            "conditions": [
+              "Connexion internet fiable",
+              "Disponibilité pendant core hours",
+              "Aucun impact sur deliverables",
+              "Assurance voyage et santé obligatoire",
+              "Responsabilité fiscale/légale = employé"
+            ]
+          },
+          "related_documents": ["Workation request form"]
+        }
+      ]
+    },
+    {
+      "category_id": "professional_dev",
+      "category_name": "Professional Development",
+      "policies": [
+        {
+          "policy_id": "POL-DEV-001",
+          "policy_name": "Learning & Development Budget",
+          "version": "1.5",
+          "effective_date": "2024-01-01",
+          "owner": "HR + Leadership",
+          "summary": "Budget formation et développement professionnel",
+          "details": {
+            "annual_budget": "1000€/employé/an",
+            "eligible_expenses": [
+              "Formations en ligne (Coursera, Udemy, etc.)",
+              "Conférences et événements tech",
+              "Certifications professionnelles",
+              "Livres techniques et business",
+              "Coaching ou mentoring externe"
+            ],
+            "approval_process": "Manager approval + HR validation",
+            "unused_budget": "Ne se reporte pas sur année suivante",
+            "additional_budget": "Possible si business case justifié (CEO approval)"
+          },
+          "company_sponsored_learning": {
+            "lunch_and_learns": "Sessions internes bi-weekly (knowledge sharing)",
+            "tech_talks": "Invitations speakers externes (quarterly)",
+            "book_club": "Optional, 1 livre/mois"
+          },
+          "related_documents": ["L&D expense request form"]
+        },
+        {
+          "policy_id": "POL-DEV-002",
+          "policy_name": "Conference Attendance",
+          "version": "1.2",
+          "effective_date": "2023-06-01",
+          "owner": "Department Heads",
+          "summary": "Participation à conférences professionnelles",
+          "details": {
+            "budget": "Part of L&D budget (1000€) or additional if speaker/sponsor",
+            "approval": "Manager + CEO for international conferences",
+            "coverage": {
+              "tickets": "100% si approuvé",
+              "travel": "Train/avion classe éco",
+              "hotel": "Max 150€/nuit",
+              "meals": "Per diem selon destination"
+            },
+            "expectations": [
+              "Knowledge sharing interne (presentation/notes après)",
+              "Networking et représentation Arka Labs",
+              "Social media coverage (LinkedIn posts)"
+            ]
+          },
+          "priority_events": ["Devoxx", "KubeCon", "AI conferences", "Product conferences"],
+          "related_documents": ["Conference request form", "Expense policy"]
+        },
+        {
+          "policy_id": "POL-DEV-003",
+          "policy_name": "Internal Mobility",
+          "version": "1.0",
+          "effective_date": "2024-01-01",
+          "owner": "HR + Leadership",
+          "summary": "Mobilité interne et évolution de carrière",
+          "details": {
+            "philosophy": "Encourager évolution interne avant recrutement externe",
+            "process": {
+              "open_positions": "Postées en interne 1 semaine avant externe",
+              "application": "Discussion avec manager actuel + manager cible",
+              "interview": "Process standard (pas de passe-droit)",
+              "transition": "2-4 semaines handover si mobilité acceptée"
+            },
+            "eligibility": "Après 1 an dans rôle actuel (sauf exception)",
+            "types": {
+              "lateral_move": "Même niveau, fonction différente (ex: dev → PM)",
+              "promotion": "Niveau supérieur",
+              "rotation": "Temporaire (ex: 3-6 mois dans autre équipe)"
+            }
+          },
+          "related_documents": ["Career paths by role"]
+        }
+      ]
+    },
+    {
+      "category_id": "culture",
+      "category_name": "Culture & Values",
+      "policies": [
+        {
+          "policy_id": "POL-CUL-001",
+          "policy_name": "Code of Conduct",
+          "version": "2.0",
+          "effective_date": "2023-01-01",
+          "owner": "CEO + HR",
+          "summary": "Code de conduite et valeurs Arka Labs",
+          "details": {
+            "core_values": [
+              "AI-first mindset",
+              "Quality over speed",
+              "Transparency & trust",
+              "Continuous learning",
+              "Customer obsession"
+            ],
+            "expected_behaviors": [
+              "Respect et bienveillance dans toutes les interactions",
+              "Feedback direct et constructif",
+              "Ownership et accountability",
+              "Collaboration over competition",
+              "Celebrate wins, learn from failures"
+            ],
+            "prohibited_behaviors": [
+              "Discrimination ou harcèlement (toute forme)",
+              "Bullying ou intimidation",
+              "Conflits d'intérêt non déclarés",
+              "Divulgation informations confidentielles",
+              "Comportement contraire aux valeurs"
+            ]
+          },
+          "enforcement": "Graduated response: warning → PIP → termination (selon gravité)",
+          "reporting": "HR ou CEO, confidentialité garantie",
+          "related_documents": ["Full code of conduct", "Anti-harassment policy"]
+        },
+        {
+          "policy_id": "POL-CUL-002",
+          "policy_name": "Diversity, Equity & Inclusion",
+          "version": "1.3",
+          "effective_date": "2024-01-01",
+          "owner": "CEO + HR",
+          "summary": "Engagement diversité, équité et inclusion",
+          "details": {
+            "commitment": "Arka Labs s'engage à créer environnement inclusif pour tous",
+            "hiring": {
+              "diverse_pipelines": "Sourcing actif de candidats diversifiés",
+              "blind_cv_review": "Possible pour réduire biais",
+              "diverse_interview_panels": "Au moins 2 personnes par panel"
+            },
+            "pay_equity": {
+              "principle": "Equal pay for equal work",
+              "audit": "Revue annuelle des écarts de salaire (gender, etc.)",
+              "transparency": "Salary bands publiques en interne"
+            },
+            "inclusion_initiatives": [
+              "ERGs (Employee Resource Groups) si taille suffisante",
+              "Inclusive language guidelines",
+              "Accessibility considerations (remote work, tools, etc.)",
+              "Celebration of diverse backgrounds and perspectives"
+            ]
+          },
+          "metrics": [
+            "Gender diversity %",
+            "Leadership diversity",
+            "Inclusion survey scores"
+          ],
+          "related_documents": ["DEI strategy", "Inclusive language guide"]
+        },
+        {
+          "policy_id": "POL-CUL-003",
+          "policy_name": "Feedback Culture",
+          "version": "1.1",
+          "effective_date": "2024-01-01",
+          "owner": "Leadership",
+          "summary": "Culture de feedback continu et transparent",
+          "details": {
+            "philosophy": "Feedback is a gift. Donner et recevoir feedback régulièrement.",
+            "feedback_types": {
+              "1_on_1s": {
+                "frequency": "Weekly ou bi-weekly manager-report",
+                "format": "Conversational, 30-45 min",
+                "topics": "Progress, blockers, feedback, career"
+              },
+              "peer_feedback": {
+                "frequency": "Continuous (informal) + formal (performance review)",
+                "format": "Appreciation, coaching, critique constructive"
+              },
+              "360_feedback": {
+                "frequency": "Annual (pour leads et above)",
+                "format": "Structured survey from peers, reports, manager"
+              }
+            },
+            "feedback_guidelines": {
+              "timely": "Le plus tôt possible après situation",
+              "specific": "Exemples concrets, pas généralités",
+              "actionable": "Suggestions claires d'amélioration",
+              "balanced": "Positif ET areas d'amélioration"
+            }
+          },
+          "training": "Feedback training pour tous les managers",
+          "related_documents": ["Feedback guide", "1-on-1 template"]
+        }
+      ]
+    }
+  ],
+  "policy_review_process": {
+    "frequency": "Annuelle (minimum) ou ad-hoc si changement légal/business",
+    "owner": "HR + Leadership",
+    "approval": "CEO approval pour toute modification",
+    "communication": "All hands + Notion updates + individual notification si impacté"
+  },
+  "metadata": {
+    "document_owner": "HR + CEO",
+    "maintained_by": "HR",
+    "review_frequency": "annual",
+    "last_major_review": "2024-01-01",
+    "next_review_date": "2025-01-01",
+    "tags": ["org_policies", "hr", "culture", "employment", "benefits", "remote_work"]
+  }
+}

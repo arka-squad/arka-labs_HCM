@@ -1,0 +1,50 @@
+{
+  "$schema": "https://arka.labs/schemas/referential.v1.json",
+  "referential_id": "status_codes",
+  "version": "1.0.0",
+  "description": "Standard status codes for missions and actions",
+  "status_codes": [
+    {
+      "code": "planned",
+      "label": "Planned",
+      "description": "Mission or action is planned but not yet started.",
+      "category": "pre_execution",
+      "color": "#6B7280"
+    },
+    {
+      "code": "in_progress",
+      "label": "In Progress",
+      "description": "Currently being executed.",
+      "category": "execution",
+      "color": "#3B82F6"
+    },
+    {
+      "code": "on_hold",
+      "label": "On Hold",
+      "description": "Temporarily paused, awaiting dependencies or decisions.",
+      "category": "paused",
+      "color": "#F59E0B"
+    },
+    {
+      "code": "blocked",
+      "label": "Blocked",
+      "description": "Cannot proceed due to critical blocker.",
+      "category": "paused",
+      "color": "#EF4444"
+    },
+    {
+      "code": "done",
+      "label": "Done",
+      "description": "Successfully completed.",
+      "category": "terminal",
+      "color": "#10B981"
+    },
+    {
+      "code": "cancelled",
+      "label": "Cancelled",
+      "description": "Cancelled before completion.",
+      "category": "terminal",
+      "color": "#6B7280"
+    }
+  ]
+}

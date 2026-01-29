@@ -1,0 +1,137 @@
+{
+  "$schema": "https://arka.labs/schemas/evidence_pack_pattern.v1.json",
+  "pattern_id": "generic.evidence_pack",
+  "version": "1.0.0",
+  "pattern_type": "evidence_pack",
+  "title": "Generic Evidence Pack Pattern",
+  "description": "Standard structure for organizing and presenting evidence supporting decisions or findings.",
+  "structure": {
+    "metadata": {
+      "required_fields": [
+        "evidence_pack_id",
+        "title",
+        "created_at",
+        "created_by",
+        "mission_id",
+        "related_decision_ids"
+      ],
+      "optional_fields": [
+        "tags",
+        "sensitivity",
+        "expiry_date"
+      ]
+    },
+    "summary": {
+      "description": "High-level overview of what this evidence pack proves or supports",
+      "max_length_words": 200,
+      "sections": [
+        "claim_or_finding",
+        "supporting_evidence_summary",
+        "confidence_level"
+      ]
+    },
+    "evidence_items": {
+      "description": "Individual pieces of evidence, each with metadata",
+      "item_structure": {
+        "evidence_id": "unique_identifier",
+        "type": "from_evidence_types_referential",
+        "source": {
+          "origin": "where_evidence_came_from",
+          "date": "when_collected",
+          "collector": "who_collected"
+        },
+        "content": "the_actual_evidence",
+        "reliability": "low|medium|high",
+        "relevance": "low|medium|high"
+      },
+      "minimum_items": 2,
+      "recommended_items": 3
+    },
+    "analysis": {
+      "description": "Interpretation and synthesis of evidence",
+      "sections": [
+        {
+          "section": "pattern_identification",
+          "description": "Common themes or patterns across evidence"
+        },
+        {
+          "section": "triangulation",
+          "description": "How different evidence sources corroborate each other"
+        },
+        {
+          "section": "gaps",
+          "description": "Missing evidence or areas of uncertainty"
+        }
+      ]
+    },
+    "conclusion": {
+      "description": "What the evidence collectively demonstrates",
+      "includes": [
+        "main_finding",
+        "confidence_rating",
+        "limitations",
+        "recommendations_if_applicable"
+      ]
+    },
+    "attachments": {
+      "description": "Links to source documents, recordings, or artifacts",
+      "types_supported": [
+        "document",
+        "spreadsheet",
+        "recording",
+        "screenshot",
+        "diagram"
+      ]
+    }
+  },
+  "quality_criteria": {
+    "relevance": "Evidence directly relates to claim or finding",
+    "reliability": "Sources are credible and evidence is verifiable",
+    "sufficiency": "Enough evidence to support conclusion",
+    "triangulation": "Multiple sources corroborate finding",
+    "objectivity": "Bias acknowledged and minimized",
+    "timeliness": "Evidence is current and not outdated"
+  },
+  "confidence_levels": {
+    "high": {
+      "description": "Strong, corroborated evidence from multiple reliable sources",
+      "criteria": [
+        "3+ independent sources",
+        "High reliability sources",
+        "Clear triangulation",
+        "No contradictory evidence"
+      ]
+    },
+    "medium": {
+      "description": "Good evidence but with some limitations",
+      "criteria": [
+        "2 independent sources",
+        "Medium-to-high reliability",
+        "Some triangulation",
+        "Minor gaps or contradictions addressed"
+      ]
+    },
+    "low": {
+      "description": "Limited evidence or significant uncertainties",
+      "criteria": [
+        "Single source or unverified sources",
+        "Limited corroboration",
+        "Significant gaps remain"
+      ]
+    }
+  },
+  "example_use_cases": [
+    "Supporting a go/no-go decision",
+    "Documenting a problem statement",
+    "Justifying a recommendation",
+    "Proving compliance",
+    "Demonstrating user need"
+  ],
+  "anti_patterns": [
+    "Cherry-picking evidence that supports desired conclusion",
+    "Ignoring contradictory evidence",
+    "Mixing evidence with opinion without clear separation",
+    "Using single, unverified source",
+    "Outdated evidence for current decision"
+  ]
+}

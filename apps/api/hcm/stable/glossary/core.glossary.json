@@ -1,0 +1,69 @@
+{
+  "$schema": "https://arka.labs/schemas/glossary.v1.json",
+  "glossary_id": "core",
+  "version": "1.0.0",
+  "category": "core",
+  "description": "Core terminology for Arka OS and HCM",
+  "entries": [
+    {
+      "term": "mission",
+      "definition": "A structured engagement with defined objectives, tasks, and deliverables tracked within Arka OS. Governed by a MISSION_CONTRACT.",
+      "category": "core",
+      "aliases": ["engagement", "projet"]
+    },
+    {
+      "term": "pack",
+      "definition": "An immutable data envelope containing structured payload and metadata. 17 pack types exist in Arka taxonomy.",
+      "category": "core",
+      "aliases": ["data_pack", "pack_envelope"]
+    },
+    {
+      "term": "contract",
+      "definition": "The versioned source of truth for mission governance. Stored as MISSION_CONTRACT pack type.",
+      "category": "core",
+      "aliases": ["mission_contract", "governance_contract"]
+    },
+    {
+      "term": "evidence",
+      "definition": "Structured proof or supporting material for a decision, analysis, or finding. Stored with integrity hash.",
+      "category": "evidence",
+      "aliases": ["proof", "supporting_material"]
+    },
+    {
+      "term": "evidence_pack",
+      "definition": "A structured collection of evidence items that collectively support a decision or analysis.",
+      "category": "evidence",
+      "aliases": ["proof_pack", "evidence_bundle"]
+    },
+    {
+      "term": "agent",
+      "definition": "An AI-powered autonomous entity within Arka OS, capable of reading HCM, performing tasks, and updating state.",
+      "category": "core",
+      "aliases": ["ai_agent", "arka_agent"]
+    },
+    {
+      "term": "hcm",
+      "definition": "Hybrid Collective Memory - the structured knowledge and state repository shared between humans and AI agents.",
+      "category": "core",
+      "aliases": ["collective_memory", "memory"]
+    },
+    {
+      "term": "hindex",
+      "definition": "Hybrid Index - the governance layer for HCM search, defining classification, scopes, and routing rules.",
+      "category": "search",
+      "aliases": ["search_index", "governed_index"]
+    },
+    {
+      "term": "journal",
+      "definition": "An append-only log of timestamped entries documenting mission progress and events.",
+      "category": "mission_state",
+      "aliases": ["mission_log", "activity_log"]
+    },
+    {
+      "term": "snapshot",
+      "definition": "A point-in-time capture of mission state, used for audit, rollback, and continuity.",
+      "category": "mission_state",
+      "aliases": ["state_snapshot", "checkpoint"]
+    }
+  ]
+}

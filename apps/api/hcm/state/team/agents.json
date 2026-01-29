@@ -1,0 +1,64 @@
+{
+  "$schema": "https://arka.labs/schemas/agents.v1.json",
+  "version": "1.0.0",
+  "updated_at": "2025-12-10T00:00:00Z",
+  "agents": [
+    {
+      "agent_id": "arka_pmo_01",
+      "role": "pmo",
+      "display_name": "Arka PMO",
+      "status": "active",
+      "capabilities": [
+        "mission_planning",
+        "workflow_design",
+        "risk_tracking",
+        "reporting",
+        "governance"
+      ],
+      "assigned_missions": [],
+      "config": {
+        "max_concurrent_missions": 5,
+        "auto_snapshot": true,
+        "auto_rollup": true
+      },
+      "last_active_at": null
+    },
+    {
+      "agent_id": "arka_analyst_01",
+      "role": "analyst",
+      "display_name": "Arka Analyst",
+      "status": "active",
+      "capabilities": [
+        "data_synthesis",
+        "interview_analysis",
+        "evidence_pack_building",
+        "research",
+        "pattern_recognition"
+      ],
+      "assigned_missions": [],
+      "config": {
+        "max_concurrent_missions": 3,
+        "evidence_auto_classify": true
+      },
+      "last_active_at": null
+    },
+    {
+      "agent_id": "arka_architect_01",
+      "role": "architect",
+      "display_name": "Arka Architect",
+      "status": "active",
+      "capabilities": [
+        "solution_design",
+        "system_architecture",
+        "roadmap_building",
+        "technical_strategy"
+      ],
+      "assigned_missions": [],
+      "config": {
+        "max_concurrent_missions": 2,
+        "design_review_required": true
+      },
+      "last_active_at": null
+    }
+  ]
+}

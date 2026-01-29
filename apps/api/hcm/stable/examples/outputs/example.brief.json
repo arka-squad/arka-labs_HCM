@@ -1,0 +1,276 @@
+{
+  "$schema": "https://arka.labs/schemas/brief.v1.json",
+  "brief_id": "BRIEF-2024-DISC-001",
+  "brief_type": "discovery_findings",
+  "mission_id": "MISS-2024-DISC-001",
+  "title": "Brief Exécutif - Découverte Processus Facturation",
+  "subtitle": "Synthèse des findings et recommandations prioritaires",
+  "created_at": "2024-02-02T17:00:00Z",
+  "created_by": {
+    "name": "Sophie Laurent",
+    "role": "analyst",
+    "agent_id": "arka_analyst_01"
+  },
+  "audience": ["CFO", "COO", "IT Director", "COMEX"],
+  "sensitivity": "internal",
+  "executive_summary": {
+    "context": "Mission de découverte de 2 semaines pour analyser le processus de facturation B2B suite à des plaintes clients récurrentes.",
+    "key_finding": "Le processus actuel souffre de multiples frictions dues à un manque d'intégration systèmes. 23% des factures nécessitent des corrections manuelles.",
+    "impact": "Délai moyen de facturation de 8 jours après signature contrat, impactant trésorerie et satisfaction client (12% churn en phase onboarding).",
+    "recommendation": "Investissement prioritaire dans l'intégration Salesforce ↔ SAP pour éliminer 90% des erreurs et réduire le délai à 2 jours.",
+    "decision_needed": "Validation budget de ~150k€ pour projet d'intégration et automatisation (ROI estimé 18 mois)."
+  },
+  "snapshot": {
+    "mission_duration": "14 jours (15 jan - 02 fév 2024)",
+    "stakeholders_interviewed": 12,
+    "evidence_items_collected": 28,
+    "pain_points_identified": 5,
+    "recommendations_total": 8,
+    "recommendations_critical": 2
+  },
+  "top_findings": [
+    {
+      "finding_number": 1,
+      "title": "Saisie manuelle CRM → SAP source de 15% d'erreurs",
+      "severity": "high",
+      "impact": "Erreurs dans 15% des factures, 4h/jour perdues en saisie manuelle et corrections",
+      "evidence_strength": "high",
+      "quick_fix_available": false,
+      "estimated_fix_effort": "3 mois, ~100k€"
+    },
+    {
+      "finding_number": 2,
+      "title": "Délai de 8 jours entre contrat et facture",
+      "severity": "high",
+      "impact": "Impact trésorerie significatif, 12% de churn clients en phase onboarding",
+      "evidence_strength": "high",
+      "quick_fix_available": false,
+      "estimated_fix_effort": "Lié au finding #1"
+    },
+    {
+      "finding_number": 3,
+      "title": "Désynchronisation CRM ↔ ERP cause 45% des erreurs",
+      "severity": "high",
+      "impact": "Double-check manuel systématique nécessaire, ralentissement process",
+      "evidence_strength": "high",
+      "quick_fix_available": false,
+      "estimated_fix_effort": "Lié au finding #1"
+    },
+    {
+      "finding_number": 4,
+      "title": "Pas de visibilité temps réel pour Customer Success",
+      "severity": "medium",
+      "impact": "CS ne peut pas répondre aux questions clients, escalations inutiles vers Finance",
+      "evidence_strength": "medium",
+      "quick_fix_available": true,
+      "estimated_fix_effort": "3 semaines, ~20k€ (dashboard read-only)"
+    },
+    {
+      "finding_number": 5,
+      "title": "Absence de workflow de validation factures > 10k€",
+      "severity": "medium",
+      "impact": "3 erreurs majeures détectées par clients en 6 mois, risque réputationnel",
+      "evidence_strength": "medium",
+      "quick_fix_available": true,
+      "estimated_fix_effort": "6 semaines, ~30k€ (workflow tool)"
+    }
+  ],
+  "prioritized_recommendations": [
+    {
+      "rank": 1,
+      "recommendation_id": "REC-001",
+      "title": "Intégration API Salesforce ↔ SAP",
+      "rationale": "Adresse findings #1, #2, #3 qui représentent 75% des problèmes identifiés",
+      "impact": "HIGH - Élimination de 90% des erreurs, réduction délai 8j → 2j, économie 16h/semaine",
+      "effort": "HIGH - 3 mois, ~100k€",
+      "dependencies": ["Budget IT à valider", "Ressource dev Q2"],
+      "roi_estimate": "18 mois",
+      "risk_if_not_done": "Continuation des erreurs et insatisfaction client, risque churn accru"
+    },
+    {
+      "rank": 2,
+      "recommendation_id": "REC-003",
+      "title": "Dashboard consultation factures pour CS",
+      "rationale": "Quick win adressant finding #4, amélioration immédiate expérience client",
+      "impact": "MEDIUM - Réduction 60% des escalations, amélioration satisfaction",
+      "effort": "LOW - 3 semaines, ~20k€",
+      "dependencies": ["Accès lecture SAP pour CS"],
+      "roi_estimate": "6 mois",
+      "risk_if_not_done": "Continuation frustration équipe CS et clients"
+    },
+    {
+      "rank": 3,
+      "recommendation_id": "REC-002",
+      "title": "Workflow automatique de validation",
+      "rationale": "Adresse finding #5, apporte gouvernance et traçabilité",
+      "impact": "MEDIUM - Réduction risque erreurs majeures, conformité processus",
+      "effort": "MEDIUM - 6 semaines, ~30k€",
+      "dependencies": ["Choix outil workflow"],
+      "roi_estimate": "12 mois",
+      "risk_if_not_done": "Risque erreurs majeures continue, potentiel impact réputationnel"
+    }
+  ],
+  "financial_analysis": {
+    "current_state_cost": {
+      "manual_effort_finance": "16h/semaine × 50 semaines × 60€/h = 48k€/an",
+      "correction_errors": "Estimé 10h/semaine × 50 × 60€ = 30k€/an",
+      "customer_churn_onboarding": "12% × 50 nouveaux clients × 15k€ ARR moyen = 90k€/an perdu",
+      "total_estimated": "~170k€/an"
+    },
+    "proposed_investment": {
+      "rec_001_integration": "100k€ (one-time)",
+      "rec_002_workflow": "30k€ (one-time)",
+      "rec_003_dashboard": "20k€ (one-time)",
+      "total": "150k€"
+    },
+    "expected_savings": {
+      "reduction_manual_effort": "~35k€/an",
+      "reduction_errors_corrections": "~25k€/an",
+      "reduction_churn": "~50k€/an (estimation conservative 50% réduction)",
+      "total_annual_savings": "~110k€/an"
+    },
+    "roi": "Payback période ~18 mois, puis 110k€ économies récurrentes/an"
+  },
+  "risk_assessment": {
+    "if_no_action": [
+      {
+        "risk": "Continuation insatisfaction client",
+        "probability": "high",
+        "impact": "medium",
+        "consequence": "Churn accru, réputation dégradée"
+      },
+      {
+        "risk": "Erreur majeure de facturation",
+        "probability": "medium",
+        "impact": "high",
+        "consequence": "Impact financier direct + légal potentiel si client majeur"
+      },
+      {
+        "risk": "Perte de compétence clé (bus factor = 2)",
+        "probability": "low",
+        "impact": "critical",
+        "consequence": "Processus bloqué si départ de Pierre Moreau ou Camille Rousseau"
+      }
+    ],
+    "if_action_taken": [
+      {
+        "risk": "Projet d'intégration échoue ou dépasse budget",
+        "probability": "medium",
+        "impact": "medium",
+        "mitigation": "Approche agile, sprints courts, pilote avant déploiement complet"
+      },
+      {
+        "risk": "Résistance au changement équipe Finance",
+        "probability": "low",
+        "impact": "low",
+        "mitigation": "Impliquer équipe dès conception, formation, communication bénéfices"
+      }
+    ]
+  },
+  "next_steps_proposed": [
+    {
+      "step": 1,
+      "action": "Présentation COMEX pour validation budget",
+      "deadline": "2024-02-05",
+      "owner": "CFO"
+    },
+    {
+      "step": 2,
+      "action": "Si budget validé: Lancement mission transformation",
+      "deadline": "2024-02-15",
+      "owner": "PMO"
+    },
+    {
+      "step": 3,
+      "action": "Quick win REC-006: Définir et publier SLA corrections",
+      "deadline": "2024-02-20",
+      "owner": "Billing Manager",
+      "note": "Action immédiate sans budget, amélioration perception client"
+    },
+    {
+      "step": 4,
+      "action": "Quick win REC-003: Dashboard CS (si ressource IT disponible)",
+      "deadline": "2024-03-31",
+      "owner": "IT Director",
+      "note": "Conditionné à disponibilité développeur"
+    }
+  ],
+  "questions_for_decision_makers": [
+    {
+      "question": "Validation du budget de 150k€ pour transformation processus facturation?",
+      "context": "ROI estimé 18 mois avec économies récurrentes de 110k€/an",
+      "urgency": "high",
+      "decision_needed_by": "2024-02-12"
+    },
+    {
+      "question": "Quelle priorité donner à ce projet vs autres initiatives IT en cours?",
+      "context": "Ressources développement limitées, besoin d'arbitrage roadmap IT Q2",
+      "urgency": "medium",
+      "decision_needed_by": "2024-02-20"
+    },
+    {
+      "question": "Accord Sales sur standardisation templates contrats (REC-004)?",
+      "context": "Réduction flexibilité commerciale au profit simplification facturation",
+      "urgency": "low",
+      "decision_needed_by": "2024-03-15"
+    }
+  ],
+  "attachments": [
+    {
+      "type": "document",
+      "title": "Discovery Report Complet",
+      "reference": "REP-001",
+      "description": "Rapport détaillé 45 pages avec analyse complète"
+    },
+    {
+      "type": "diagram",
+      "title": "Process Map Actuel (BPMN)",
+      "reference": "MAP-001",
+      "description": "Cartographie détaillée du processus en 7 étapes"
+    },
+    {
+      "type": "spreadsheet",
+      "title": "Analyse Erreurs Facturation (6 mois)",
+      "reference": "DATA-001",
+      "description": "Dataset complet des erreurs, délais, corrections"
+    },
+    {
+      "type": "presentation",
+      "title": "Présentation Executive",
+      "reference": "PRES-001",
+      "description": "Slides pour présentation COMEX"
+    }
+  ],
+  "approval_tracking": {
+    "status": "pending_review",
+    "submitted_to": "Marie Dubois (CFO)",
+    "submitted_at": "2024-02-02T17:30:00Z",
+    "review_deadline": "2024-02-05T23:59:59Z",
+    "approvers": [
+      {
+        "name": "Marie Dubois",
+        "role": "CFO",
+        "approved": null,
+        "comments": null
+      },
+      {
+        "name": "Isabelle Fournier",
+        "role": "COO",
+        "approved": null,
+        "comments": null
+      }
+    ]
+  },
+  "metadata": {
+    "format_version": "1.0",
+    "page_count": 6,
+    "reading_time_minutes": 12,
+    "confidentiality": "internal",
+    "distribution_list": ["COMEX", "CFO", "COO", "IT Director", "Billing Manager"],
+    "related_documents": [
+      "REP-001 - Discovery Report Full",
+      "MISS-2024-DISC-001 - Mission Discovery Facturation"
+    ],
+    "tags": ["finance", "billing", "discovery", "executive", "decision_support"]
+  }
+}

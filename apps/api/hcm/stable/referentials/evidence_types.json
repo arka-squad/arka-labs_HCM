@@ -1,0 +1,56 @@
+{
+  "$schema": "https://arka.labs/schemas/referential.v1.json",
+  "referential_id": "evidence_types",
+  "version": "1.0.0",
+  "description": "Standard evidence types for mission artifacts",
+  "evidence_types": [
+    {
+      "code": "interview_synthesis",
+      "label": "Interview Synthesis",
+      "description": "Structured summary of one or more interviews.",
+      "confidence_default": "medium"
+    },
+    {
+      "code": "workshop_output",
+      "label": "Workshop Output",
+      "description": "Consolidated findings from a collaborative workshop.",
+      "confidence_default": "high"
+    },
+    {
+      "code": "document_analysis",
+      "label": "Document Analysis",
+      "description": "Analysis of existing documentation or artifacts.",
+      "confidence_default": "medium"
+    },
+    {
+      "code": "data_analysis",
+      "label": "Data Analysis",
+      "description": "Quantitative or qualitative data analysis results.",
+      "confidence_default": "high"
+    },
+    {
+      "code": "observation",
+      "label": "Observation",
+      "description": "Direct observation of processes, systems, or behaviors.",
+      "confidence_default": "medium"
+    },
+    {
+      "code": "benchmark",
+      "label": "Benchmark",
+      "description": "Comparative analysis against standards or competitors.",
+      "confidence_default": "high"
+    },
+    {
+      "code": "test_result",
+      "label": "Test Result",
+      "description": "Outcome of a test, proof of concept, or experiment.",
+      "confidence_default": "high"
+    },
+    {
+      "code": "audit_finding",
+      "label": "Audit Finding",
+      "description": "Structured finding from an audit process.",
+      "confidence_default": "high"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arka-os/specs/schemas/event_envelope.v1.schema.json",
+  "title": "ARKA_OS event envelope (v1)",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "topic",
+    "occurred_at",
+    "produced_by",
+    "correlation_id",
+    "mission_id",
+    "refs"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "CONTRACT_VERSION_CREATED",
+        "PACK_CREATED",
+        "PACK_STORED",
+        "PACK_CERTIFIED",
+        "PACK_REJECTED",
+        "OUTPUT_CERTIFIED",
+        "OUTPUT_REJECTED",
+        "INCIDENT_OPENED",
+        "INCIDENT_UPDATED",
+        "AGENT_RUN_SUBMITTED",
+        "AGENT_RUN_COMPLETED"
+      ]
+    },
+    "topic": {
+      "type": "string",
+      "enum": [
+        "arka.contract",
+        "arka.pack",
+        "arka.guardian",
+        "arka.external"
+      ]
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "produced_by": {
+      "type": "object",
+      "required": [
+        "actor_type",
+        "actor_id"
+      ],
+      "properties": {
+        "actor_type": {
+          "type": "string",
+          "enum": [
+            "HUMAN",
+            "KERNEL",
+            "GUARDIAN",
+            "HCM",
+            "AGP",
+            "PO",
+            "ORCHESTRATOR",
+            "EXTERNAL",
+            "CONTRACTGEN"
+          ]
+        },
+        "actor_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "correlation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mission_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contract_ref": {
+      "type": "object"
+    },
+    "refs": {
+      "type": "object"
+    },
+    "idempotency_key": {
+      "type": "string"
+    },
+    "ordering_key": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

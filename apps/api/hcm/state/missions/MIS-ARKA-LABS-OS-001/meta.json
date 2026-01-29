@@ -1,0 +1,15 @@
+{
+  "mission_id": "MIS-ARKA-LABS-OS-001",
+  "contract_id": "CONTRACT-GUARDIAN-LLM-SYNTHESE-001",
+  "latest_contract_version": 1,
+  "latest_contract_hash": "sha256:7f86a2c584ea8c19054dd4327d99797093b34af25cd7b9401aa22deb6bc69f90",
+  "latest_contract_ref": {
+    "contract_id": "CONTRACT-GUARDIAN-LLM-SYNTHESE-001",
+    "contract_version": 1,
+    "contract_hash": "sha256:7f86a2c584ea8c19054dd4327d99797093b34af25cd7b9401aa22deb6bc69f90"
+  },
+  "project_id": "PROJ-ARKA-LABS-OS-001",
+  "project_name": "Arka-labs-os",
+  "client_id": "CL-ARKA-LABS-001",
+  "client_name": "Arka-labs"
+}

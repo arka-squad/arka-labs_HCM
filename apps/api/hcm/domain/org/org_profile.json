@@ -1,0 +1,26 @@
+{
+  "$schema": "https://arka.labs/schemas/org_profile.v1.json",
+  "org_id": "arka-labs",
+  "org_name": "Arka Labs",
+  "industry": "AI & Software",
+  "size": "startup",
+  "description": "AI-powered governance and orchestration platform for multi-LLM systems.",
+  "headquarters": {
+    "city": "Paris",
+    "country": "France",
+    "timezone": "Europe/Paris"
+  },
+  "values": [
+    "Deterministic AI governance",
+    "Human-AI collaboration",
+    "Radical transparency",
+    "Quality over speed"
+  ],
+  "key_contacts": [
+    {
+      "human_id": "jeremy.grimonpont",
+      "role": "founder_cto",
+      "email": "jeremy@arka.labs"
+    }
+  ]
+}

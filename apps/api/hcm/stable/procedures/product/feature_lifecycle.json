@@ -1,0 +1,237 @@
+{
+  "$schema": "https://arka.labs/schemas/procedure.v1.json",
+  "procedure_id": "feature_lifecycle",
+  "version": "1.0.0",
+  "category": "product",
+  "title": "Feature Lifecycle Management",
+  "description": "End-to-end process for managing features from ideation to deprecation.",
+  "owner": "product_team",
+  "last_updated": "2025-12-10T00:00:00Z",
+  "phases": [
+    {
+      "phase_number": 1,
+      "name": "Discovery",
+      "description": "Understand problem space and validate opportunity",
+      "steps": [
+        {
+          "name": "Problem Identification",
+          "actions": [
+            "Gather user feedback and pain points",
+            "Analyze support tickets and analytics",
+            "Conduct user interviews",
+            "Document problem statement"
+          ],
+          "deliverables": ["problem_brief", "user_research_summary"]
+        },
+        {
+          "name": "Opportunity Assessment",
+          "actions": [
+            "Estimate market size and potential impact",
+            "Assess strategic alignment",
+            "Review competitive landscape",
+            "Calculate rough ROI"
+          ],
+          "deliverables": ["opportunity_assessment", "business_case"]
+        },
+        {
+          "name": "Prioritization",
+          "actions": [
+            "Score using prioritization framework (RICE, ICE, etc.)",
+            "Compare with other opportunities",
+            "Get stakeholder input",
+            "Add to roadmap or backlog"
+          ],
+          "deliverables": ["prioritization_score", "roadmap_position"]
+        }
+      ],
+      "exit_criteria": ["Problem validated", "Business case approved", "Added to roadmap"],
+      "typical_duration_weeks": 2
+    },
+    {
+      "phase_number": 2,
+      "name": "Definition",
+      "description": "Define feature requirements and solution approach",
+      "steps": [
+        {
+          "name": "Requirements Gathering",
+          "actions": [
+            "Write user stories with acceptance criteria",
+            "Define functional requirements",
+            "Identify technical constraints",
+            "Map user flows"
+          ],
+          "deliverables": ["user_stories", "functional_spec", "user_flows"]
+        },
+        {
+          "name": "Solution Design",
+          "actions": [
+            "Create mockups/wireframes",
+            "Define technical architecture",
+            "Identify dependencies",
+            "Plan data model changes"
+          ],
+          "deliverables": ["design_mockups", "technical_design_doc"]
+        },
+        {
+          "name": "Planning",
+          "actions": [
+            "Break down into development tasks",
+            "Estimate effort",
+            "Identify risks and mitigation",
+            "Plan release approach"
+          ],
+          "deliverables": ["development_plan", "risk_assessment", "release_plan"]
+        }
+      ],
+      "exit_criteria": ["Requirements documented", "Design approved", "Plan estimated"],
+      "typical_duration_weeks": 3
+    },
+    {
+      "phase_number": 3,
+      "name": "Development",
+      "description": "Build, test, and prepare feature for release",
+      "steps": [
+        {
+          "name": "Implementation",
+          "actions": [
+            "Develop according to specs",
+            "Write unit and integration tests",
+            "Conduct code reviews",
+            "Update documentation"
+          ],
+          "deliverables": ["code", "tests", "documentation"]
+        },
+        {
+          "name": "Quality Assurance",
+          "actions": [
+            "Execute test plan",
+            "Perform regression testing",
+            "Validate against acceptance criteria",
+            "Fix bugs and issues"
+          ],
+          "deliverables": ["test_results", "bug_reports"]
+        },
+        {
+          "name": "Release Preparation",
+          "actions": [
+            "Prepare release notes",
+            "Create feature flags if needed",
+            "Set up monitoring and alerts",
+            "Plan rollout strategy"
+          ],
+          "deliverables": ["release_notes", "monitoring_setup", "rollout_plan"]
+        }
+      ],
+      "exit_criteria": ["All tests passing", "QA approved", "Release ready"],
+      "typical_duration_weeks": 4
+    },
+    {
+      "phase_number": 4,
+      "name": "Launch",
+      "description": "Release feature to users and monitor adoption",
+      "steps": [
+        {
+          "name": "Release",
+          "actions": [
+            "Deploy to production",
+            "Enable feature (flags, config)",
+            "Verify deployment successful",
+            "Monitor for errors"
+          ],
+          "deliverables": ["deployed_feature"]
+        },
+        {
+          "name": "Communication",
+          "actions": [
+            "Announce to users",
+            "Train support team",
+            "Update help documentation",
+            "Notify stakeholders"
+          ],
+          "deliverables": ["announcement", "support_docs"]
+        },
+        {
+          "name": "Monitoring",
+          "actions": [
+            "Track usage metrics",
+            "Monitor performance",
+            "Gather early feedback",
+            "Address critical issues"
+          ],
+          "deliverables": ["usage_dashboard", "feedback_summary"]
+        }
+      ],
+      "exit_criteria": ["Feature live", "Users notified", "Monitoring active"],
+      "typical_duration_weeks": 1
+    },
+    {
+      "phase_number": 5,
+      "name": "Growth",
+      "description": "Optimize feature and drive adoption",
+      "steps": [
+        {
+          "name": "Adoption Analysis",
+          "actions": [
+            "Analyze usage patterns",
+            "Identify adoption barriers",
+            "Segment user behavior",
+            "Calculate key metrics"
+          ],
+          "deliverables": ["adoption_report", "user_segments"]
+        },
+        {
+          "name": "Optimization",
+          "actions": [
+            "Iterate based on feedback",
+            "A/B test variations",
+            "Improve UX pain points",
+            "Enhance performance"
+          ],
+          "deliverables": ["optimization_backlog", "ab_test_results"]
+        }
+      ],
+      "exit_criteria": ["Target adoption reached", "Performance optimized"],
+      "typical_duration_weeks": 8
+    },
+    {
+      "phase_number": 6,
+      "name": "Maturity",
+      "description": "Maintain feature and plan for future",
+      "steps": [
+        {
+          "name": "Maintenance",
+          "actions": [
+            "Fix bugs",
+            "Update for compatibility",
+            "Respond to support issues",
+            "Monitor health"
+          ],
+          "deliverables": ["bug_fixes", "maintenance_updates"]
+        },
+        {
+          "name": "Evolution Planning",
+          "actions": [
+            "Gather enhancement requests",
+            "Assess replacement or deprecation needs",
+            "Plan next iteration or sunset"
+          ],
+          "deliverables": ["enhancement_backlog", "evolution_plan"]
+        }
+      ],
+      "exit_criteria": ["Stable operation", "Future plan defined"],
+      "typical_duration_weeks": 52
+    }
+  ],
+  "decision_gates": {
+    "discovery_to_definition": "Business case approved by Product Leadership",
+    "definition_to_development": "Design and plan approved by Engineering",
+    "development_to_launch": "QA sign-off and release approved",
+    "launch_to_growth": "Deployment successful and stable"
+  },
+  "success_metrics": [
+    "Adoption rate vs target",
+    "User satisfaction score",
+    "Business KPI impact",
+    "Technical performance metrics"
+  ]
+}

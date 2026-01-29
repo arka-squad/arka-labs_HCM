@@ -1,0 +1,23 @@
+{
+  "$schema": "https://arka.labs/schemas/humans.v1.json",
+  "version": "1.0.0",
+  "updated_at": "2025-12-10T00:00:00Z",
+  "humans": [
+    {
+      "human_id": "jeremy.grimonpont",
+      "display_name": "Jérémy Grimonpont",
+      "email": "jeremy@arka.labs",
+      "role": "founder_cto",
+      "department": "Engineering",
+      "time_zone": "Europe/Paris",
+      "preferred_language": "fr",
+      "capabilities": [
+        "product_vision",
+        "technical_architecture",
+        "code_review",
+        "strategic_decisions"
+      ],
+      "notes": "Founder & CTO of Arka Labs. Focuses on deterministic AI governance."
+    }
+  ]
+}

@@ -1,0 +1,571 @@
+{
+  "$schema": "https://arka.labs/schemas/org_structure.v1.json",
+  "org_id": "arka-labs-org",
+  "version": "2.1.0",
+  "effective_date": "2024-02-01",
+  "last_updated": "2024-02-24T12:00:00Z",
+  "organization_name": "Arka Labs",
+  "legal_entity": "Arka Labs SAS",
+  "headquarters": "Paris, France",
+  "company_size": {
+    "employees_fte": 18,
+    "contractors": 5,
+    "total_headcount": 23
+  },
+  "organization_model": "flat_with_functional_leads",
+  "description": "Structure organisationnelle d'Arka Labs, startup tech AI-first en phase scale-up.",
+  "leadership_team": {
+    "ceo": {
+      "position": "Chief Executive Officer",
+      "name": "Jeremy Grimonpont",
+      "reports_to": "Board",
+      "direct_reports": ["CTO", "CFO", "Head of Product", "Head of Sales", "Head of Delivery"],
+      "responsibilities": [
+        "Vision et stratégie entreprise",
+        "Fundraising et relations investisseurs",
+        "Culture et values",
+        "Partenariats stratégiques",
+        "Executive decision making"
+      ]
+    },
+    "cto": {
+      "position": "Chief Technology Officer",
+      "name": "Alexandre Martin",
+      "reports_to": "CEO",
+      "direct_reports": ["Lead Architect", "Lead Dev Fullstack", "DevOps Lead", "Security Engineer"],
+      "responsibilities": [
+        "Vision et roadmap technologique",
+        "Architecture globale",
+        "Standards et best practices engineering",
+        "R&D et innovation tech",
+        "Management équipe engineering"
+      ]
+    },
+    "cfo": {
+      "position": "Chief Financial Officer",
+      "name": "Sophie Renault",
+      "reports_to": "CEO",
+      "direct_reports": ["Finance Manager", "Operations Manager"],
+      "responsibilities": [
+        "Gestion financière et comptabilité",
+        "FP&A et budgets",
+        "Trésorerie et cash management",
+        "Conformité financière et fiscale",
+        "Metrics et reporting board"
+      ]
+    }
+  },
+  "departments": [
+    {
+      "department_id": "DEPT-PRODUCT",
+      "department_name": "Product",
+      "head": {
+        "position": "Head of Product",
+        "name": "Claire Dubois",
+        "reports_to": "CEO"
+      },
+      "headcount": 4,
+      "teams": [
+        {
+          "team_id": "TEAM-PM",
+          "team_name": "Product Management",
+          "lead": "Claire Dubois (Head of Product)",
+          "members": [
+            {
+              "name": "Claire Dubois",
+              "role": "Head of Product / PM",
+              "focus": "Arka OS strategy & roadmap"
+            },
+            {
+              "name": "Thomas Bernard",
+              "role": "Product Manager",
+              "focus": "Arka HCM product"
+            }
+          ]
+        },
+        {
+          "team_id": "TEAM-DESIGN",
+          "team_name": "Design",
+          "lead": "Julie Chen (Lead Designer)",
+          "members": [
+            {
+              "name": "Julie Chen",
+              "role": "Lead Designer",
+              "focus": "Product design, UX/UI"
+            },
+            {
+              "name": "Marie Petit (contractor)",
+              "role": "UX Researcher",
+              "focus": "User research, usability testing"
+            }
+          ]
+        }
+      ],
+      "mission": "Définir vision produit, roadmap et features pour maximiser valeur utilisateurs",
+      "key_responsibilities": [
+        "Product strategy & roadmap",
+        "User research et discovery",
+        "Feature definition et priorisation",
+        "Product design (UX/UI)",
+        "Product analytics et metrics"
+      ]
+    },
+    {
+      "department_id": "DEPT-ENGINEERING",
+      "department_name": "Engineering",
+      "head": {
+        "position": "Chief Technology Officer",
+        "name": "Alexandre Martin",
+        "reports_to": "CEO"
+      },
+      "headcount": 9,
+      "teams": [
+        {
+          "team_id": "TEAM-PLATFORM",
+          "team_name": "Platform Engineering",
+          "lead": "Lead Architect",
+          "members": [
+            {
+              "name": "Marc Leblanc",
+              "role": "Lead Architect",
+              "focus": "System architecture, ADRs, tech strategy"
+            },
+            {
+              "name": "Sophie Laurent",
+              "role": "Lead Dev Fullstack",
+              "focus": "Arka product development (frontend + backend)"
+            },
+            {
+              "name": "David Perrin",
+              "role": "Senior Backend Engineer",
+              "focus": "APIs, services, data pipelines"
+            },
+            {
+              "name": "Amélie Dupuis",
+              "role": "Frontend Engineer",
+              "focus": "React components, UI integration"
+            }
+          ]
+        },
+        {
+          "team_id": "TEAM-INFRA",
+          "team_name": "Infrastructure & DevOps",
+          "lead": "DevOps Lead",
+          "members": [
+            {
+              "name": "Olivier Roux",
+              "role": "DevOps Lead",
+              "focus": "Infrastructure, CI/CD, deployments"
+            },
+            {
+              "name": "Mathieu Girard",
+              "role": "DevOps Engineer",
+              "focus": "AWS, Terraform, monitoring"
+            }
+          ]
+        },
+        {
+          "team_id": "TEAM-SECURITY",
+          "team_name": "Security",
+          "lead": "CISO (reporting to CTO)",
+          "members": [
+            {
+              "name": "Laurent Dumont",
+              "role": "CISO / Security Engineer",
+              "focus": "Security architecture, compliance (ISO 27001), IAM"
+            },
+            {
+              "name": "Nicolas Faure",
+              "role": "Security Engineer",
+              "focus": "Application security, vulnerability management"
+            }
+          ]
+        },
+        {
+          "team_id": "TEAM-QA",
+          "team_name": "Quality Assurance",
+          "lead": "QA Lead",
+          "members": [
+            {
+              "name": "Stéphanie Roy",
+              "role": "QA Lead",
+              "focus": "Test strategy, automation, quality processes"
+            }
+          ]
+        }
+      ],
+      "mission": "Construire et opérer les produits et l'infrastructure tech d'Arka Labs",
+      "key_responsibilities": [
+        "Développement produits (Arka OS, Arka HCM)",
+        "Architecture technique",
+        "Infrastructure cloud et DevOps",
+        "Sécurité et conformité",
+        "Quality assurance et testing"
+      ]
+    },
+    {
+      "department_id": "DEPT-DELIVERY",
+      "department_name": "Delivery & Consulting",
+      "head": {
+        "position": "Head of Delivery",
+        "name": "Pierre Moreau",
+        "reports_to": "CEO"
+      },
+      "headcount": 6,
+      "teams": [
+        {
+          "team_id": "TEAM-CONSULTING",
+          "team_name": "Consulting",
+          "lead": "Head of Delivery",
+          "members": [
+            {
+              "name": "Pierre Moreau",
+              "role": "Head of Delivery / Senior Consultant",
+              "focus": "Client delivery, consulting missions"
+            },
+            {
+              "name": "Caroline Mercier",
+              "role": "Senior Analyst",
+              "focus": "Discovery, audit, analysis"
+            },
+            {
+              "name": "Lucas Martin",
+              "role": "Consultant",
+              "focus": "Delivery missions, client projects"
+            }
+          ]
+        },
+        {
+          "team_id": "TEAM-PMO",
+          "team_name": "PMO & Operations",
+          "lead": "PMO Lead",
+          "members": [
+            {
+              "name": "Émilie Garnier",
+              "role": "PMO Lead",
+              "focus": "Mission planning, resource allocation, delivery ops"
+            },
+            {
+              "name": "Sarah Blanc",
+              "role": "Project Coordinator",
+              "focus": "Project coordination, documentation"
+            }
+          ]
+        },
+        {
+          "team_id": "TEAM-CUSTOMER-SUCCESS",
+          "team_name": "Customer Success",
+          "lead": "Customer Success Manager",
+          "members": [
+            {
+              "name": "Nathalie Simon",
+              "role": "Customer Success Manager",
+              "focus": "Client relationship, retention, upsell"
+            }
+          ]
+        }
+      ],
+      "mission": "Livrer services de consulting et assurer succès clients",
+      "key_responsibilities": [
+        "Delivery missions client (discovery, audit, implementation)",
+        "Project management et PMO",
+        "Customer success et retention",
+        "Knowledge capture et sharing"
+      ]
+    },
+    {
+      "department_id": "DEPT-SALES",
+      "department_name": "Sales & Marketing",
+      "head": {
+        "position": "Head of Sales",
+        "name": "Marc Durand",
+        "reports_to": "CEO"
+      },
+      "headcount": 3,
+      "teams": [
+        {
+          "team_id": "TEAM-SALES",
+          "team_name": "Sales",
+          "lead": "Head of Sales",
+          "members": [
+            {
+              "name": "Marc Durand",
+              "role": "Head of Sales / Account Executive",
+              "focus": "Sales strategy, pipeline, closing deals"
+            },
+            {
+              "name": "Antoine Mercier",
+              "role": "Account Executive",
+              "focus": "Outbound sales, demos, proposals"
+            }
+          ]
+        },
+        {
+          "team_id": "TEAM-MARKETING",
+          "team_name": "Marketing",
+          "lead": "Marketing Manager",
+          "members": [
+            {
+              "name": "Isabelle Fournier",
+              "role": "Marketing Manager",
+              "focus": "Content marketing, demand generation, brand"
+            }
+          ]
+        }
+      ],
+      "mission": "Générer pipeline commercial et acquérir nouveaux clients",
+      "key_responsibilities": [
+        "Lead generation (inbound + outbound)",
+        "Sales process et closing",
+        "Content marketing et brand",
+        "Partnerships"
+      ]
+    },
+    {
+      "department_id": "DEPT-FINANCE-OPS",
+      "department_name": "Finance & Operations",
+      "head": {
+        "position": "Chief Financial Officer",
+        "name": "Sophie Renault",
+        "reports_to": "CEO"
+      },
+      "headcount": 3,
+      "teams": [
+        {
+          "team_id": "TEAM-FINANCE",
+          "team_name": "Finance",
+          "lead": "Finance Manager",
+          "members": [
+            {
+              "name": "Sophie Renault",
+              "role": "CFO",
+              "focus": "Financial strategy, FP&A, board reporting"
+            },
+            {
+              "name": "Camille Rousseau",
+              "role": "Finance Manager",
+              "focus": "Accounting, billing, financial operations"
+            }
+          ]
+        },
+        {
+          "team_id": "TEAM-OPS",
+          "team_name": "Operations",
+          "lead": "Operations Manager",
+          "members": [
+            {
+              "name": "Julien Leroy",
+              "role": "Operations Manager",
+              "focus": "General operations, HR, legal, procurement"
+            }
+          ]
+        }
+      ],
+      "mission": "Gérer finances, opérations et fonctions support",
+      "key_responsibilities": [
+        "Financial management et comptabilité",
+        "FP&A et budgets",
+        "HR et people operations",
+        "Legal et compliance",
+        "Office management"
+      ]
+    }
+  ],
+  "contractors_pool": {
+    "description": "Pool de contractors réguliers pour flexibilité et expertise ponctuelle",
+    "contractors": [
+      {
+        "name": "Marie Petit",
+        "specialty": "UX Research",
+        "engagement": "part-time (2j/semaine)",
+        "works_with": "Product (Design team)"
+      },
+      {
+        "name": "François Blanc",
+        "specialty": "Data Engineering",
+        "engagement": "project-based",
+        "works_with": "Engineering"
+      },
+      {
+        "name": "Claire Fontaine",
+        "specialty": "Audit & Compliance",
+        "engagement": "project-based",
+        "works_with": "Security / Delivery"
+      },
+      {
+        "name": "Audrey Vincent",
+        "specialty": "Content Writing",
+        "engagement": "part-time (1j/semaine)",
+        "works_with": "Marketing"
+      },
+      {
+        "name": "Paul Legrand",
+        "specialty": "Frontend Development",
+        "engagement": "project-based",
+        "works_with": "Engineering (Platform)"
+      }
+    ]
+  },
+  "reporting_structure": {
+    "level_1_ceo": [
+      "Jeremy Grimonpont (CEO)"
+    ],
+    "level_2_c_suite": [
+      "Alexandre Martin (CTO)",
+      "Sophie Renault (CFO)"
+    ],
+    "level_2_heads": [
+      "Claire Dubois (Head of Product)",
+      "Marc Durand (Head of Sales)",
+      "Pierre Moreau (Head of Delivery)"
+    ],
+    "level_3_leads": [
+      "Marc Leblanc (Lead Architect)",
+      "Sophie Laurent (Lead Dev Fullstack)",
+      "Olivier Roux (DevOps Lead)",
+      "Laurent Dumont (CISO)",
+      "Stéphanie Roy (QA Lead)",
+      "Julie Chen (Lead Designer)",
+      "Émilie Garnier (PMO Lead)",
+      "Camille Rousseau (Finance Manager)",
+      "Julien Leroy (Operations Manager)"
+    ],
+    "level_4_team_members": [
+      "All other employees and contractors"
+    ]
+  },
+  "decision_making_framework": {
+    "strategic_decisions": {
+      "scope": "Vision, strategy, fundraising, M&A, major partnerships",
+      "decision_maker": "CEO with Board approval"
+    },
+    "product_decisions": {
+      "scope": "Product roadmap, major features, product strategy",
+      "decision_maker": "Head of Product with CEO alignment"
+    },
+    "technical_decisions": {
+      "scope": "Technology stack, architecture, technical standards",
+      "decision_maker": "CTO with input from Lead Architect"
+    },
+    "hiring_decisions": {
+      "scope": "New hires, roles, compensation",
+      "decision_maker": "Hiring manager + CEO approval (all roles)"
+    },
+    "budget_decisions": {
+      "scope": "Budget allocation, major expenses (>10k€)",
+      "decision_maker": "CFO with CEO approval"
+    },
+    "operational_decisions": {
+      "scope": "Day-to-day operations, processes, tools (<10k€)",
+      "decision_maker": "Relevant department head"
+    }
+  },
+  "collaboration_model": {
+    "squads": {
+      "description": "Cross-functional squads for major initiatives",
+      "active_squads": [
+        {
+          "squad_name": "Arka OS Core",
+          "mission": "Build and iterate Arka OS product",
+          "members": ["Product PM", "Lead Dev Fullstack", "Backend Engineer", "Frontend Engineer", "QA Lead", "Designer"],
+          "cadence": "2-week sprints"
+        },
+        {
+          "squad_name": "Arka HCM",
+          "mission": "Build Arka HCM from scratch",
+          "members": ["Product PM (HCM)", "Lead Dev Fullstack", "Backend Engineer", "Lead Architect", "QA Lead"],
+          "cadence": "2-week sprints",
+          "status": "active (Phase 1 implementation)"
+        },
+        {
+          "squad_name": "Client Delivery",
+          "mission": "Execute client missions and ensure satisfaction",
+          "members": ["Head of Delivery", "Consultants", "PMO Lead", "Customer Success Manager", "Subject matter experts as needed"],
+          "cadence": "mission-based"
+        }
+      ]
+    },
+    "rituals": {
+      "all_hands": {
+        "frequency": "bi-weekly",
+        "duration": "60 min",
+        "attendees": "all employees",
+        "purpose": "Company updates, wins, challenges, culture"
+      },
+      "leadership_meeting": {
+        "frequency": "weekly",
+        "duration": "90 min",
+        "attendees": "CEO + C-suite + Department Heads",
+        "purpose": "Strategic alignment, key decisions, cross-functional coordination"
+      },
+      "product_review": {
+        "frequency": "bi-weekly",
+        "duration": "60 min",
+        "attendees": "Product team + Engineering leads + Stakeholders",
+        "purpose": "Demo features, roadmap updates, feedback"
+      },
+      "engineering_sync": {
+        "frequency": "weekly",
+        "duration": "45 min",
+        "attendees": "CTO + Engineering team",
+        "purpose": "Tech updates, blockers, architecture discussions"
+      },
+      "sales_pipeline_review": {
+        "frequency": "weekly",
+        "duration": "30 min",
+        "attendees": "CEO + Head of Sales + Sales team",
+        "purpose": "Pipeline review, deal strategy, forecasting"
+      }
+    }
+  },
+  "growth_plan": {
+    "2024_hiring_plan": [
+      {
+        "role": "Senior Backend Engineer",
+        "department": "Engineering",
+        "target_quarter": "Q2",
+        "status": "req_open"
+      },
+      {
+        "role": "Product Manager (AI/ML)",
+        "department": "Product",
+        "target_quarter": "Q2",
+        "status": "req_open"
+      },
+      {
+        "role": "Account Executive",
+        "department": "Sales",
+        "target_quarter": "Q3",
+        "status": "planned"
+      },
+      {
+        "role": "DevOps Engineer",
+        "department": "Engineering",
+        "target_quarter": "Q3",
+        "status": "planned"
+      },
+      {
+        "role": "Customer Success Manager #2",
+        "department": "Delivery",
+        "target_quarter": "Q4",
+        "status": "planned"
+      }
+    ],
+    "target_headcount_eoy_2024": 25
+  },
+  "org_values": [
+    "AI-first mindset: Leverage AI pour démultiplier impact",
+    "Quality over speed: Pas de maison en papier, des briques solides",
+    "Transparency & trust: Communication ouverte, pas de bullshit",
+    "Continuous learning: Expérimentation, feedback, amélioration",
+    "Customer obsession: Créer valeur réelle pour nos clients"
+  ],
+  "metadata": {
+    "document_owner": "CEO + HR",
+    "maintained_by": "Operations",
+    "review_frequency": "quarterly",
+    "last_review_date": "2024-02-01",
+    "next_review_date": "2024-05-01",
+    "tags": ["org_structure", "organization", "teams", "hierarchy", "headcount"]
+  }
+}

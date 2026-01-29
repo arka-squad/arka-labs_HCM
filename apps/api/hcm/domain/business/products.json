@@ -1,0 +1,32 @@
+{
+  "$schema": "https://arka.labs/schemas/products.v1.json",
+  "products": [
+    {
+      "product_id": "arka-os",
+      "product_name": "Arka OS",
+      "description": "Pack-centric governance core for multi-LLM systems with deterministic orchestration.",
+      "status": "in_development",
+      "components": [
+        "HUB",
+        "HCM",
+        "KERNEL",
+        "GUARDIAN",
+        "CONTRACTGEN"
+      ],
+      "target_users": ["enterprises", "ai_teams", "system_integrators"]
+    },
+    {
+      "product_id": "arka-hcm",
+      "product_name": "Arka HCM",
+      "description": "Hybrid Collective Memory - structured knowledge repository for human-AI teams.",
+      "status": "in_development",
+      "components": [
+        "HcmService",
+        "HIndex",
+        "Search API",
+        "CLI"
+      ],
+      "target_users": ["ai_teams", "knowledge_managers", "product_teams"]
+    }
+  ]
+}
