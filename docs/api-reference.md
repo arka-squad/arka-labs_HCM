@@ -9,6 +9,15 @@ Documentation complète de l'API REST HCM v1.1.
 | Local (npm) | `http://localhost:9096` |
 | Docker | `http://localhost:8080/api` |
 
+## Deux familles d'API
+
+| Famille | Préfixe | Statut | Usage |
+|---------|---------|--------|-------|
+| **Enterprise** | `/v1/spaces/...` | Canonique | Nouvelle architecture spaces/workspaces/docs |
+| **Legacy** | `/v1/hcm/...` | Compat | Missions, contracts, packs, atoms |
+
+> **Recommandation** : Utilisez l'API Enterprise pour les nouvelles intégrations.
+
 ## Formats de réponse
 
 ### Routes REST directes (`/v1/hcm/missions`, `/v1/hcm/packs`, etc.)
@@ -60,6 +69,276 @@ Ces routes utilisent l'enveloppe HTTP v1.1 :
 | `IO_ERROR` | 500 | Erreur système fichiers |
 | `INTERNAL_ERROR` | 500 | Erreur interne |
 | `NOT_IMPLEMENTED` | 501 | Opération non implémentée |
+
+---
+
+# API Enterprise (Spaces / Workspaces / Docs)
+
+Architecture canonique pour les nouvelles intégrations.
+
+## Spaces
+
+### Lister les spaces
+
+```http
+GET /v1/spaces
+```
+
+**Réponse** (200) :
+```json
+{
+  "spaces": [
+    {
+      "space_id": "acme",
+      "space_name": "Acme Corp",
+      "description": "Espace client Acme",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  ]
+}
+```
+
+### Créer un space
+
+```http
+POST /v1/spaces
+Content-Type: application/json
+
+{
+  "space_id": "acme",
+  "space_name": "Acme Corp",
+  "description": "Espace client Acme"
+}
+```
+
+**Réponse** (201 si nouveau, 200 si existant) :
+```json
+{
+  "space_id": "acme",
+  "space_name": "Acme Corp",
+  "description": "Espace client Acme",
+  "created_at": "2025-01-01T00:00:00Z",
+  "updated_at": "2025-01-01T00:00:00Z"
+}
+```
+
+### Récupérer un space
+
+```http
+GET /v1/spaces/:spaceId
+```
+
+---
+
+## Workspaces
+
+### Lister les workspaces d'un space
+
+```http
+GET /v1/spaces/:spaceId/workspaces
+```
+
+**Réponse** (200) :
+```json
+{
+  "workspaces": [
+    {
+      "space_id": "acme",
+      "workspace_id": "projet-alpha",
+      "workspace_name": "Projet Alpha",
+      "description": "Transformation digitale",
+      "created_at": "2025-01-01T00:00:00Z",
+      "updated_at": "2025-01-01T00:00:00Z"
+    }
+  ]
+}
+```
+
+### Créer un workspace
+
+```http
+POST /v1/spaces/:spaceId/workspaces
+Content-Type: application/json
+
+{
+  "workspace_id": "projet-alpha",
+  "workspace_name": "Projet Alpha",
+  "description": "Transformation digitale"
+}
+```
+
+**Réponse** (201 si nouveau, 200 si existant)
+
+**curl** :
+```bash
+curl -X POST http://localhost:9096/v1/spaces/acme/workspaces \
+  -H "Content-Type: application/json" \
+  -d '{"workspace_id":"projet-alpha","workspace_name":"Projet Alpha"}'
+```
+
+### Récupérer un workspace
+
+```http
+GET /v1/spaces/:spaceId/workspaces/:workspaceId
+```
+
+---
+
+## Docs (versioned)
+
+Les docs sont versionnés avec hash SHA-256. Chaque version est immuable.
+
+### Lister les docs d'un workspace
+
+```http
+GET /v1/spaces/:spaceId/workspaces/:workspaceId/docs
+```
+
+**Réponse** (200) :
+```json
+{
+  "docs": [
+    {
+      "doc_id": "architecture-cible",
+      "title": "Architecture cible",
+      "doc_type": "design",
+      "tags": ["architecture", "v2"],
+      "version_hash": "sha256:abc123...",
+      "created_at": "2025-01-15T10:00:00Z"
+    }
+  ]
+}
+```
+
+### Créer/Mettre à jour un doc
+
+```http
+POST /v1/spaces/:spaceId/workspaces/:workspaceId/docs
+Content-Type: application/json
+
+{
+  "doc_id": "architecture-cible",
+  "doc": {
+    "title": "Architecture cible",
+    "doc_type": "design",
+    "tags": ["architecture", "v2"],
+    "body": "# Architecture\n\nDescription...",
+    "links": [
+      { "url": "https://example.com/ref", "label": "Référence" }
+    ]
+  },
+  "expected_base_hash": "sha256:..."
+}
+```
+
+**Réponse** (201 si nouvelle version, 200 si identique) :
+```json
+{
+  "schema_version": "1.0",
+  "space_id": "acme",
+  "workspace_id": "projet-alpha",
+  "doc_id": "architecture-cible",
+  "doc": {
+    "title": "Architecture cible",
+    "doc_type": "design",
+    "tags": ["architecture", "v2"],
+    "body": "# Architecture\n\nDescription...",
+    "links": [{ "url": "https://example.com/ref", "label": "Référence" }]
+  },
+  "meta": {
+    "version_hash": "sha256:abc123...",
+    "created_at": "2025-01-15T10:00:00Z",
+    "created_by": { "type": "system", "id": "enterprise-api" },
+    "supersedes": "sha256:def456..."
+  }
+}
+```
+
+**Champs doc** :
+| Champ | Type | Requis | Description |
+|-------|------|--------|-------------|
+| `title` | string | Oui | Titre du document |
+| `doc_type` | string | Non | Type (design, analysis, etc.) |
+| `tags` | string[] | Non | Tags de classification |
+| `body` | string | Non | Contenu markdown |
+| `json` | any | Non | Données structurées |
+| `links` | array | Non | Liens externes |
+
+**Contrôle de concurrence** :
+- `expected_base_hash`: Si fourni, vérifie que le doc n'a pas changé depuis cette version
+- Retourne `409 CONFLICTING_UPDATE` en cas de conflit
+
+**curl** :
+```bash
+curl -X POST http://localhost:9096/v1/spaces/acme/workspaces/projet-alpha/docs \
+  -H "Content-Type: application/json" \
+  -d '{
+    "doc_id": "architecture-cible",
+    "doc": {
+      "title": "Architecture cible",
+      "body": "# Architecture\n\nDescription..."
+    }
+  }'
+```
+
+### Récupérer un doc (latest)
+
+```http
+GET /v1/spaces/:spaceId/workspaces/:workspaceId/docs/:docId/latest
+```
+
+### Récupérer une version spécifique
+
+```http
+GET /v1/spaces/:spaceId/workspaces/:workspaceId/docs/:docId/versions/:version
+```
+
+Le `version` peut être avec ou sans préfixe `sha256:`.
+
+---
+
+## Search (scoped)
+
+Recherche scopée à un space (et optionnellement un workspace).
+
+```http
+POST /v1/spaces/:spaceId/search
+Content-Type: application/json
+
+{
+  "query": "architecture",
+  "workspace_id": "projet-alpha"
+}
+```
+
+**Réponse** (200) :
+```json
+{
+  "ok": true,
+  "data": {
+    "count": 3,
+    "results": [
+      {
+        "source": "domain/spaces/acme/workspaces/projet-alpha/docs/architecture-cible/latest.json",
+        "score": 0.95,
+        "snippet": "...architecture cible..."
+      }
+    ]
+  },
+  "meta": {
+    "request_id": "ent_1234567890",
+    "op": "HCM_SEARCH",
+    "hcm_version": "1.1"
+  }
+}
+```
+
+---
+
+# API Legacy (Missions / Contracts / Packs)
+
+> **Note** : API maintenue pour compatibilité. Préférez l'API Enterprise pour les nouvelles intégrations.
 
 ---
 

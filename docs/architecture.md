@@ -16,16 +16,25 @@ Vue d'ensemble de l'architecture Hybrid Collective Memory.
           ▼                  ▼                  ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │                      API REST (Express)                          │
+│                                                                  │
 │  ┌─────────────────────────────────────────────────────────┐    │
-│  │  /v1/hcm/missions  /v1/hcm/contracts  /v1/hcm/packs    │    │
-│  │  /v1/hcm/artifacts /v1/hcm/projects   /v1/hcm/atoms    │    │
-│  │  /v1/hcm/execute   /health                              │    │
+│  │ ENTERPRISE (canonique)                                   │    │
+│  │  /v1/spaces                                              │    │
+│  │  /v1/spaces/:spaceId/workspaces                          │    │
+│  │  /v1/spaces/:spaceId/workspaces/:workspaceId/docs        │    │
+│  │  /v1/spaces/:spaceId/search                              │    │
+│  └─────────────────────────────────────────────────────────┘    │
+│  ┌─────────────────────────────────────────────────────────┐    │
+│  │ LEGACY (compat)                                          │    │
+│  │  /v1/hcm/missions  /v1/hcm/contracts  /v1/hcm/packs      │    │
+│  │  /v1/hcm/artifacts /v1/hcm/projects   /v1/hcm/atoms      │    │
+│  │  /v1/hcm/execute   /health                               │    │
 │  └─────────────────────────────────────────────────────────┘    │
 │                              │                                   │
 │  ┌───────────────────────────┼───────────────────────────┐      │
 │  │                    HCM SERVICE                         │      │
 │  │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐   │      │
-│  │  │Contract │  │  Pack   │  │Artifact │  │  Chat   │   │      │
+│  │  │Contract │  │  Pack   │  │Artifact │  │ Search  │   │      │
 │  │  │ Engine  │  │ Engine  │  │ Engine  │  │ Engine  │   │      │
 │  │  └─────────┘  └─────────┘  └─────────┘  └─────────┘   │      │
 │  │                      │                                 │      │
@@ -43,6 +52,99 @@ Vue d'ensemble de l'architecture Hybrid Collective Memory.
 │  │ (knowledge) │ │  (context)  │ │  (memory)   │ │  (search)   ││
 │  └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘│
 └─────────────────────────────────────────────────────────────────┘
+```
+
+## API Enterprise (Spaces / Workspaces / Docs)
+
+L'API Enterprise est le modèle **canonique** pour les intégrations. Elle organise les données en hiérarchie claire : Spaces → Workspaces → Docs.
+
+### Routes
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|
+| `GET` | `/v1/spaces` | Liste des spaces |
+| `POST` | `/v1/spaces` | Créer un space |
+| `GET` | `/v1/spaces/:spaceId` | Détail d'un space |
+| `GET` | `/v1/spaces/:spaceId/workspaces` | Liste des workspaces |
+| `POST` | `/v1/spaces/:spaceId/workspaces` | Créer un workspace |
+| `GET` | `/v1/spaces/:spaceId/workspaces/:wsId` | Détail d'un workspace |
+| `GET` | `/v1/spaces/:spaceId/workspaces/:wsId/docs` | Liste des docs |
+| `POST` | `/v1/spaces/:spaceId/workspaces/:wsId/docs` | Créer/mettre à jour un doc |
+| `GET` | `/v1/spaces/:spaceId/workspaces/:wsId/docs/:docId/latest` | Doc (version courante) |
+| `GET` | `/v1/spaces/:spaceId/workspaces/:wsId/docs/:docId/versions/:v` | Doc (version spécifique) |
+| `POST` | `/v1/spaces/:spaceId/search` | Recherche scopée au space |
+
+### Modèle de données
+
+**Space** :
+```json
+{
+  "space_id": "acme",
+  "space_name": "Acme Corp",
+  "description": "Espace client Acme",
+  "created_at": "2025-01-01T00:00:00Z",
+  "updated_at": "2025-01-01T00:00:00Z"
+}
+```
+
+**Workspace** :
+```json
+{
+  "space_id": "acme",
+  "workspace_id": "projet-alpha",
+  "workspace_name": "Projet Alpha",
+  "description": "Transformation digitale",
+  "created_at": "2025-01-01T00:00:00Z",
+  "updated_at": "2025-01-01T00:00:00Z"
+}
+```
+
+**Doc (versioned)** :
+```json
+{
+  "schema_version": "1.0",
+  "space_id": "acme",
+  "workspace_id": "projet-alpha",
+  "doc_id": "architecture-cible",
+  "doc": {
+    "title": "Architecture cible",
+    "doc_type": "design",
+    "tags": ["architecture", "v2"],
+    "body": "# Architecture\n...",
+    "links": [{ "url": "https://...", "label": "Ref" }]
+  },
+  "meta": {
+    "version_hash": "sha256:abc123...",
+    "created_at": "2025-01-15T10:00:00Z",
+    "created_by": { "type": "agent", "id": "arka-consultant" },
+    "supersedes": "sha256:def456..."
+  }
+}
+```
+
+### Stockage FS (Enterprise)
+
+```
+domain/
+└── spaces/
+    └── <space_id>/
+        ├── meta.json                    # SpaceMeta
+        └── workspaces/
+            └── <workspace_id>/
+                ├── meta.json            # WorkspaceMeta
+                └── docs/
+                    └── <doc_id>/
+                        ├── latest.json  # DocVersion courante
+                        └── versions/
+                            └── <hash>.json
+
+state/
+└── spaces/
+    └── <space_id>/
+        └── workspaces/
+            └── <workspace_id>/
+                ├── status.json          # État runtime
+                └── journal.jsonl        # Journal append-only
 ```
 
 ## Les 4 blocs HCM
@@ -77,25 +179,35 @@ stable/
 
 ### Bloc B : domain/ (Contexte métier)
 
-Contenus liés à l'entreprise ou au client.
+Contenus liés à l'entreprise ou au client. Organisé en **Spaces** (tenants) et **Workspaces** (projets).
 
 ```
 domain/
-├── org/                # Contexte organisationnel
+├── spaces/                              # [Enterprise] Hiérarchie spaces/workspaces
+│   └── <space_id>/
+│       ├── meta.json                    # SpaceMeta
+│       └── workspaces/
+│           └── <workspace_id>/
+│               ├── meta.json            # WorkspaceMeta
+│               └── docs/
+│                   └── <doc_id>/
+│                       ├── latest.json  # DocVersion courante
+│                       └── versions/    # Historique immuable
+├── org/                                 # [Legacy] Contexte organisationnel
 │   ├── org_profile.json
 │   ├── org_structure.json
 │   └── org_policies.json
-├── business/           # Offre et capacités
+├── business/                            # [Legacy] Offre et capacités
 │   ├── products.json
 │   ├── services.json
 │   └── kpi_definitions.json
-├── systems/            # Paysage SI
+├── systems/                             # [Legacy] Paysage SI
 │   ├── applications_inventory.json
 │   └── integrations_map.json
-├── constraints/        # Contraintes externes
+├── constraints/                         # [Legacy] Contraintes externes
 │   ├── legal_regulatory.json
 │   └── security_policies.json
-└── projects/           # Contextes projets
+└── projects/                            # [Legacy] Contextes projets
     └── <project_id>/
         └── context/
 ```
@@ -104,6 +216,7 @@ domain/
 - Spécifique au client/tenant
 - Évolue plus fréquemment que stable/
 - Non-secret, versionnable
+- **Enterprise** : Docs versionnés avec hash SHA-256 et supersedes
 
 ### Bloc C : state/ (Mémoire vive)
 
@@ -111,7 +224,13 @@ La mémoire opérationnelle de l'équipe.
 
 ```
 state/
-├── missions/
+├── spaces/                              # [Enterprise] État runtime des workspaces
+│   └── <space_id>/
+│       └── workspaces/
+│           └── <workspace_id>/
+│               ├── status.json          # État courant
+│               └── journal.jsonl        # Journal append-only
+├── missions/                            # [Legacy] État des missions
 │   └── <mission_id>/
 │       ├── meta.json           # Identité mission
 │       ├── status.json         # État courant
@@ -134,6 +253,7 @@ state/
 - Reflète l'instant présent
 - Cœur de la continuité humain↔IA
 - Structures JSON strictes
+- **Enterprise** : status + journal par workspace
 
 ### Bloc D : hindex/ (Index hybride)
 
@@ -158,7 +278,34 @@ hindex/
 
 ## Flux de données
 
-### Création d'une mission
+### [Enterprise] Création d'un document
+
+```
+1. POST /v1/spaces/:spaceId/workspaces/:wsId/docs
+   {
+     "doc_id": "mon-doc",
+     "doc": { "title": "Mon Document", "body": "..." }
+   }
+
+2. normalizeDocCore() → Validation et normalisation
+3. calculateHash() → Hash du contenu
+4. fsAdapter.writeJsonAtomic()
+   ├── domain/spaces/<spaceId>/workspaces/<wsId>/docs/<docId>/versions/<hash>.json
+   └── domain/spaces/<spaceId>/workspaces/<wsId>/docs/<docId>/latest.json
+```
+
+### [Enterprise] Recherche scopée
+
+```
+1. POST /v1/spaces/:spaceId/search
+   { "query": "architecture", "workspace_id": "projet-alpha" }
+
+2. hcmService.handle({ op: 'HCM_SEARCH', ... })
+3. Filtrage par source (domain/spaces/<spaceId>/... ou state/spaces/<spaceId>/...)
+4. Retour des résultats scopés au space/workspace
+```
+
+### [Legacy] Création d'une mission
 
 ```
 1. POST /v1/hcm/missions
@@ -175,7 +322,7 @@ hindex/
        └── Met à jour contracts/latest.json
 ```
 
-### Ajout d'une entrée journal
+### [Legacy] Ajout d'une entrée journal
 
 ```
 1. POST /v1/hcm/execute
@@ -188,7 +335,7 @@ hindex/
    └── Append dans state/missions/<id>/journal.jsonl
 ```
 
-### Recherche dans le HCM
+### [Legacy] Recherche dans le HCM
 
 ```
 1. POST /v1/hcm/execute
